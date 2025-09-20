@@ -25,8 +25,11 @@ const (
 	CookieAuthScopes = "cookieAuth.Scopes"
 )
 
-// AllUserCreditsResponse defines model for AllUserCreditsResponse.
-type AllUserCreditsResponse struct {
+// AllUserCountersResponse defines model for AllUserCountersResponse.
+type AllUserCountersResponse struct {
+	// CounterId ID of the counter type
+	CounterId string `json:"counter_id"`
+
 	// Limit Maximum number of users returned
 	Limit int `json:"limit"`
 
@@ -36,22 +39,31 @@ type AllUserCreditsResponse struct {
 	// TotalCount Total number of users (for pagination)
 	TotalCount int `json:"total_count"`
 
-	// Users List of users with their credit balances
-	Users []UserCreditsResponse `json:"users"`
+	// Users List of users with their counter balances
+	Users []UserCountersResponse `json:"users"`
 }
 
-// CreditAdjustmentRequest defines model for CreditAdjustmentRequest.
-type CreditAdjustmentRequest struct {
+// AvailableCountersResponse defines model for AvailableCountersResponse.
+type AvailableCountersResponse struct {
+	// Counters List of available counter type IDs
+	Counters []string `json:"counters"`
+}
+
+// CounterAdjustmentRequest defines model for CounterAdjustmentRequest.
+type CounterAdjustmentRequest struct {
 	// Amount Amount to add (positive) or deduct (negative)
 	Amount int `json:"amount"`
 
-	// Description Description of the credit adjustment
+	// Description Description of the counter adjustment
 	Description string `json:"description"`
 }
 
-// CreditHistoryResponse defines model for CreditHistoryResponse.
-type CreditHistoryResponse struct {
-	// CurrentBalance Current credit balance
+// CounterHistoryResponse defines model for CounterHistoryResponse.
+type CounterHistoryResponse struct {
+	// CounterId ID of the counter type
+	CounterId string `json:"counter_id"`
+
+	// CurrentBalance Current counter balance
 	CurrentBalance int `json:"current_balance"`
 
 	// Limit Maximum number of transactions returned
@@ -63,20 +75,23 @@ type CreditHistoryResponse struct {
 	// TotalCount Total number of transactions (for pagination)
 	TotalCount int `json:"total_count"`
 
-	// Transactions List of credit transactions
-	Transactions []CreditTransactionResponse `json:"transactions"`
+	// Transactions List of counter transactions
+	Transactions []CounterTransactionResponse `json:"transactions"`
 
 	// UserId ID of the user
 	UserId string `json:"user_id"`
 }
 
-// CreditTransactionResponse defines model for CreditTransactionResponse.
-type CreditTransactionResponse struct {
+// CounterTransactionResponse defines model for CounterTransactionResponse.
+type CounterTransactionResponse struct {
 	// Amount Amount added (positive) or deducted (negative)
 	Amount int `json:"amount"`
 
 	// BalanceAfter Balance after this transaction
 	BalanceAfter int `json:"balance_after"`
+
+	// CounterId ID of the counter type
+	CounterId string `json:"counter_id"`
 
 	// CreatedAt When the transaction was created
 	CreatedAt time.Time `json:"created_at"`
@@ -233,17 +248,13 @@ type TokenResponse struct {
 	UsageCount int `json:"usage_count"`
 }
 
-// UserCreateRequest defines model for UserCreateRequest.
-type UserCreateRequest struct {
-	Email    openapi_types.Email `json:"email"`
-	Password string              `json:"password"`
-	Username string              `json:"username"`
-}
-
-// UserCreditsResponse defines model for UserCreditsResponse.
-type UserCreditsResponse struct {
-	// Balance Current credit balance
+// UserCountersResponse defines model for UserCountersResponse.
+type UserCountersResponse struct {
+	// Balance Current counter balance
 	Balance int `json:"balance"`
+
+	// CounterId ID of the counter type
+	CounterId string `json:"counter_id"`
 
 	// Email Email of the user
 	Email *openapi_types.Email `json:"email,omitempty"`
@@ -258,6 +269,13 @@ type UserCreditsResponse struct {
 	Username *string `json:"username,omitempty"`
 }
 
+// UserCreateRequest defines model for UserCreateRequest.
+type UserCreateRequest struct {
+	Email    openapi_types.Email `json:"email"`
+	Password string              `json:"password"`
+	Username string              `json:"username"`
+}
+
 // UserResponse defines model for UserResponse.
 type UserResponse struct {
 	CreatedAt time.Time            `json:"createdAt"`
@@ -270,8 +288,8 @@ type UserResponse struct {
 	Username  string               `json:"username"`
 }
 
-// GetAllUserCreditsParams defines parameters for GetAllUserCredits.
-type GetAllUserCreditsParams struct {
+// GetAllUserCountersParams defines parameters for GetAllUserCounters.
+type GetAllUserCountersParams struct {
 	// Limit Maximum number of users to return
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -279,8 +297,8 @@ type GetAllUserCreditsParams struct {
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 }
 
-// GetUserCreditHistoryParams defines parameters for GetUserCreditHistory.
-type GetUserCreditHistoryParams struct {
+// GetUserCounterHistoryParams defines parameters for GetUserCounterHistory.
+type GetUserCounterHistoryParams struct {
 	// Limit Maximum number of transactions to return
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
 
@@ -315,8 +333,8 @@ type LogoutUserParams struct {
 	TgSessionToken *string `form:"tg_session_token,omitempty" json:"tg_session_token,omitempty"`
 }
 
-// AdjustUserCreditsJSONRequestBody defines body for AdjustUserCredits for application/json ContentType.
-type AdjustUserCreditsJSONRequestBody = CreditAdjustmentRequest
+// AdjustUserCountersJSONRequestBody defines body for AdjustUserCounters for application/json ContentType.
+type AdjustUserCountersJSONRequestBody = CounterAdjustmentRequest
 
 // CreateUserJSONRequestBody defines body for CreateUser for application/json ContentType.
 type CreateUserJSONRequestBody = UserCreateRequest
@@ -397,19 +415,22 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 
 // The interface specification for the client above.
 type ClientInterface interface {
-	// GetAllUserCredits request
-	GetAllUserCredits(ctx context.Context, params *GetAllUserCreditsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetAvailableCounters request
+	GetAvailableCounters(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetUserCredits request
-	GetUserCredits(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetAllUserCounters request
+	GetAllUserCounters(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// AdjustUserCreditsWithBody request with any body
-	AdjustUserCreditsWithBody(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetUserCounters request
+	GetUserCounters(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	AdjustUserCredits(ctx context.Context, userId string, body AdjustUserCreditsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// AdjustUserCountersWithBody request with any body
+	AdjustUserCountersWithBody(ctx context.Context, counterId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetUserCreditHistory request
-	GetUserCreditHistory(ctx context.Context, userId string, params *GetUserCreditHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AdjustUserCounters(ctx context.Context, counterId string, userId string, body AdjustUserCountersJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetUserCounterHistory request
+	GetUserCounterHistory(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRequestStatistics request
 	GetRequestStatistics(ctx context.Context, params *GetRequestStatisticsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -455,8 +476,8 @@ type ClientInterface interface {
 	GetOpenApiYaml(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
-func (c *Client) GetAllUserCredits(ctx context.Context, params *GetAllUserCreditsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetAllUserCreditsRequest(c.Server, params)
+func (c *Client) GetAvailableCounters(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAvailableCountersRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -467,8 +488,8 @@ func (c *Client) GetAllUserCredits(ctx context.Context, params *GetAllUserCredit
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetUserCredits(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetUserCreditsRequest(c.Server, userId)
+func (c *Client) GetAllUserCounters(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAllUserCountersRequest(c.Server, counterId, params)
 	if err != nil {
 		return nil, err
 	}
@@ -479,8 +500,8 @@ func (c *Client) GetUserCredits(ctx context.Context, userId string, reqEditors .
 	return c.Client.Do(req)
 }
 
-func (c *Client) AdjustUserCreditsWithBody(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAdjustUserCreditsRequestWithBody(c.Server, userId, contentType, body)
+func (c *Client) GetUserCounters(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetUserCountersRequest(c.Server, counterId, userId)
 	if err != nil {
 		return nil, err
 	}
@@ -491,8 +512,8 @@ func (c *Client) AdjustUserCreditsWithBody(ctx context.Context, userId string, c
 	return c.Client.Do(req)
 }
 
-func (c *Client) AdjustUserCredits(ctx context.Context, userId string, body AdjustUserCreditsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAdjustUserCreditsRequest(c.Server, userId, body)
+func (c *Client) AdjustUserCountersWithBody(ctx context.Context, counterId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAdjustUserCountersRequestWithBody(c.Server, counterId, userId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -503,8 +524,20 @@ func (c *Client) AdjustUserCredits(ctx context.Context, userId string, body Adju
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetUserCreditHistory(ctx context.Context, userId string, params *GetUserCreditHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetUserCreditHistoryRequest(c.Server, userId, params)
+func (c *Client) AdjustUserCounters(ctx context.Context, counterId string, userId string, body AdjustUserCountersJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAdjustUserCountersRequest(c.Server, counterId, userId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetUserCounterHistory(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetUserCounterHistoryRequest(c.Server, counterId, userId, params)
 	if err != nil {
 		return nil, err
 	}
@@ -695,8 +728,8 @@ func (c *Client) GetOpenApiYaml(ctx context.Context, reqEditors ...RequestEditor
 	return c.Client.Do(req)
 }
 
-// NewGetAllUserCreditsRequest generates requests for GetAllUserCredits
-func NewGetAllUserCreditsRequest(server string, params *GetAllUserCreditsParams) (*http.Request, error) {
+// NewGetAvailableCountersRequest generates requests for GetAvailableCounters
+func NewGetAvailableCountersRequest(server string) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -704,7 +737,41 @@ func NewGetAllUserCreditsRequest(server string, params *GetAllUserCreditsParams)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/api/admin/credits")
+	operationPath := fmt.Sprintf("/api/admin/counters")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetAllUserCountersRequest generates requests for GetAllUserCounters
+func NewGetAllUserCountersRequest(server string, counterId string, params *GetAllUserCountersParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "counterId", runtime.ParamLocationPath, counterId)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/admin/counters/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -760,13 +827,20 @@ func NewGetAllUserCreditsRequest(server string, params *GetAllUserCreditsParams)
 	return req, nil
 }
 
-// NewGetUserCreditsRequest generates requests for GetUserCredits
-func NewGetUserCreditsRequest(server string, userId string) (*http.Request, error) {
+// NewGetUserCountersRequest generates requests for GetUserCounters
+func NewGetUserCountersRequest(server string, counterId string, userId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "userId", runtime.ParamLocationPath, userId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "counterId", runtime.ParamLocationPath, counterId)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "userId", runtime.ParamLocationPath, userId)
 	if err != nil {
 		return nil, err
 	}
@@ -776,7 +850,7 @@ func NewGetUserCreditsRequest(server string, userId string) (*http.Request, erro
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/api/credits/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/counters/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -794,24 +868,31 @@ func NewGetUserCreditsRequest(server string, userId string) (*http.Request, erro
 	return req, nil
 }
 
-// NewAdjustUserCreditsRequest calls the generic AdjustUserCredits builder with application/json body
-func NewAdjustUserCreditsRequest(server string, userId string, body AdjustUserCreditsJSONRequestBody) (*http.Request, error) {
+// NewAdjustUserCountersRequest calls the generic AdjustUserCounters builder with application/json body
+func NewAdjustUserCountersRequest(server string, counterId string, userId string, body AdjustUserCountersJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAdjustUserCreditsRequestWithBody(server, userId, "application/json", bodyReader)
+	return NewAdjustUserCountersRequestWithBody(server, counterId, userId, "application/json", bodyReader)
 }
 
-// NewAdjustUserCreditsRequestWithBody generates requests for AdjustUserCredits with any type of body
-func NewAdjustUserCreditsRequestWithBody(server string, userId string, contentType string, body io.Reader) (*http.Request, error) {
+// NewAdjustUserCountersRequestWithBody generates requests for AdjustUserCounters with any type of body
+func NewAdjustUserCountersRequestWithBody(server string, counterId string, userId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "userId", runtime.ParamLocationPath, userId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "counterId", runtime.ParamLocationPath, counterId)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "userId", runtime.ParamLocationPath, userId)
 	if err != nil {
 		return nil, err
 	}
@@ -821,7 +902,7 @@ func NewAdjustUserCreditsRequestWithBody(server string, userId string, contentTy
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/api/credits/%s", pathParam0)
+	operationPath := fmt.Sprintf("/api/counters/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -841,13 +922,20 @@ func NewAdjustUserCreditsRequestWithBody(server string, userId string, contentTy
 	return req, nil
 }
 
-// NewGetUserCreditHistoryRequest generates requests for GetUserCreditHistory
-func NewGetUserCreditHistoryRequest(server string, userId string, params *GetUserCreditHistoryParams) (*http.Request, error) {
+// NewGetUserCounterHistoryRequest generates requests for GetUserCounterHistory
+func NewGetUserCounterHistoryRequest(server string, counterId string, userId string, params *GetUserCounterHistoryParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "userId", runtime.ParamLocationPath, userId)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "counterId", runtime.ParamLocationPath, counterId)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "userId", runtime.ParamLocationPath, userId)
 	if err != nil {
 		return nil, err
 	}
@@ -857,7 +945,7 @@ func NewGetUserCreditHistoryRequest(server string, userId string, params *GetUse
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/api/credits/%s/history", pathParam0)
+	operationPath := fmt.Sprintf("/api/counters/%s/%s/history", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1483,19 +1571,22 @@ func WithBaseURL(baseURL string) ClientOption {
 
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
-	// GetAllUserCreditsWithResponse request
-	GetAllUserCreditsWithResponse(ctx context.Context, params *GetAllUserCreditsParams, reqEditors ...RequestEditorFn) (*GetAllUserCreditsResponse, error)
+	// GetAvailableCountersWithResponse request
+	GetAvailableCountersWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAvailableCountersResponse, error)
 
-	// GetUserCreditsWithResponse request
-	GetUserCreditsWithResponse(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*GetUserCreditsResponse, error)
+	// GetAllUserCountersWithResponse request
+	GetAllUserCountersWithResponse(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*GetAllUserCountersResponse, error)
 
-	// AdjustUserCreditsWithBodyWithResponse request with any body
-	AdjustUserCreditsWithBodyWithResponse(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AdjustUserCreditsResponse, error)
+	// GetUserCountersWithResponse request
+	GetUserCountersWithResponse(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*GetUserCountersResponse, error)
 
-	AdjustUserCreditsWithResponse(ctx context.Context, userId string, body AdjustUserCreditsJSONRequestBody, reqEditors ...RequestEditorFn) (*AdjustUserCreditsResponse, error)
+	// AdjustUserCountersWithBodyWithResponse request with any body
+	AdjustUserCountersWithBodyWithResponse(ctx context.Context, counterId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AdjustUserCountersResponse, error)
 
-	// GetUserCreditHistoryWithResponse request
-	GetUserCreditHistoryWithResponse(ctx context.Context, userId string, params *GetUserCreditHistoryParams, reqEditors ...RequestEditorFn) (*GetUserCreditHistoryResponse, error)
+	AdjustUserCountersWithResponse(ctx context.Context, counterId string, userId string, body AdjustUserCountersJSONRequestBody, reqEditors ...RequestEditorFn) (*AdjustUserCountersResponse, error)
+
+	// GetUserCounterHistoryWithResponse request
+	GetUserCounterHistoryWithResponse(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*GetUserCounterHistoryResponse, error)
 
 	// GetRequestStatisticsWithResponse request
 	GetRequestStatisticsWithResponse(ctx context.Context, params *GetRequestStatisticsParams, reqEditors ...RequestEditorFn) (*GetRequestStatisticsResponse, error)
@@ -1541,17 +1632,17 @@ type ClientWithResponsesInterface interface {
 	GetOpenApiYamlWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetOpenApiYamlResponse, error)
 }
 
-type GetAllUserCreditsResponse struct {
+type GetAvailableCountersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *AllUserCreditsResponse
+	JSON200      *AvailableCountersResponse
 	JSON401      *Error
 	JSON403      *Error
 	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
-func (r GetAllUserCreditsResponse) Status() string {
+func (r GetAvailableCountersResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -1559,17 +1650,17 @@ func (r GetAllUserCreditsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetAllUserCreditsResponse) StatusCode() int {
+func (r GetAvailableCountersResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type GetUserCreditsResponse struct {
+type GetAllUserCountersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *UserCreditsResponse
+	JSON200      *AllUserCountersResponse
 	JSON401      *Error
 	JSON403      *Error
 	JSON404      *Error
@@ -1577,7 +1668,7 @@ type GetUserCreditsResponse struct {
 }
 
 // Status returns HTTPResponse.Status
-func (r GetUserCreditsResponse) Status() string {
+func (r GetAllUserCountersResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -1585,17 +1676,43 @@ func (r GetUserCreditsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetUserCreditsResponse) StatusCode() int {
+func (r GetAllUserCountersResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type AdjustUserCreditsResponse struct {
+type GetUserCountersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CreditTransactionResponse
+	JSON200      *UserCountersResponse
+	JSON401      *Error
+	JSON403      *Error
+	JSON404      *Error
+	JSON500      *Error
+}
+
+// Status returns HTTPResponse.Status
+func (r GetUserCountersResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetUserCountersResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type AdjustUserCountersResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *CounterTransactionResponse
 	JSON400      *Error
 	JSON401      *Error
 	JSON403      *Error
@@ -1604,7 +1721,7 @@ type AdjustUserCreditsResponse struct {
 }
 
 // Status returns HTTPResponse.Status
-func (r AdjustUserCreditsResponse) Status() string {
+func (r AdjustUserCountersResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -1612,17 +1729,17 @@ func (r AdjustUserCreditsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r AdjustUserCreditsResponse) StatusCode() int {
+func (r AdjustUserCountersResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type GetUserCreditHistoryResponse struct {
+type GetUserCounterHistoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CreditHistoryResponse
+	JSON200      *CounterHistoryResponse
 	JSON401      *Error
 	JSON403      *Error
 	JSON404      *Error
@@ -1630,7 +1747,7 @@ type GetUserCreditHistoryResponse struct {
 }
 
 // Status returns HTTPResponse.Status
-func (r GetUserCreditHistoryResponse) Status() string {
+func (r GetUserCounterHistoryResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -1638,7 +1755,7 @@ func (r GetUserCreditHistoryResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetUserCreditHistoryResponse) StatusCode() int {
+func (r GetUserCounterHistoryResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -1966,48 +2083,57 @@ func (r GetOpenApiYamlResponse) StatusCode() int {
 	return 0
 }
 
-// GetAllUserCreditsWithResponse request returning *GetAllUserCreditsResponse
-func (c *ClientWithResponses) GetAllUserCreditsWithResponse(ctx context.Context, params *GetAllUserCreditsParams, reqEditors ...RequestEditorFn) (*GetAllUserCreditsResponse, error) {
-	rsp, err := c.GetAllUserCredits(ctx, params, reqEditors...)
+// GetAvailableCountersWithResponse request returning *GetAvailableCountersResponse
+func (c *ClientWithResponses) GetAvailableCountersWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAvailableCountersResponse, error) {
+	rsp, err := c.GetAvailableCounters(ctx, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetAllUserCreditsResponse(rsp)
+	return ParseGetAvailableCountersResponse(rsp)
 }
 
-// GetUserCreditsWithResponse request returning *GetUserCreditsResponse
-func (c *ClientWithResponses) GetUserCreditsWithResponse(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*GetUserCreditsResponse, error) {
-	rsp, err := c.GetUserCredits(ctx, userId, reqEditors...)
+// GetAllUserCountersWithResponse request returning *GetAllUserCountersResponse
+func (c *ClientWithResponses) GetAllUserCountersWithResponse(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*GetAllUserCountersResponse, error) {
+	rsp, err := c.GetAllUserCounters(ctx, counterId, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetUserCreditsResponse(rsp)
+	return ParseGetAllUserCountersResponse(rsp)
 }
 
-// AdjustUserCreditsWithBodyWithResponse request with arbitrary body returning *AdjustUserCreditsResponse
-func (c *ClientWithResponses) AdjustUserCreditsWithBodyWithResponse(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AdjustUserCreditsResponse, error) {
-	rsp, err := c.AdjustUserCreditsWithBody(ctx, userId, contentType, body, reqEditors...)
+// GetUserCountersWithResponse request returning *GetUserCountersResponse
+func (c *ClientWithResponses) GetUserCountersWithResponse(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*GetUserCountersResponse, error) {
+	rsp, err := c.GetUserCounters(ctx, counterId, userId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseAdjustUserCreditsResponse(rsp)
+	return ParseGetUserCountersResponse(rsp)
 }
 
-func (c *ClientWithResponses) AdjustUserCreditsWithResponse(ctx context.Context, userId string, body AdjustUserCreditsJSONRequestBody, reqEditors ...RequestEditorFn) (*AdjustUserCreditsResponse, error) {
-	rsp, err := c.AdjustUserCredits(ctx, userId, body, reqEditors...)
+// AdjustUserCountersWithBodyWithResponse request with arbitrary body returning *AdjustUserCountersResponse
+func (c *ClientWithResponses) AdjustUserCountersWithBodyWithResponse(ctx context.Context, counterId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AdjustUserCountersResponse, error) {
+	rsp, err := c.AdjustUserCountersWithBody(ctx, counterId, userId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseAdjustUserCreditsResponse(rsp)
+	return ParseAdjustUserCountersResponse(rsp)
 }
 
-// GetUserCreditHistoryWithResponse request returning *GetUserCreditHistoryResponse
-func (c *ClientWithResponses) GetUserCreditHistoryWithResponse(ctx context.Context, userId string, params *GetUserCreditHistoryParams, reqEditors ...RequestEditorFn) (*GetUserCreditHistoryResponse, error) {
-	rsp, err := c.GetUserCreditHistory(ctx, userId, params, reqEditors...)
+func (c *ClientWithResponses) AdjustUserCountersWithResponse(ctx context.Context, counterId string, userId string, body AdjustUserCountersJSONRequestBody, reqEditors ...RequestEditorFn) (*AdjustUserCountersResponse, error) {
+	rsp, err := c.AdjustUserCounters(ctx, counterId, userId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetUserCreditHistoryResponse(rsp)
+	return ParseAdjustUserCountersResponse(rsp)
+}
+
+// GetUserCounterHistoryWithResponse request returning *GetUserCounterHistoryResponse
+func (c *ClientWithResponses) GetUserCounterHistoryWithResponse(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*GetUserCounterHistoryResponse, error) {
+	rsp, err := c.GetUserCounterHistory(ctx, counterId, userId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetUserCounterHistoryResponse(rsp)
 }
 
 // GetRequestStatisticsWithResponse request returning *GetRequestStatisticsResponse
@@ -2143,22 +2269,22 @@ func (c *ClientWithResponses) GetOpenApiYamlWithResponse(ctx context.Context, re
 	return ParseGetOpenApiYamlResponse(rsp)
 }
 
-// ParseGetAllUserCreditsResponse parses an HTTP response from a GetAllUserCreditsWithResponse call
-func ParseGetAllUserCreditsResponse(rsp *http.Response) (*GetAllUserCreditsResponse, error) {
+// ParseGetAvailableCountersResponse parses an HTTP response from a GetAvailableCountersWithResponse call
+func ParseGetAvailableCountersResponse(rsp *http.Response) (*GetAvailableCountersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetAllUserCreditsResponse{
+	response := &GetAvailableCountersResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AllUserCreditsResponse
+		var dest AvailableCountersResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2190,22 +2316,22 @@ func ParseGetAllUserCreditsResponse(rsp *http.Response) (*GetAllUserCreditsRespo
 	return response, nil
 }
 
-// ParseGetUserCreditsResponse parses an HTTP response from a GetUserCreditsWithResponse call
-func ParseGetUserCreditsResponse(rsp *http.Response) (*GetUserCreditsResponse, error) {
+// ParseGetAllUserCountersResponse parses an HTTP response from a GetAllUserCountersWithResponse call
+func ParseGetAllUserCountersResponse(rsp *http.Response) (*GetAllUserCountersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetUserCreditsResponse{
+	response := &GetAllUserCountersResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest UserCreditsResponse
+		var dest AllUserCountersResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2244,22 +2370,76 @@ func ParseGetUserCreditsResponse(rsp *http.Response) (*GetUserCreditsResponse, e
 	return response, nil
 }
 
-// ParseAdjustUserCreditsResponse parses an HTTP response from a AdjustUserCreditsWithResponse call
-func ParseAdjustUserCreditsResponse(rsp *http.Response) (*AdjustUserCreditsResponse, error) {
+// ParseGetUserCountersResponse parses an HTTP response from a GetUserCountersWithResponse call
+func ParseGetUserCountersResponse(rsp *http.Response) (*GetUserCountersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &AdjustUserCreditsResponse{
+	response := &GetUserCountersResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CreditTransactionResponse
+		var dest UserCountersResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseAdjustUserCountersResponse parses an HTTP response from a AdjustUserCountersWithResponse call
+func ParseAdjustUserCountersResponse(rsp *http.Response) (*AdjustUserCountersResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &AdjustUserCountersResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest CounterTransactionResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2305,22 +2485,22 @@ func ParseAdjustUserCreditsResponse(rsp *http.Response) (*AdjustUserCreditsRespo
 	return response, nil
 }
 
-// ParseGetUserCreditHistoryResponse parses an HTTP response from a GetUserCreditHistoryWithResponse call
-func ParseGetUserCreditHistoryResponse(rsp *http.Response) (*GetUserCreditHistoryResponse, error) {
+// ParseGetUserCounterHistoryResponse parses an HTTP response from a GetUserCounterHistoryWithResponse call
+func ParseGetUserCounterHistoryResponse(rsp *http.Response) (*GetUserCounterHistoryResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetUserCreditHistoryResponse{
+	response := &GetUserCounterHistoryResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CreditHistoryResponse
+		var dest CounterHistoryResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
