@@ -9,6 +9,14 @@ Taronja Gateway is a backend service for managing users, credits, authentication
 
 ## Go Client Usage
 
+### Installation
+
+To install the Go client, run:
+
+```bash
+go get github.com/jmaister/taronja-gateway-clients/go
+```
+
 ### Importing
 
 To use the Go client in your project, import it as follows:
