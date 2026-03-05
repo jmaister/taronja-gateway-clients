@@ -129,6 +129,30 @@ type HealthResponse struct {
 	Uptime string `json:"uptime"`
 }
 
+// RateLimiterConfigResponse defines model for RateLimiterConfigResponse.
+type RateLimiterConfigResponse struct {
+	BlockMinutes      *int `json:"blockMinutes,omitempty"`
+	MaxErrors         *int `json:"maxErrors,omitempty"`
+	RequestsPerMinute *int `json:"requestsPerMinute,omitempty"`
+	VulnerabilityScan *struct {
+		BlockMinutes int      `json:"blockMinutes"`
+		Max404       int      `json:"max404"`
+		Urls         []string `json:"urls"`
+	} `json:"vulnerabilityScan,omitempty"`
+}
+
+// RateLimiterStat defines model for RateLimiterStat.
+type RateLimiterStat struct {
+	BlockedUntil time.Time `json:"blockedUntil"`
+	Errors       int       `json:"errors"`
+	Ip           string    `json:"ip"`
+	Requests     int       `json:"requests"`
+	Scan404      int       `json:"scan404"`
+}
+
+// RateLimiterStats defines model for RateLimiterStats.
+type RateLimiterStats = []RateLimiterStat
+
 // RequestDetail defines model for RequestDetail.
 type RequestDetail struct {
 	Browser string `json:"browser"`
@@ -284,14 +308,12 @@ type UserCreateRequest struct {
 
 // UserResponse defines model for UserResponse.
 type UserResponse struct {
-	CreatedAt time.Time            `json:"createdAt"`
-	Email     *openapi_types.Email `json:"email,omitempty"`
-	Id        string               `json:"id"`
-	Name      *string              `json:"name"`
-	Picture   *string              `json:"picture"`
-	Provider  *string              `json:"provider"`
-	UpdatedAt time.Time            `json:"updatedAt"`
-	Username  string               `json:"username"`
+	Email    *openapi_types.Email `json:"email,omitempty"`
+	Id       string               `json:"id"`
+	Name     *string              `json:"name"`
+	Picture  *string              `json:"picture"`
+	Provider *string              `json:"provider"`
+	Username string               `json:"username"`
 }
 
 // GetAllUserCountersParams defines parameters for GetAllUserCounters.
@@ -427,6 +449,9 @@ type ClientInterface interface {
 	// GetAllUserCounters request
 	GetAllUserCounters(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetRateLimiterConfig request
+	GetRateLimiterConfig(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetUserCounters request
 	GetUserCounters(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -437,6 +462,9 @@ type ClientInterface interface {
 
 	// GetUserCounterHistory request
 	GetUserCounterHistory(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetRateLimiterStats request
+	GetRateLimiterStats(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetRequestStatistics request
 	GetRequestStatistics(ctx context.Context, params *GetRequestStatisticsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -506,6 +534,18 @@ func (c *Client) GetAllUserCounters(ctx context.Context, counterId string, param
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetRateLimiterConfig(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetRateLimiterConfigRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetUserCounters(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUserCountersRequest(c.Server, counterId, userId)
 	if err != nil {
@@ -544,6 +584,18 @@ func (c *Client) AdjustUserCounters(ctx context.Context, counterId string, userI
 
 func (c *Client) GetUserCounterHistory(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUserCounterHistoryRequest(c.Server, counterId, userId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetRateLimiterStats(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetRateLimiterStatsRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -833,6 +885,33 @@ func NewGetAllUserCountersRequest(server string, counterId string, params *GetAl
 	return req, nil
 }
 
+// NewGetRateLimiterConfigRequest generates requests for GetRateLimiterConfig
+func NewGetRateLimiterConfigRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/config/rate-limiter")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetUserCountersRequest generates requests for GetUserCounters
 func NewGetUserCountersRequest(server string, counterId string, userId string) (*http.Request, error) {
 	var err error
@@ -997,6 +1076,33 @@ func NewGetUserCounterHistoryRequest(server string, counterId string, userId str
 		}
 
 		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetRateLimiterStatsRequest generates requests for GetRateLimiterStats
+func NewGetRateLimiterStatsRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/statistics/rate-limiter")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
 	}
 
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
@@ -1583,6 +1689,9 @@ type ClientWithResponsesInterface interface {
 	// GetAllUserCountersWithResponse request
 	GetAllUserCountersWithResponse(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*GetAllUserCountersResponse, error)
 
+	// GetRateLimiterConfigWithResponse request
+	GetRateLimiterConfigWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetRateLimiterConfigResponse, error)
+
 	// GetUserCountersWithResponse request
 	GetUserCountersWithResponse(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*GetUserCountersResponse, error)
 
@@ -1593,6 +1702,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetUserCounterHistoryWithResponse request
 	GetUserCounterHistoryWithResponse(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*GetUserCounterHistoryResponse, error)
+
+	// GetRateLimiterStatsWithResponse request
+	GetRateLimiterStatsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetRateLimiterStatsResponse, error)
 
 	// GetRequestStatisticsWithResponse request
 	GetRequestStatisticsWithResponse(ctx context.Context, params *GetRequestStatisticsParams, reqEditors ...RequestEditorFn) (*GetRequestStatisticsResponse, error)
@@ -1689,6 +1801,30 @@ func (r GetAllUserCountersResponse) StatusCode() int {
 	return 0
 }
 
+type GetRateLimiterConfigResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *RateLimiterConfigResponse
+	JSON401      *Error
+	JSON500      *Error
+}
+
+// Status returns HTTPResponse.Status
+func (r GetRateLimiterConfigResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetRateLimiterConfigResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type GetUserCountersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -1762,6 +1898,30 @@ func (r GetUserCounterHistoryResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r GetUserCounterHistoryResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetRateLimiterStatsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *RateLimiterStats
+	JSON401      *Error
+	JSON500      *Error
+}
+
+// Status returns HTTPResponse.Status
+func (r GetRateLimiterStatsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetRateLimiterStatsResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -2107,6 +2267,15 @@ func (c *ClientWithResponses) GetAllUserCountersWithResponse(ctx context.Context
 	return ParseGetAllUserCountersResponse(rsp)
 }
 
+// GetRateLimiterConfigWithResponse request returning *GetRateLimiterConfigResponse
+func (c *ClientWithResponses) GetRateLimiterConfigWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetRateLimiterConfigResponse, error) {
+	rsp, err := c.GetRateLimiterConfig(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetRateLimiterConfigResponse(rsp)
+}
+
 // GetUserCountersWithResponse request returning *GetUserCountersResponse
 func (c *ClientWithResponses) GetUserCountersWithResponse(ctx context.Context, counterId string, userId string, reqEditors ...RequestEditorFn) (*GetUserCountersResponse, error) {
 	rsp, err := c.GetUserCounters(ctx, counterId, userId, reqEditors...)
@@ -2140,6 +2309,15 @@ func (c *ClientWithResponses) GetUserCounterHistoryWithResponse(ctx context.Cont
 		return nil, err
 	}
 	return ParseGetUserCounterHistoryResponse(rsp)
+}
+
+// GetRateLimiterStatsWithResponse request returning *GetRateLimiterStatsResponse
+func (c *ClientWithResponses) GetRateLimiterStatsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetRateLimiterStatsResponse, error) {
+	rsp, err := c.GetRateLimiterStats(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetRateLimiterStatsResponse(rsp)
 }
 
 // GetRequestStatisticsWithResponse request returning *GetRequestStatisticsResponse
@@ -2376,6 +2554,46 @@ func ParseGetAllUserCountersResponse(rsp *http.Response) (*GetAllUserCountersRes
 	return response, nil
 }
 
+// ParseGetRateLimiterConfigResponse parses an HTTP response from a GetRateLimiterConfigWithResponse call
+func ParseGetRateLimiterConfigResponse(rsp *http.Response) (*GetRateLimiterConfigResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetRateLimiterConfigResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest RateLimiterConfigResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetUserCountersResponse parses an HTTP response from a GetUserCountersWithResponse call
 func ParseGetUserCountersResponse(rsp *http.Response) (*GetUserCountersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -2532,6 +2750,46 @@ func ParseGetUserCounterHistoryResponse(rsp *http.Response) (*GetUserCounterHist
 			return nil, err
 		}
 		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetRateLimiterStatsResponse parses an HTTP response from a GetRateLimiterStatsWithResponse call
+func ParseGetRateLimiterStatsResponse(rsp *http.Response) (*GetRateLimiterStatsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetRateLimiterStatsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest RateLimiterStats
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
