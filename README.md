@@ -55,3 +55,40 @@ func main() {
 ```
 
 For more advanced usage, see the generated code in `go/apiclient.gen.go`.
+
+### Reading the forwarded session in a backend service
+
+Every request Taronja Gateway proxies to a backend service carries the
+authenticated session as a JSON header (`X-User-Data`), plus a plain
+`X-User-Id` header for when that's all a route needs. `go/session.go`
+(hand-written, not generated — see its own top-of-file comment) gives you
+a ready-made `Session` type and a small helper instead of hand-copying
+the shape yourself:
+
+```go
+import (
+	"net/http"
+
+	client "github.com/jmaister/taronja-gateway-clients/go"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	session, err := client.ParseSessionHeader(r)
+	if err != nil {
+		// No X-User-Data header — either this request didn't come
+		// through the gateway, or the route doesn't require auth.
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return
+	}
+	fmt.Fprintf(w, "hello, %s", session.Username)
+}
+```
+
+`client.Session` mirrors `db.Session` from the gateway's own repository
+field for field — see its doc comment for exactly which fields exist and
+why a couple of them (the ones inherited from GORM's embedded `Model`)
+use PascalCase JSON keys while the rest use camelCase. `client.HeaderUserId`,
+`client.HeaderUserData`, and `client.CookieSession` are the header/cookie
+names themselves, exported for anywhere you need the raw name rather than
+the parsed value (e.g. forwarding the session cookie on to a further
+downstream call).
