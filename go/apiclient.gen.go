@@ -20,6 +20,243 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// Defines values for BillingCustomerDetailsKind.
+const (
+	BillingCustomerDetailsKindCompany    BillingCustomerDetailsKind = "company"
+	BillingCustomerDetailsKindIndividual BillingCustomerDetailsKind = "individual"
+)
+
+// Valid indicates whether the value is a known member of the BillingCustomerDetailsKind enum.
+func (e BillingCustomerDetailsKind) Valid() bool {
+	switch e {
+	case BillingCustomerDetailsKindCompany:
+		return true
+	case BillingCustomerDetailsKindIndividual:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingCustomerRequestKind.
+const (
+	BillingCustomerRequestKindCompany    BillingCustomerRequestKind = "company"
+	BillingCustomerRequestKindIndividual BillingCustomerRequestKind = "individual"
+)
+
+// Valid indicates whether the value is a known member of the BillingCustomerRequestKind enum.
+func (e BillingCustomerRequestKind) Valid() bool {
+	switch e {
+	case BillingCustomerRequestKindCompany:
+		return true
+	case BillingCustomerRequestKindIndividual:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingDocumentKind.
+const (
+	CreditNote BillingDocumentKind = "credit_note"
+	Invoice    BillingDocumentKind = "invoice"
+)
+
+// Valid indicates whether the value is a known member of the BillingDocumentKind enum.
+func (e BillingDocumentKind) Valid() bool {
+	switch e {
+	case CreditNote:
+		return true
+	case Invoice:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingDocumentOdooState.
+const (
+	Done    BillingDocumentOdooState = "done"
+	Failed  BillingDocumentOdooState = "failed"
+	Pending BillingDocumentOdooState = "pending"
+)
+
+// Valid indicates whether the value is a known member of the BillingDocumentOdooState enum.
+func (e BillingDocumentOdooState) Valid() bool {
+	switch e {
+	case Done:
+		return true
+	case Failed:
+		return true
+	case Pending:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPlanKind.
+const (
+	BillingPlanKindOneTime      BillingPlanKind = "one_time"
+	BillingPlanKindSubscription BillingPlanKind = "subscription"
+)
+
+// Valid indicates whether the value is a known member of the BillingPlanKind enum.
+func (e BillingPlanKind) Valid() bool {
+	switch e {
+	case BillingPlanKindOneTime:
+		return true
+	case BillingPlanKindSubscription:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPlanStarts.
+const (
+	BillingPlanStartsOnActivation BillingPlanStarts = "on_activation"
+	BillingPlanStartsOnPayment    BillingPlanStarts = "on_payment"
+)
+
+// Valid indicates whether the value is a known member of the BillingPlanStarts enum.
+func (e BillingPlanStarts) Valid() bool {
+	switch e {
+	case BillingPlanStartsOnActivation:
+		return true
+	case BillingPlanStartsOnPayment:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPlanSubject.
+const (
+	BillingPlanSubjectEither BillingPlanSubject = "either"
+	BillingPlanSubjectOrg    BillingPlanSubject = "org"
+	BillingPlanSubjectUser   BillingPlanSubject = "user"
+)
+
+// Valid indicates whether the value is a known member of the BillingPlanSubject enum.
+func (e BillingPlanSubject) Valid() bool {
+	switch e {
+	case BillingPlanSubjectEither:
+		return true
+	case BillingPlanSubjectOrg:
+		return true
+	case BillingPlanSubjectUser:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPlanInputKind.
+const (
+	BillingPlanInputKindOneTime      BillingPlanInputKind = "one_time"
+	BillingPlanInputKindSubscription BillingPlanInputKind = "subscription"
+)
+
+// Valid indicates whether the value is a known member of the BillingPlanInputKind enum.
+func (e BillingPlanInputKind) Valid() bool {
+	switch e {
+	case BillingPlanInputKindOneTime:
+		return true
+	case BillingPlanInputKindSubscription:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPlanInputStarts.
+const (
+	BillingPlanInputStartsOnActivation BillingPlanInputStarts = "on_activation"
+	BillingPlanInputStartsOnPayment    BillingPlanInputStarts = "on_payment"
+)
+
+// Valid indicates whether the value is a known member of the BillingPlanInputStarts enum.
+func (e BillingPlanInputStarts) Valid() bool {
+	switch e {
+	case BillingPlanInputStartsOnActivation:
+		return true
+	case BillingPlanInputStartsOnPayment:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPlanInputSubject.
+const (
+	BillingPlanInputSubjectEither BillingPlanInputSubject = "either"
+	BillingPlanInputSubjectOrg    BillingPlanInputSubject = "org"
+	BillingPlanInputSubjectUser   BillingPlanInputSubject = "user"
+)
+
+// Valid indicates whether the value is a known member of the BillingPlanInputSubject enum.
+func (e BillingPlanInputSubject) Valid() bool {
+	switch e {
+	case BillingPlanInputSubjectEither:
+		return true
+	case BillingPlanInputSubjectOrg:
+		return true
+	case BillingPlanInputSubjectUser:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingPurchaseStatus.
+const (
+	Paid     BillingPurchaseStatus = "paid"
+	Refunded BillingPurchaseStatus = "refunded"
+)
+
+// Valid indicates whether the value is a known member of the BillingPurchaseStatus enum.
+func (e BillingPurchaseStatus) Valid() bool {
+	switch e {
+	case Paid:
+		return true
+	case Refunded:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for BillingSubscriptionStatus.
+const (
+	BillingSubscriptionStatusActive             BillingSubscriptionStatus = "active"
+	BillingSubscriptionStatusAwaitingActivation BillingSubscriptionStatus = "awaiting_activation"
+	BillingSubscriptionStatusCanceled           BillingSubscriptionStatus = "canceled"
+	BillingSubscriptionStatusIncomplete         BillingSubscriptionStatus = "incomplete"
+	BillingSubscriptionStatusPastDue            BillingSubscriptionStatus = "past_due"
+	BillingSubscriptionStatusTrialing           BillingSubscriptionStatus = "trialing"
+)
+
+// Valid indicates whether the value is a known member of the BillingSubscriptionStatus enum.
+func (e BillingSubscriptionStatus) Valid() bool {
+	switch e {
+	case BillingSubscriptionStatusActive:
+		return true
+	case BillingSubscriptionStatusAwaitingActivation:
+		return true
+	case BillingSubscriptionStatusCanceled:
+		return true
+	case BillingSubscriptionStatusIncomplete:
+		return true
+	case BillingSubscriptionStatusPastDue:
+		return true
+	case BillingSubscriptionStatusTrialing:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for BlockedClientReason.
 const (
 	MaxErrors         BlockedClientReason = "max_errors"
@@ -56,6 +293,51 @@ func (e ChannelStatusStatus) Valid() bool {
 	case ChannelStatusStatusConnected:
 		return true
 	case ChannelStatusStatusNotConnected:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for EntitlementStatus.
+const (
+	EntitlementStatusActive             EntitlementStatus = "active"
+	EntitlementStatusAwaitingActivation EntitlementStatus = "awaiting_activation"
+	EntitlementStatusCanceling          EntitlementStatus = "canceling"
+	EntitlementStatusGranted            EntitlementStatus = "granted"
+	EntitlementStatusPastDue            EntitlementStatus = "past_due"
+	EntitlementStatusTrial              EntitlementStatus = "trial"
+)
+
+// Valid indicates whether the value is a known member of the EntitlementStatus enum.
+func (e EntitlementStatus) Valid() bool {
+	switch e {
+	case EntitlementStatusActive:
+		return true
+	case EntitlementStatusAwaitingActivation:
+		return true
+	case EntitlementStatusCanceling:
+		return true
+	case EntitlementStatusGranted:
+		return true
+	case EntitlementStatusPastDue:
+		return true
+	case EntitlementStatusTrial:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FeatureFlagType.
+const (
+	Boolean FeatureFlagType = "boolean"
+)
+
+// Valid indicates whether the value is a known member of the FeatureFlagType enum.
+func (e FeatureFlagType) Valid() bool {
+	switch e {
+	case Boolean:
 		return true
 	default:
 		return false
@@ -104,6 +386,60 @@ func (e MiddlewareStatusItemStatus) Valid() bool {
 	}
 }
 
+// Defines values for MyOrganizationRole.
+const (
+	MyOrganizationRoleMember MyOrganizationRole = "member"
+	MyOrganizationRoleOwner  MyOrganizationRole = "owner"
+)
+
+// Valid indicates whether the value is a known member of the MyOrganizationRole enum.
+func (e MyOrganizationRole) Valid() bool {
+	switch e {
+	case MyOrganizationRoleMember:
+		return true
+	case MyOrganizationRoleOwner:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for OrganizationMemberRole.
+const (
+	OrganizationMemberRoleMember OrganizationMemberRole = "member"
+	OrganizationMemberRoleOwner  OrganizationMemberRole = "owner"
+)
+
+// Valid indicates whether the value is a known member of the OrganizationMemberRole enum.
+func (e OrganizationMemberRole) Valid() bool {
+	switch e {
+	case OrganizationMemberRoleMember:
+		return true
+	case OrganizationMemberRoleOwner:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for OrganizationMemberRequestRole.
+const (
+	OrganizationMemberRequestRoleMember OrganizationMemberRequestRole = "member"
+	OrganizationMemberRequestRoleOwner  OrganizationMemberRequestRole = "owner"
+)
+
+// Valid indicates whether the value is a known member of the OrganizationMemberRequestRole enum.
+func (e OrganizationMemberRequestRole) Valid() bool {
+	switch e {
+	case OrganizationMemberRequestRoleMember:
+		return true
+	case OrganizationMemberRequestRoleOwner:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for RequestDetailFingerprintType.
 const (
 	Empty  RequestDetailFingerprintType = ""
@@ -122,6 +458,48 @@ func (e RequestDetailFingerprintType) Valid() bool {
 	case Ja4h:
 		return true
 	case Stable:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for SetupCheckSection.
+const (
+	Odoo   SetupCheckSection = "odoo"
+	Stripe SetupCheckSection = "stripe"
+)
+
+// Valid indicates whether the value is a known member of the SetupCheckSection enum.
+func (e SetupCheckSection) Valid() bool {
+	switch e {
+	case Odoo:
+		return true
+	case Stripe:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for SetupCheckStatus.
+const (
+	Check   SetupCheckStatus = "check"
+	Manual  SetupCheckStatus = "manual"
+	Missing SetupCheckStatus = "missing"
+	Ok      SetupCheckStatus = "ok"
+)
+
+// Valid indicates whether the value is a known member of the SetupCheckStatus enum.
+func (e SetupCheckStatus) Valid() bool {
+	switch e {
+	case Check:
+		return true
+	case Manual:
+		return true
+	case Missing:
+		return true
+	case Ok:
 		return true
 	default:
 		return false
@@ -188,6 +566,278 @@ type AvailableCountersResponse struct {
 	// Example: ["credits","coins","points","tokens"]
 	Counters []string `json:"counters"`
 }
+
+// BillingCancelRequest defines model for BillingCancelRequest.
+type BillingCancelRequest struct {
+	// AtPeriodEnd true: features last until the period end; false: cancel now
+	AtPeriodEnd bool `json:"atPeriodEnd"`
+}
+
+// BillingCustomerDetails defines model for BillingCustomerDetails.
+type BillingCustomerDetails struct {
+	AddressLine1 string                      `json:"addressLine1"`
+	AddressLine2 string                      `json:"addressLine2"`
+	City         string                      `json:"city"`
+	Country      string                      `json:"country"`
+	Kind         *BillingCustomerDetailsKind `json:"kind"`
+	Name         string                      `json:"name"`
+	Phone        string                      `json:"phone"`
+	PostalCode   string                      `json:"postalCode"`
+	State        string                      `json:"state"`
+	Subject      string                      `json:"subject"`
+	TaxId        string                      `json:"taxId"`
+}
+
+// BillingCustomerDetailsKind defines model for BillingCustomerDetails.Kind.
+type BillingCustomerDetailsKind string
+
+// BillingCustomerRequest defines model for BillingCustomerRequest.
+type BillingCustomerRequest struct {
+	AddressLine1 string  `json:"addressLine1"`
+	AddressLine2 *string `json:"addressLine2,omitempty"`
+	City         string  `json:"city"`
+
+	// Country ISO 3166-1 alpha-2
+	Country    string                     `json:"country"`
+	Kind       BillingCustomerRequestKind `json:"kind"`
+	Name       string                     `json:"name"`
+	Phone      *string                    `json:"phone,omitempty"`
+	PostalCode string                     `json:"postalCode"`
+	State      *string                    `json:"state,omitempty"`
+	Subject    string                     `json:"subject"`
+
+	// TaxId NIF/NIE for an individual (optional), CIF for a company (required). Once saved it cannot change.
+	TaxId *string `json:"taxId,omitempty"`
+}
+
+// BillingCustomerRequestKind defines model for BillingCustomerRequest.Kind.
+type BillingCustomerRequestKind string
+
+// BillingDocument defines model for BillingDocument.
+type BillingDocument struct {
+	AmountCents int64 `json:"amountCents"`
+	Attempts    int   `json:"attempts"`
+
+	// BlockedReason Admin lists only: why a credit note cannot be issued yet (its invoice is not issued or failed)
+	BlockedReason     *string             `json:"blockedReason,omitempty"`
+	Currency          string              `json:"currency"`
+	Id                string              `json:"id"`
+	InvoiceDocumentId *string             `json:"invoiceDocumentId,omitempty"`
+	IssuedAt          *time.Time          `json:"issuedAt,omitempty"`
+	Kind              BillingDocumentKind `json:"kind"`
+	Lines             []struct {
+		AmountCents int64  `json:"amountCents"`
+		Description string `json:"description"`
+	} `json:"lines"`
+	Number    string                   `json:"number"`
+	OdooError string                   `json:"odooError"`
+	OdooState BillingDocumentOdooState `json:"odooState"`
+	PaidAt    time.Time                `json:"paidAt"`
+	StripeRef string                   `json:"stripeRef"`
+	Subject   string                   `json:"subject"`
+}
+
+// BillingDocumentKind defines model for BillingDocument.Kind.
+type BillingDocumentKind string
+
+// BillingDocumentOdooState defines model for BillingDocument.OdooState.
+type BillingDocumentOdooState string
+
+// BillingGrant defines model for BillingGrant.
+type BillingGrant struct {
+	CreatedAt time.Time  `json:"createdAt"`
+	CreatedBy string     `json:"createdBy"`
+	Feature   string     `json:"feature"`
+	GraceDays *int       `json:"graceDays,omitempty"`
+	Id        string     `json:"id"`
+	Note      string     `json:"note"`
+	Subject   string     `json:"subject"`
+	Until     *time.Time `json:"until,omitempty"`
+}
+
+// BillingGrantRequest defines model for BillingGrantRequest.
+type BillingGrantRequest struct {
+	Features []string `json:"features"`
+
+	// GraceDays Days of grace after until (needs until); omit for none
+	GraceDays *int    `json:"graceDays,omitempty"`
+	Note      *string `json:"note,omitempty"`
+	Subject   string  `json:"subject"`
+
+	// Until Omit for no expiry
+	Until *time.Time `json:"until,omitempty"`
+}
+
+// BillingPlan defines model for BillingPlan.
+type BillingPlan struct {
+	AccessDays      int             `json:"accessDays"`
+	Active          bool            `json:"active"`
+	AmountCents     int64           `json:"amountCents"`
+	CollectShipping bool            `json:"collectShipping"`
+	CreatedAt       time.Time       `json:"createdAt"`
+	Currency        string          `json:"currency"`
+	Description     string          `json:"description"`
+	Features        []string        `json:"features"`
+	GraceDays       int             `json:"graceDays"`
+	Group           *string         `json:"group,omitempty"`
+	Interval        *string         `json:"interval,omitempty"`
+	Key             string          `json:"key"`
+	Kind            BillingPlanKind `json:"kind"`
+	Name            string          `json:"name"`
+
+	// PayLink <server.url>/_/pay/<key>
+	PayLink         string             `json:"payLink"`
+	SetupFeeCents   int64              `json:"setupFeeCents"`
+	SetupFeeName    *string            `json:"setupFeeName,omitempty"`
+	Starts          BillingPlanStarts  `json:"starts"`
+	StripePriceId   *string            `json:"stripePriceId,omitempty"`
+	StripeProductId *string            `json:"stripeProductId,omitempty"`
+	Subject         BillingPlanSubject `json:"subject"`
+	TrialDays       int                `json:"trialDays"`
+	UpdatedAt       time.Time          `json:"updatedAt"`
+}
+
+// BillingPlanKind defines model for BillingPlan.Kind.
+type BillingPlanKind string
+
+// BillingPlanStarts defines model for BillingPlan.Starts.
+type BillingPlanStarts string
+
+// BillingPlanSubject defines model for BillingPlan.Subject.
+type BillingPlanSubject string
+
+// BillingPlanInput defines model for BillingPlanInput.
+type BillingPlanInput struct {
+	AccessDays *int `json:"accessDays,omitempty"`
+
+	// AmountCents VAT included
+	AmountCents     int64 `json:"amountCents"`
+	CollectShipping *bool `json:"collectShipping,omitempty"`
+
+	// Currency EUR only (Spain) for now; anything else is a 400. Default eur
+	Currency    *string  `json:"currency,omitempty"`
+	Description *string  `json:"description,omitempty"`
+	Features    []string `json:"features"`
+	GraceDays   *int     `json:"graceDays,omitempty"`
+	Group       *string  `json:"group,omitempty"`
+
+	// Interval month or year (subscription plans)
+	Interval *string `json:"interval,omitempty"`
+
+	// Key URL slug: lowercase letters, digits and -
+	Key           string                   `json:"key"`
+	Kind          BillingPlanInputKind     `json:"kind"`
+	Name          string                   `json:"name"`
+	SetupFeeCents *int64                   `json:"setupFeeCents,omitempty"`
+	SetupFeeName  *string                  `json:"setupFeeName,omitempty"`
+	Starts        *BillingPlanInputStarts  `json:"starts,omitempty"`
+	Subject       *BillingPlanInputSubject `json:"subject,omitempty"`
+	TrialDays     *int                     `json:"trialDays,omitempty"`
+}
+
+// BillingPlanInputKind defines model for BillingPlanInput.Kind.
+type BillingPlanInputKind string
+
+// BillingPlanInputStarts defines model for BillingPlanInput.Starts.
+type BillingPlanInputStarts string
+
+// BillingPlanInputSubject defines model for BillingPlanInput.Subject.
+type BillingPlanInputSubject string
+
+// BillingPlanUpdate defines model for BillingPlanUpdate.
+type BillingPlanUpdate struct {
+	AccessDays      *int   `json:"accessDays,omitempty"`
+	Active          *bool  `json:"active,omitempty"`
+	AmountCents     *int64 `json:"amountCents,omitempty"`
+	CollectShipping *bool  `json:"collectShipping,omitempty"`
+
+	// Currency EUR only (Spain) for now; anything else is a 400
+	Currency      *string   `json:"currency,omitempty"`
+	Description   *string   `json:"description,omitempty"`
+	Features      *[]string `json:"features,omitempty"`
+	GraceDays     *int      `json:"graceDays,omitempty"`
+	Group         *string   `json:"group,omitempty"`
+	Name          *string   `json:"name,omitempty"`
+	SetupFeeCents *int64    `json:"setupFeeCents,omitempty"`
+	SetupFeeName  *string   `json:"setupFeeName,omitempty"`
+	TrialDays     *int      `json:"trialDays,omitempty"`
+}
+
+// BillingPortalRequest defines model for BillingPortalRequest.
+type BillingPortalRequest struct {
+	// ReturnUrl Path on this site where Stripe sends the user back (default /_/account); anything else is ignored.
+	ReturnUrl *string `json:"returnUrl,omitempty"`
+	Subject   string  `json:"subject"`
+}
+
+// BillingPortalResponse defines model for BillingPortalResponse.
+type BillingPortalResponse struct {
+	Url string `json:"url"`
+}
+
+// BillingPurchase defines model for BillingPurchase.
+type BillingPurchase struct {
+	AmountCents    int64                 `json:"amountCents"`
+	Currency       string                `json:"currency"`
+	Id             string                `json:"id"`
+	PaidAt         time.Time             `json:"paidAt"`
+	PayerUserId    string                `json:"payerUserId"`
+	PlanKey        string                `json:"planKey"`
+	RefundedCents  int64                 `json:"refundedCents"`
+	Shipping       *ShippingAddress      `json:"shipping,omitempty"`
+	Status         BillingPurchaseStatus `json:"status"`
+	Subject        string                `json:"subject"`
+	SubscriptionId *string               `json:"subscriptionId,omitempty"`
+}
+
+// BillingPurchaseStatus defines model for BillingPurchase.Status.
+type BillingPurchaseStatus string
+
+// BillingRefundRequest defines model for BillingRefundRequest.
+type BillingRefundRequest struct {
+	// AmountCents Omit to refund everything left
+	AmountCents *int64 `json:"amountCents,omitempty"`
+
+	// CancelSubscription Also cancel the subscription this payment started
+	CancelSubscription *bool `json:"cancelSubscription,omitempty"`
+}
+
+// BillingSetup defines model for BillingSetup.
+type BillingSetup struct {
+	Checks         []SetupCheck    `json:"checks"`
+	Message        *string         `json:"message,omitempty"`
+	PaymentMethods *PaymentMethods `json:"paymentMethods,omitempty"`
+}
+
+// BillingSetupActionRequest defines model for BillingSetupActionRequest.
+type BillingSetupActionRequest struct {
+	Action string `json:"action"`
+}
+
+// BillingSubscription defines model for BillingSubscription.
+type BillingSubscription struct {
+	ActivatedAt       *time.Time `json:"activatedAt,omitempty"`
+	CancelAtPeriodEnd bool       `json:"cancelAtPeriodEnd"`
+	CanceledAt        *time.Time `json:"canceledAt,omitempty"`
+	CreatedAt         time.Time  `json:"createdAt"`
+	CurrentPeriodEnd  *time.Time `json:"currentPeriodEnd,omitempty"`
+
+	// Grace True while in the grace period: payment overdue, or the trial or paid period has ended
+	Grace bool `json:"grace"`
+
+	// GraceUntil When access ends while grace is true; null otherwise
+	GraceUntil           *time.Time                `json:"graceUntil,omitempty"`
+	Id                   string                    `json:"id"`
+	PayerUserId          string                    `json:"payerUserId"`
+	PlanKey              string                    `json:"planKey"`
+	Status               BillingSubscriptionStatus `json:"status"`
+	StripeSubscriptionId *string                   `json:"stripeSubscriptionId,omitempty"`
+	Subject              string                    `json:"subject"`
+	TrialEnd             *time.Time                `json:"trialEnd,omitempty"`
+}
+
+// BillingSubscriptionStatus defines model for BillingSubscription.Status.
+type BillingSubscriptionStatus string
 
 // BlockedClient defines model for BlockedClient.
 type BlockedClient struct {
@@ -409,6 +1059,48 @@ type CreateNotificationResponse struct {
 	Notifications []Notification `json:"notifications"`
 }
 
+// Entitlement defines model for Entitlement.
+type Entitlement struct {
+	// EndsAt When the trial, paid period (renewal, or cancellation when canceling), grant or purchase ends, before any grace; null = no end. For "your trial ends on …". Same as until when past due
+	EndsAt *time.Time `json:"endsAt"`
+
+	// Grace True while in the grace period: payment overdue, or the trial, grant or paid period has ended. Tell the user.
+	Grace bool `json:"grace"`
+
+	// GraceUntil When access ends while grace is true (same as until); null otherwise
+	GraceUntil *time.Time `json:"graceUntil"`
+
+	// Source "subscription:<id>", "purchase:<id>" or "grant:<id>"
+	Source string            `json:"source"`
+	Status EntitlementStatus `json:"status"`
+
+	// Until When access ends
+	Until *time.Time `json:"until,omitempty"`
+}
+
+// EntitlementStatus defines model for Entitlement.Status.
+type EntitlementStatus string
+
+// EntitlementHeader Active features as in the X-Entitlements header (until, or null for no expiry)
+type EntitlementHeader struct {
+	// Grace The features in their grace period and when access to each ends; absent from the header when none is
+	Grace *EntitlementHeaderGrace          `json:"grace,omitempty"`
+	Orgs  map[string]map[string]*time.Time `json:"orgs"`
+	User  map[string]*time.Time            `json:"user"`
+}
+
+// EntitlementHeaderGrace The features in their grace period and when access to each ends; absent from the header when none is
+type EntitlementHeaderGrace struct {
+	Orgs *map[string]map[string]time.Time `json:"orgs,omitempty"`
+	User *map[string]time.Time            `json:"user,omitempty"`
+}
+
+// EntitlementSet defines model for EntitlementSet.
+type EntitlementSet struct {
+	Features map[string]Entitlement `json:"features"`
+	Subject  string                 `json:"subject"`
+}
+
 // Error defines model for Error.
 type Error struct {
 	// Code Example: 401
@@ -416,6 +1108,53 @@ type Error struct {
 
 	// Message Example: Unauthorized
 	Message string `json:"message"`
+}
+
+// FeatureFlag defines model for FeatureFlag.
+type FeatureFlag struct {
+	CreatedAt time.Time `json:"createdAt"`
+
+	// Description Example: Checkout flow v2
+	Description string `json:"description"`
+
+	// Enabled Example: true
+	Enabled bool `json:"enabled"`
+
+	// Key Example: new-checkout
+	Key string `json:"key"`
+
+	// Type Value type of a flag. Only boolean (on/off) exists today.
+	Type      FeatureFlagType `json:"type"`
+	UpdatedAt time.Time       `json:"updatedAt"`
+}
+
+// FeatureFlagCreateRequest defines model for FeatureFlagCreateRequest.
+type FeatureFlagCreateRequest struct {
+	Description *string `json:"description,omitempty"`
+	Enabled     *bool   `json:"enabled,omitempty"`
+
+	// Key 1-100 lowercase letters, digits, '-', '_' or '.', starting with a letter or digit.
+	//
+	// Example: new-checkout
+	Key string `json:"key"`
+
+	// Type Value type of a flag. Only boolean (on/off) exists today.
+	Type *FeatureFlagType `json:"type,omitempty"`
+}
+
+// FeatureFlagType Value type of a flag. Only boolean (on/off) exists today.
+type FeatureFlagType string
+
+// FeatureFlagUpdateRequest defines model for FeatureFlagUpdateRequest.
+type FeatureFlagUpdateRequest struct {
+	Description *string `json:"description,omitempty"`
+	Enabled     *bool   `json:"enabled,omitempty"`
+}
+
+// FeatureFlagValues defines model for FeatureFlagValues.
+type FeatureFlagValues struct {
+	// Flags Example: {"dark-mode":false,"new-checkout":true}
+	Flags map[string]bool `json:"flags"`
 }
 
 // HealthResponse defines model for HealthResponse.
@@ -503,6 +1242,34 @@ type MiddlewareStatusItemStatus string
 
 // MiddlewareStatusList defines model for MiddlewareStatusList.
 type MiddlewareStatusList = []MiddlewareStatusItem
+
+// MyBilling defines model for MyBilling.
+type MyBilling struct {
+	Documents     []BillingDocument       `json:"documents"`
+	Subscriptions []MyBillingSubscription `json:"subscriptions"`
+}
+
+// MyBillingSubscription defines model for MyBillingSubscription.
+type MyBillingSubscription struct {
+	PlanName string `json:"planName"`
+
+	// SubjectName Your name or the organization's
+	SubjectName  string              `json:"subjectName"`
+	Subscription BillingSubscription `json:"subscription"`
+}
+
+// MyOrganization defines model for MyOrganization.
+type MyOrganization struct {
+	Id string `json:"id"`
+
+	// LogoUrl Where the logo image is served; empty when there is none
+	LogoUrl string             `json:"logoUrl"`
+	Name    string             `json:"name"`
+	Role    MyOrganizationRole `json:"role"`
+}
+
+// MyOrganizationRole defines model for MyOrganization.Role.
+type MyOrganizationRole string
 
 // Notification defines model for Notification.
 type Notification struct {
@@ -608,6 +1375,66 @@ type NotificationStatus struct {
 	//
 	// Example: pending
 	Overall string `json:"overall"`
+}
+
+// Organization defines model for Organization.
+type Organization struct {
+	CreatedAt time.Time `json:"createdAt"`
+	Id        string    `json:"id"`
+
+	// LogoUrl Where the logo image is served; empty when there is none
+	LogoUrl     string `json:"logoUrl"`
+	MemberCount int    `json:"memberCount"`
+	Name        string `json:"name"`
+}
+
+// OrganizationCreateRequest defines model for OrganizationCreateRequest.
+type OrganizationCreateRequest struct {
+	Name string `json:"name"`
+
+	// OwnerUserId Optional first member
+	OwnerUserId *string `json:"ownerUserId,omitempty"`
+}
+
+// OrganizationDetail defines model for OrganizationDetail.
+type OrganizationDetail struct {
+	CreatedAt time.Time `json:"createdAt"`
+	Id        string    `json:"id"`
+
+	// LogoUrl Where the logo image is served; empty when there is none
+	LogoUrl string               `json:"logoUrl"`
+	Members []OrganizationMember `json:"members"`
+	Name    string               `json:"name"`
+}
+
+// OrganizationMember defines model for OrganizationMember.
+type OrganizationMember struct {
+	Email    string                 `json:"email"`
+	Role     OrganizationMemberRole `json:"role"`
+	UserId   string                 `json:"userId"`
+	Username string                 `json:"username"`
+}
+
+// OrganizationMemberRole defines model for OrganizationMember.Role.
+type OrganizationMemberRole string
+
+// OrganizationMemberRequest defines model for OrganizationMemberRequest.
+type OrganizationMemberRequest struct {
+	Role OrganizationMemberRequestRole `json:"role"`
+}
+
+// OrganizationMemberRequestRole defines model for OrganizationMemberRequest.Role.
+type OrganizationMemberRequestRole string
+
+// OrganizationUpdateRequest defines model for OrganizationUpdateRequest.
+type OrganizationUpdateRequest struct {
+	Name string `json:"name"`
+}
+
+// PaymentMethods defines model for PaymentMethods.
+type PaymentMethods struct {
+	Deferred  []string `json:"deferred"`
+	Immediate []string `json:"immediate"`
 }
 
 // RateLimiterConfigResponse defines model for RateLimiterConfigResponse.
@@ -759,6 +1586,35 @@ type RequestStatistics struct {
 	//
 	// Example: 12345
 	TotalRequests int `json:"totalRequests"`
+}
+
+// SetupCheck defines model for SetupCheck.
+type SetupCheck struct {
+	Action  *string           `json:"action,omitempty"`
+	Detail  string            `json:"detail"`
+	Id      string            `json:"id"`
+	Link    *string           `json:"link,omitempty"`
+	Section SetupCheckSection `json:"section"`
+	Status  SetupCheckStatus  `json:"status"`
+	Title   string            `json:"title"`
+}
+
+// SetupCheckSection defines model for SetupCheck.Section.
+type SetupCheckSection string
+
+// SetupCheckStatus defines model for SetupCheck.Status.
+type SetupCheckStatus string
+
+// ShippingAddress defines model for ShippingAddress.
+type ShippingAddress struct {
+	City       *string `json:"city,omitempty"`
+	Country    *string `json:"country,omitempty"`
+	Line1      *string `json:"line1,omitempty"`
+	Line2      *string `json:"line2,omitempty"`
+	Name       *string `json:"name,omitempty"`
+	Phone      *string `json:"phone,omitempty"`
+	PostalCode *string `json:"postalCode,omitempty"`
+	State      *string `json:"state,omitempty"`
 }
 
 // TelegramLinkCode defines model for TelegramLinkCode.
@@ -972,6 +1828,57 @@ type GetAllUserCountersParams struct {
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 }
 
+// ListBillingDocumentsParams defines parameters for ListBillingDocuments.
+type ListBillingDocumentsParams struct {
+	// Subject user:<id> or org:<id>
+	Subject *string `form:"subject,omitempty" json:"subject,omitempty"`
+
+	// State pending, done or failed
+	State *string `form:"state,omitempty" json:"state,omitempty"`
+
+	// Kind invoice or credit_note
+	Kind *string `form:"kind,omitempty" json:"kind,omitempty"`
+}
+
+// ListBillingGrantsParams defines parameters for ListBillingGrants.
+type ListBillingGrantsParams struct {
+	// Subject user:<id> or org:<id>
+	Subject *string `form:"subject,omitempty" json:"subject,omitempty"`
+}
+
+// ListBillingPlansParams defines parameters for ListBillingPlans.
+type ListBillingPlansParams struct {
+	// IncludeArchived Include archived plans
+	IncludeArchived *bool `form:"include_archived,omitempty" json:"include_archived,omitempty"`
+}
+
+// ListBillingPurchasesParams defines parameters for ListBillingPurchases.
+type ListBillingPurchasesParams struct {
+	// Subject user:<id> or org:<id>
+	Subject *string `form:"subject,omitempty" json:"subject,omitempty"`
+
+	// Plan Plan key
+	Plan *string `form:"plan,omitempty" json:"plan,omitempty"`
+
+	// Status paid or refunded
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
+
+	// Since Paid at or after
+	Since *time.Time `form:"since,omitempty" json:"since,omitempty"`
+}
+
+// ListBillingSubscriptionsParams defines parameters for ListBillingSubscriptions.
+type ListBillingSubscriptionsParams struct {
+	// Subject user:<id> or org:<id>
+	Subject *string `form:"subject,omitempty" json:"subject,omitempty"`
+
+	// Status Status
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
+
+	// Plan Plan key
+	Plan *string `form:"plan,omitempty" json:"plan,omitempty"`
+}
+
 // GetUserCounterHistoryParams defines parameters for GetUserCounterHistory.
 type GetUserCounterHistoryParams struct {
 	// Limit Maximum number of transactions to return
@@ -979,6 +1886,21 @@ type GetUserCounterHistoryParams struct {
 
 	// Offset Number of transactions to skip
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
+}
+
+// GetEntitlementsParams defines parameters for GetEntitlements.
+type GetEntitlementsParams struct {
+	// UserId User ID (admin, or the user themselves)
+	UserId *string `form:"user_id,omitempty" json:"user_id,omitempty"`
+
+	// OrgId Organization ID (admin, or a member)
+	OrgId *string `form:"org_id,omitempty" json:"org_id,omitempty"`
+}
+
+// GetMyBillingCustomerParams defines parameters for GetMyBillingCustomer.
+type GetMyBillingCustomerParams struct {
+	// Subject user:<id> or org:<id>
+	Subject string `form:"subject" json:"subject"`
 }
 
 // ListNotificationsParams defines parameters for ListNotifications.
@@ -1001,6 +1923,12 @@ type RespondToNotificationByTokenParams struct {
 // RespondToNotificationJSONBody defines parameters for RespondToNotification.
 type RespondToNotificationJSONBody struct {
 	ActionId string `json:"actionId"`
+}
+
+// GetOrganizationLogoParams defines parameters for GetOrganizationLogo.
+type GetOrganizationLogoParams struct {
+	// IfNoneMatch The ETag of the copy the client already has
+	IfNoneMatch *string `json:"If-None-Match,omitempty"`
 }
 
 // GetBlockedClientsParams defines parameters for GetBlockedClients.
@@ -1138,8 +2066,38 @@ type LogoutUserParams struct {
 	TgSessionToken *string `form:"tg_session_token,omitempty" json:"tg_session_token,omitempty"`
 }
 
+// CreateBillingGrantJSONRequestBody defines body for CreateBillingGrant for application/json ContentType.
+type CreateBillingGrantJSONRequestBody = BillingGrantRequest
+
+// CreateBillingPlanJSONRequestBody defines body for CreateBillingPlan for application/json ContentType.
+type CreateBillingPlanJSONRequestBody = BillingPlanInput
+
+// UpdateBillingPlanJSONRequestBody defines body for UpdateBillingPlan for application/json ContentType.
+type UpdateBillingPlanJSONRequestBody = BillingPlanUpdate
+
+// RefundBillingPurchaseJSONRequestBody defines body for RefundBillingPurchase for application/json ContentType.
+type RefundBillingPurchaseJSONRequestBody = BillingRefundRequest
+
+// RunBillingSetupActionJSONRequestBody defines body for RunBillingSetupAction for application/json ContentType.
+type RunBillingSetupActionJSONRequestBody = BillingSetupActionRequest
+
+// CancelBillingSubscriptionJSONRequestBody defines body for CancelBillingSubscription for application/json ContentType.
+type CancelBillingSubscriptionJSONRequestBody = BillingCancelRequest
+
 // AdjustUserCountersJSONRequestBody defines body for AdjustUserCounters for application/json ContentType.
 type AdjustUserCountersJSONRequestBody = CounterAdjustmentRequest
+
+// CreateFeatureFlagJSONRequestBody defines body for CreateFeatureFlag for application/json ContentType.
+type CreateFeatureFlagJSONRequestBody = FeatureFlagCreateRequest
+
+// UpdateFeatureFlagJSONRequestBody defines body for UpdateFeatureFlag for application/json ContentType.
+type UpdateFeatureFlagJSONRequestBody = FeatureFlagUpdateRequest
+
+// SaveMyBillingCustomerJSONRequestBody defines body for SaveMyBillingCustomer for application/json ContentType.
+type SaveMyBillingCustomerJSONRequestBody = BillingCustomerRequest
+
+// CreateMyBillingPortalJSONRequestBody defines body for CreateMyBillingPortal for application/json ContentType.
+type CreateMyBillingPortalJSONRequestBody = BillingPortalRequest
 
 // CreateNotificationJSONRequestBody defines body for CreateNotification for application/json ContentType.
 type CreateNotificationJSONRequestBody = CreateNotificationRequest
@@ -1149,6 +2107,15 @@ type SetNotificationPreferenceJSONRequestBody = NotificationPreference
 
 // RespondToNotificationJSONRequestBody defines body for RespondToNotification for application/json ContentType.
 type RespondToNotificationJSONRequestBody RespondToNotificationJSONBody
+
+// CreateOrganizationJSONRequestBody defines body for CreateOrganization for application/json ContentType.
+type CreateOrganizationJSONRequestBody = OrganizationCreateRequest
+
+// UpdateOrganizationJSONRequestBody defines body for UpdateOrganization for application/json ContentType.
+type UpdateOrganizationJSONRequestBody = OrganizationUpdateRequest
+
+// SetOrganizationMemberJSONRequestBody defines body for SetOrganizationMember for application/json ContentType.
+type SetOrganizationMemberJSONRequestBody = OrganizationMemberRequest
 
 // CreateUserJSONRequestBody defines body for CreateUser for application/json ContentType.
 type CreateUserJSONRequestBody = UserCreateRequest
@@ -1240,6 +2207,145 @@ type ClientInterface interface {
 	// Corresponds with GET /api/admin/counters/{counterId} (the `GetAllUserCounters` operationId).
 	GetAllUserCounters(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ListBillingDocuments List invoices and credit notes with their Odoo state (admin only)
+	//
+	// Corresponds with GET /api/billing/documents (the `ListBillingDocuments` operationId).
+	ListBillingDocuments(ctx context.Context, params *ListBillingDocumentsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetBillingDocumentPdf The PDF Odoo issued (admin, the payer, owners of the organization)
+	//
+	// Corresponds with GET /api/billing/documents/{id}/pdf (the `GetBillingDocumentPdf` operationId).
+	GetBillingDocumentPdf(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RetryBillingDocument Queue a failed document again (admin only)
+	//
+	// Corresponds with POST /api/billing/documents/{id}/retry (the `RetryBillingDocument` operationId).
+	RetryBillingDocument(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListBillingGrants List grants (admin only)
+	//
+	// Corresponds with GET /api/billing/grants (the `ListBillingGrants` operationId).
+	ListBillingGrants(ctx context.Context, params *ListBillingGrantsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateBillingGrantWithBody Give features to a subject until a date (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+	CreateBillingGrantWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateBillingGrant Give features to a subject until a date (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+	CreateBillingGrant(ctx context.Context, body CreateBillingGrantJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteBillingGrant Remove a grant (admin only)
+	//
+	// Corresponds with DELETE /api/billing/grants/{id} (the `DeleteBillingGrant` operationId).
+	DeleteBillingGrant(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListBillingPlans List plans (admin only)
+	//
+	// Corresponds with GET /api/billing/plans (the `ListBillingPlans` operationId).
+	ListBillingPlans(ctx context.Context, params *ListBillingPlansParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateBillingPlanWithBody Create a plan and its Stripe and Odoo products (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+	CreateBillingPlanWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateBillingPlan Create a plan and its Stripe and Odoo products (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+	CreateBillingPlan(ctx context.Context, body CreateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetBillingPlan Get a plan (admin only)
+	//
+	// Corresponds with GET /api/billing/plans/{key} (the `GetBillingPlan` operationId).
+	GetBillingPlan(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateBillingPlanWithBody Change or archive a plan (admin only); a new amount creates a new Stripe price
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+	UpdateBillingPlanWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateBillingPlan Change or archive a plan (admin only); a new amount creates a new Stripe price
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+	UpdateBillingPlan(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListBillingPurchases List paid checkouts with shipping addresses (admin only)
+	//
+	// Corresponds with GET /api/billing/purchases (the `ListBillingPurchases` operationId).
+	ListBillingPurchases(ctx context.Context, params *ListBillingPurchasesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RefundBillingPurchaseWithBody Refund a payment (admin only); the credit note follows
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+	RefundBillingPurchaseWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RefundBillingPurchase Refund a payment (admin only); the credit note follows
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+	RefundBillingPurchase(ctx context.Context, id string, body RefundBillingPurchaseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetBillingSetup Billing configuration checks (admin only)
+	//
+	// Corresponds with GET /api/billing/setup (the `GetBillingSetup` operationId).
+	GetBillingSetup(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RunBillingSetupActionWithBody Apply a fix from the setup page (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+	RunBillingSetupActionWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RunBillingSetupAction Apply a fix from the setup page (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+	RunBillingSetupAction(ctx context.Context, body RunBillingSetupActionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListBillingSubscriptions List subscriptions (admin only)
+	//
+	// Corresponds with GET /api/billing/subscriptions (the `ListBillingSubscriptions` operationId).
+	ListBillingSubscriptions(ctx context.Context, params *ListBillingSubscriptionsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ActivateBillingSubscription Start a subscription that waits for activation (admin only)
+	//
+	// Corresponds with POST /api/billing/subscriptions/{id}/activate (the `ActivateBillingSubscription` operationId).
+	ActivateBillingSubscription(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CancelBillingSubscriptionWithBody Cancel a subscription now or at period end (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+	CancelBillingSubscriptionWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CancelBillingSubscription Cancel a subscription now or at period end (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+	CancelBillingSubscription(ctx context.Context, id string, body CancelBillingSubscriptionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetRateLimiterConfig Get current rate limiter configuration
 	//
 	// Corresponds with GET /api/config/rate-limiter (the `GetRateLimiterConfig` operationId).
@@ -1268,6 +2374,105 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /api/counters/{counterId}/{userId}/history (the `GetUserCounterHistory` operationId).
 	GetUserCounterHistory(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetEntitlements A user's or an organization's active features
+	//
+	// Corresponds with GET /api/entitlements (the `GetEntitlements` operationId).
+	GetEntitlements(ctx context.Context, params *GetEntitlementsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListFeatureFlags List feature flags (admin only)
+	//
+	// Corresponds with GET /api/feature-flags (the `ListFeatureFlags` operationId).
+	ListFeatureFlags(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateFeatureFlagWithBody Create a feature flag (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+	CreateFeatureFlagWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateFeatureFlag Create a feature flag (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+	CreateFeatureFlag(ctx context.Context, body CreateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteFeatureFlag Delete a feature flag (admin only)
+	//
+	// Corresponds with DELETE /api/feature-flags/{key} (the `DeleteFeatureFlag` operationId).
+	DeleteFeatureFlag(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetFeatureFlag Get a feature flag (admin only)
+	//
+	// Corresponds with GET /api/feature-flags/{key} (the `GetFeatureFlag` operationId).
+	GetFeatureFlag(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateFeatureFlagWithBody Update a feature flag (admin only)
+	//
+	// Only the fields present in the body change.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+	UpdateFeatureFlagWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateFeatureFlag Update a feature flag (admin only)
+	//
+	// Only the fields present in the body change.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+	UpdateFeatureFlag(ctx context.Context, key string, body UpdateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetMyBilling The current user's subscriptions and invoices, and those of organizations they own
+	//
+	// Corresponds with GET /api/me/billing (the `GetMyBilling` operationId).
+	GetMyBilling(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetMyBillingCustomer The invoice details saved for a subject the user pays or owns
+	//
+	// Corresponds with GET /api/me/billing/customer (the `GetMyBillingCustomer` operationId).
+	GetMyBillingCustomer(ctx context.Context, params *GetMyBillingCustomerParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SaveMyBillingCustomerWithBody Save the invoice details of a subject before paying
+	//
+	// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+	SaveMyBillingCustomerWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SaveMyBillingCustomer Save the invoice details of a subject before paying
+	//
+	// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+	SaveMyBillingCustomer(ctx context.Context, body SaveMyBillingCustomerJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateMyBillingPortalWithBody A Stripe Customer Portal URL for a subject the user pays or owns
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+	CreateMyBillingPortalWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateMyBillingPortal A Stripe Customer Portal URL for a subject the user pays or owns
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+	CreateMyBillingPortal(ctx context.Context, body CreateMyBillingPortalJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ListMyOrganizations The current user's organizations
+	//
+	// Corresponds with GET /api/me/organizations (the `ListMyOrganizations` operationId).
+	ListMyOrganizations(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMiddlewareStatus Get status (and health, where available) of every global middleware
 	//
@@ -1413,6 +2618,85 @@ type ClientInterface interface {
 	// Corresponds with GET /api/notifications/{notificationId}/status (the `GetNotificationStatus` operationId).
 	GetNotificationStatus(ctx context.Context, notificationId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ListOrganizations List organizations (admin only)
+	//
+	// Corresponds with GET /api/organizations (the `ListOrganizations` operationId).
+	ListOrganizations(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateOrganizationWithBody Create an organization (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+	CreateOrganizationWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateOrganization Create an organization (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+	CreateOrganization(ctx context.Context, body CreateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteOrganization Delete an organization and its memberships (admin only)
+	//
+	// Corresponds with DELETE /api/organizations/{orgId} (the `DeleteOrganization` operationId).
+	DeleteOrganization(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetOrganization Get an organization with its members (admin only)
+	//
+	// Corresponds with GET /api/organizations/{orgId} (the `GetOrganization` operationId).
+	GetOrganization(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateOrganizationWithBody Rename an organization (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+	UpdateOrganizationWithBody(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateOrganization Rename an organization (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+	UpdateOrganization(ctx context.Context, orgId string, body UpdateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteOrganizationLogo Remove the organization's logo (admin, or an owner)
+	//
+	// Corresponds with DELETE /api/organizations/{orgId}/logo (the `DeleteOrganizationLogo` operationId).
+	DeleteOrganizationLogo(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetOrganizationLogo The organization's logo image (admin, or a member)
+	//
+	// Corresponds with GET /api/organizations/{orgId}/logo (the `GetOrganizationLogo` operationId).
+	GetOrganizationLogo(ctx context.Context, orgId string, params *GetOrganizationLogoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SetOrganizationLogoWithBody Set the organization's logo (admin, or an owner; PNG, JPEG or WebP up to 512 KiB)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PUT /api/organizations/{orgId}/logo (the `SetOrganizationLogo` operationId).
+	SetOrganizationLogoWithBody(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// RemoveOrganizationMember Remove a user from an organization (admin only)
+	//
+	// Corresponds with DELETE /api/organizations/{orgId}/members/{userId} (the `RemoveOrganizationMember` operationId).
+	RemoveOrganizationMember(ctx context.Context, orgId string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SetOrganizationMemberWithBody Add a user to an organization or change their role (admin only)
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+	SetOrganizationMemberWithBody(ctx context.Context, orgId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SetOrganizationMember Add a user to an organization or change their role (admin only)
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+	SetOrganizationMember(ctx context.Context, orgId string, userId string, body SetOrganizationMemberJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetBlockedClients Get the history of rate-limiter block events — a persistent registry that survives past the in-memory rate limiter's own cleanup, which discards an IP's live state (including its block) once the block expires and the IP goes quiet again.
 	//
 	// Corresponds with GET /api/rate-limiter/blocked (the `GetBlockedClients` operationId).
@@ -1512,6 +2796,13 @@ type ClientInterface interface {
 	// Corresponds with POST /api/users/{userId}/tokens (the `CreateToken` operationId).
 	CreateToken(ctx context.Context, userId string, body CreateTokenJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetFeatureFlagValues Current feature flag values
+	//
+	// Public map of every feature flag key to its value, for frontends to decide what to show. No session is required, so do not put secrets in flag keys. Backends behind proxy routes get the enabled keys in the X-Feature-Flags request header instead.
+	//
+	// Corresponds with GET /flags (the `GetFeatureFlagValues` operationId).
+	GetFeatureFlagValues(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// HealthCheck Health check
 	//
 	// Corresponds with GET /health (the `HealthCheck` operationId).
@@ -1553,6 +2844,375 @@ func (c *Client) GetAvailableCounters(ctx context.Context, reqEditors ...Request
 // Corresponds with GET /api/admin/counters/{counterId} (the `GetAllUserCounters` operationId).
 func (c *Client) GetAllUserCounters(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetAllUserCountersRequest(c.Server, counterId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListBillingDocuments List invoices and credit notes with their Odoo state (admin only)
+//
+// Corresponds with GET /api/billing/documents (the `ListBillingDocuments` operationId).
+func (c *Client) ListBillingDocuments(ctx context.Context, params *ListBillingDocumentsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBillingDocumentsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetBillingDocumentPdf The PDF Odoo issued (admin, the payer, owners of the organization)
+//
+// Corresponds with GET /api/billing/documents/{id}/pdf (the `GetBillingDocumentPdf` operationId).
+func (c *Client) GetBillingDocumentPdf(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetBillingDocumentPdfRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// RetryBillingDocument Queue a failed document again (admin only)
+//
+// Corresponds with POST /api/billing/documents/{id}/retry (the `RetryBillingDocument` operationId).
+func (c *Client) RetryBillingDocument(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRetryBillingDocumentRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListBillingGrants List grants (admin only)
+//
+// Corresponds with GET /api/billing/grants (the `ListBillingGrants` operationId).
+func (c *Client) ListBillingGrants(ctx context.Context, params *ListBillingGrantsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBillingGrantsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateBillingGrantWithBody Give features to a subject until a date (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+func (c *Client) CreateBillingGrantWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateBillingGrantRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateBillingGrant Give features to a subject until a date (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+func (c *Client) CreateBillingGrant(ctx context.Context, body CreateBillingGrantJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateBillingGrantRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// DeleteBillingGrant Remove a grant (admin only)
+//
+// Corresponds with DELETE /api/billing/grants/{id} (the `DeleteBillingGrant` operationId).
+func (c *Client) DeleteBillingGrant(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteBillingGrantRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListBillingPlans List plans (admin only)
+//
+// Corresponds with GET /api/billing/plans (the `ListBillingPlans` operationId).
+func (c *Client) ListBillingPlans(ctx context.Context, params *ListBillingPlansParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBillingPlansRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateBillingPlanWithBody Create a plan and its Stripe and Odoo products (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+func (c *Client) CreateBillingPlanWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateBillingPlanRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateBillingPlan Create a plan and its Stripe and Odoo products (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+func (c *Client) CreateBillingPlan(ctx context.Context, body CreateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateBillingPlanRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetBillingPlan Get a plan (admin only)
+//
+// Corresponds with GET /api/billing/plans/{key} (the `GetBillingPlan` operationId).
+func (c *Client) GetBillingPlan(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetBillingPlanRequest(c.Server, key)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateBillingPlanWithBody Change or archive a plan (admin only); a new amount creates a new Stripe price
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+func (c *Client) UpdateBillingPlanWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateBillingPlanRequestWithBody(c.Server, key, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateBillingPlan Change or archive a plan (admin only); a new amount creates a new Stripe price
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+func (c *Client) UpdateBillingPlan(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateBillingPlanRequest(c.Server, key, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListBillingPurchases List paid checkouts with shipping addresses (admin only)
+//
+// Corresponds with GET /api/billing/purchases (the `ListBillingPurchases` operationId).
+func (c *Client) ListBillingPurchases(ctx context.Context, params *ListBillingPurchasesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBillingPurchasesRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// RefundBillingPurchaseWithBody Refund a payment (admin only); the credit note follows
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+func (c *Client) RefundBillingPurchaseWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRefundBillingPurchaseRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// RefundBillingPurchase Refund a payment (admin only); the credit note follows
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+func (c *Client) RefundBillingPurchase(ctx context.Context, id string, body RefundBillingPurchaseJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRefundBillingPurchaseRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetBillingSetup Billing configuration checks (admin only)
+//
+// Corresponds with GET /api/billing/setup (the `GetBillingSetup` operationId).
+func (c *Client) GetBillingSetup(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetBillingSetupRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// RunBillingSetupActionWithBody Apply a fix from the setup page (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+func (c *Client) RunBillingSetupActionWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRunBillingSetupActionRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// RunBillingSetupAction Apply a fix from the setup page (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+func (c *Client) RunBillingSetupAction(ctx context.Context, body RunBillingSetupActionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRunBillingSetupActionRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListBillingSubscriptions List subscriptions (admin only)
+//
+// Corresponds with GET /api/billing/subscriptions (the `ListBillingSubscriptions` operationId).
+func (c *Client) ListBillingSubscriptions(ctx context.Context, params *ListBillingSubscriptionsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListBillingSubscriptionsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ActivateBillingSubscription Start a subscription that waits for activation (admin only)
+//
+// Corresponds with POST /api/billing/subscriptions/{id}/activate (the `ActivateBillingSubscription` operationId).
+func (c *Client) ActivateBillingSubscription(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewActivateBillingSubscriptionRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CancelBillingSubscriptionWithBody Cancel a subscription now or at period end (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+func (c *Client) CancelBillingSubscriptionWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCancelBillingSubscriptionRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CancelBillingSubscription Cancel a subscription now or at period end (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+func (c *Client) CancelBillingSubscription(ctx context.Context, id string, body CancelBillingSubscriptionJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCancelBillingSubscriptionRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -1632,6 +3292,255 @@ func (c *Client) AdjustUserCounters(ctx context.Context, counterId string, userI
 // Corresponds with GET /api/counters/{counterId}/{userId}/history (the `GetUserCounterHistory` operationId).
 func (c *Client) GetUserCounterHistory(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUserCounterHistoryRequest(c.Server, counterId, userId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetEntitlements A user's or an organization's active features
+//
+// Corresponds with GET /api/entitlements (the `GetEntitlements` operationId).
+func (c *Client) GetEntitlements(ctx context.Context, params *GetEntitlementsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetEntitlementsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListFeatureFlags List feature flags (admin only)
+//
+// Corresponds with GET /api/feature-flags (the `ListFeatureFlags` operationId).
+func (c *Client) ListFeatureFlags(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListFeatureFlagsRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateFeatureFlagWithBody Create a feature flag (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+func (c *Client) CreateFeatureFlagWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateFeatureFlagRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateFeatureFlag Create a feature flag (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+func (c *Client) CreateFeatureFlag(ctx context.Context, body CreateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateFeatureFlagRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// DeleteFeatureFlag Delete a feature flag (admin only)
+//
+// Corresponds with DELETE /api/feature-flags/{key} (the `DeleteFeatureFlag` operationId).
+func (c *Client) DeleteFeatureFlag(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteFeatureFlagRequest(c.Server, key)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetFeatureFlag Get a feature flag (admin only)
+//
+// Corresponds with GET /api/feature-flags/{key} (the `GetFeatureFlag` operationId).
+func (c *Client) GetFeatureFlag(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetFeatureFlagRequest(c.Server, key)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateFeatureFlagWithBody Update a feature flag (admin only)
+//
+// Only the fields present in the body change.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+func (c *Client) UpdateFeatureFlagWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateFeatureFlagRequestWithBody(c.Server, key, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateFeatureFlag Update a feature flag (admin only)
+//
+// Only the fields present in the body change.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+func (c *Client) UpdateFeatureFlag(ctx context.Context, key string, body UpdateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateFeatureFlagRequest(c.Server, key, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyBilling The current user's subscriptions and invoices, and those of organizations they own
+//
+// Corresponds with GET /api/me/billing (the `GetMyBilling` operationId).
+func (c *Client) GetMyBilling(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyBillingRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetMyBillingCustomer The invoice details saved for a subject the user pays or owns
+//
+// Corresponds with GET /api/me/billing/customer (the `GetMyBillingCustomer` operationId).
+func (c *Client) GetMyBillingCustomer(ctx context.Context, params *GetMyBillingCustomerParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetMyBillingCustomerRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SaveMyBillingCustomerWithBody Save the invoice details of a subject before paying
+//
+// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+func (c *Client) SaveMyBillingCustomerWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSaveMyBillingCustomerRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SaveMyBillingCustomer Save the invoice details of a subject before paying
+//
+// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+func (c *Client) SaveMyBillingCustomer(ctx context.Context, body SaveMyBillingCustomerJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSaveMyBillingCustomerRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateMyBillingPortalWithBody A Stripe Customer Portal URL for a subject the user pays or owns
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+func (c *Client) CreateMyBillingPortalWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateMyBillingPortalRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateMyBillingPortal A Stripe Customer Portal URL for a subject the user pays or owns
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+func (c *Client) CreateMyBillingPortal(ctx context.Context, body CreateMyBillingPortalJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateMyBillingPortalRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ListMyOrganizations The current user's organizations
+//
+// Corresponds with GET /api/me/organizations (the `ListMyOrganizations` operationId).
+func (c *Client) ListMyOrganizations(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListMyOrganizationsRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -2006,6 +3915,215 @@ func (c *Client) GetNotificationStatus(ctx context.Context, notificationId strin
 	return c.Client.Do(req)
 }
 
+// ListOrganizations List organizations (admin only)
+//
+// Corresponds with GET /api/organizations (the `ListOrganizations` operationId).
+func (c *Client) ListOrganizations(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewListOrganizationsRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateOrganizationWithBody Create an organization (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+func (c *Client) CreateOrganizationWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateOrganizationRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CreateOrganization Create an organization (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+func (c *Client) CreateOrganization(ctx context.Context, body CreateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateOrganizationRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// DeleteOrganization Delete an organization and its memberships (admin only)
+//
+// Corresponds with DELETE /api/organizations/{orgId} (the `DeleteOrganization` operationId).
+func (c *Client) DeleteOrganization(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteOrganizationRequest(c.Server, orgId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetOrganization Get an organization with its members (admin only)
+//
+// Corresponds with GET /api/organizations/{orgId} (the `GetOrganization` operationId).
+func (c *Client) GetOrganization(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetOrganizationRequest(c.Server, orgId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateOrganizationWithBody Rename an organization (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+func (c *Client) UpdateOrganizationWithBody(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateOrganizationRequestWithBody(c.Server, orgId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateOrganization Rename an organization (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+func (c *Client) UpdateOrganization(ctx context.Context, orgId string, body UpdateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateOrganizationRequest(c.Server, orgId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// DeleteOrganizationLogo Remove the organization's logo (admin, or an owner)
+//
+// Corresponds with DELETE /api/organizations/{orgId}/logo (the `DeleteOrganizationLogo` operationId).
+func (c *Client) DeleteOrganizationLogo(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteOrganizationLogoRequest(c.Server, orgId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetOrganizationLogo The organization's logo image (admin, or a member)
+//
+// Corresponds with GET /api/organizations/{orgId}/logo (the `GetOrganizationLogo` operationId).
+func (c *Client) GetOrganizationLogo(ctx context.Context, orgId string, params *GetOrganizationLogoParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetOrganizationLogoRequest(c.Server, orgId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SetOrganizationLogoWithBody Set the organization's logo (admin, or an owner; PNG, JPEG or WebP up to 512 KiB)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PUT /api/organizations/{orgId}/logo (the `SetOrganizationLogo` operationId).
+func (c *Client) SetOrganizationLogoWithBody(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetOrganizationLogoRequestWithBody(c.Server, orgId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// RemoveOrganizationMember Remove a user from an organization (admin only)
+//
+// Corresponds with DELETE /api/organizations/{orgId}/members/{userId} (the `RemoveOrganizationMember` operationId).
+func (c *Client) RemoveOrganizationMember(ctx context.Context, orgId string, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewRemoveOrganizationMemberRequest(c.Server, orgId, userId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SetOrganizationMemberWithBody Add a user to an organization or change their role (admin only)
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+func (c *Client) SetOrganizationMemberWithBody(ctx context.Context, orgId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetOrganizationMemberRequestWithBody(c.Server, orgId, userId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SetOrganizationMember Add a user to an organization or change their role (admin only)
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+func (c *Client) SetOrganizationMember(ctx context.Context, orgId string, userId string, body SetOrganizationMemberJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetOrganizationMemberRequest(c.Server, orgId, userId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // GetBlockedClients Get the history of rate-limiter block events — a persistent registry that survives past the in-memory rate limiter's own cleanup, which discards an IP's live state (including its block) once the block expires and the IP goes quiet again.
 //
 // Corresponds with GET /api/rate-limiter/blocked (the `GetBlockedClients` operationId).
@@ -2275,6 +4393,23 @@ func (c *Client) CreateToken(ctx context.Context, userId string, body CreateToke
 	return c.Client.Do(req)
 }
 
+// GetFeatureFlagValues Current feature flag values
+//
+// Public map of every feature flag key to its value, for frontends to decide what to show. No session is required, so do not put secrets in flag keys. Backends behind proxy routes get the enabled keys in the X-Feature-Flags request header instead.
+//
+// Corresponds with GET /flags (the `GetFeatureFlagValues` operationId).
+func (c *Client) GetFeatureFlagValues(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetFeatureFlagValuesRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // HealthCheck Health check
 //
 // Corresponds with GET /health (the `HealthCheck` operationId).
@@ -2431,6 +4566,818 @@ func NewGetAllUserCountersRequest(server string, counterId string, params *GetAl
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewListBillingDocumentsRequest constructs an http.Request for the ListBillingDocuments method
+func NewListBillingDocumentsRequest(server string, params *ListBillingDocumentsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/documents")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Subject != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "subject", *params.Subject, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.State != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "state", *params.State, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Kind != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "kind", *params.Kind, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetBillingDocumentPdfRequest constructs an http.Request for the GetBillingDocumentPdf method
+func NewGetBillingDocumentPdfRequest(server string, id string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/documents/%s/pdf", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewRetryBillingDocumentRequest constructs an http.Request for the RetryBillingDocument method
+func NewRetryBillingDocumentRequest(server string, id string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/documents/%s/retry", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewListBillingGrantsRequest constructs an http.Request for the ListBillingGrants method
+func NewListBillingGrantsRequest(server string, params *ListBillingGrantsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/grants")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Subject != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "subject", *params.Subject, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCreateBillingGrantRequest calls the generic CreateBillingGrant builder with application/json body
+func NewCreateBillingGrantRequest(server string, body CreateBillingGrantJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateBillingGrantRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewCreateBillingGrantRequestWithBody constructs an http.Request for the CreateBillingGrant method, with any body, and a specified content type
+func NewCreateBillingGrantRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/grants")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewDeleteBillingGrantRequest constructs an http.Request for the DeleteBillingGrant method
+func NewDeleteBillingGrantRequest(server string, id string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/grants/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewListBillingPlansRequest constructs an http.Request for the ListBillingPlans method
+func NewListBillingPlansRequest(server string, params *ListBillingPlansParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/plans")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.IncludeArchived != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_archived", *params.IncludeArchived, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCreateBillingPlanRequest calls the generic CreateBillingPlan builder with application/json body
+func NewCreateBillingPlanRequest(server string, body CreateBillingPlanJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateBillingPlanRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewCreateBillingPlanRequestWithBody constructs an http.Request for the CreateBillingPlan method, with any body, and a specified content type
+func NewCreateBillingPlanRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/plans")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetBillingPlanRequest constructs an http.Request for the GetBillingPlan method
+func NewGetBillingPlanRequest(server string, key string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "key", key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/plans/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdateBillingPlanRequest calls the generic UpdateBillingPlan builder with application/json body
+func NewUpdateBillingPlanRequest(server string, key string, body UpdateBillingPlanJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateBillingPlanRequestWithBody(server, key, "application/json", bodyReader)
+}
+
+// NewUpdateBillingPlanRequestWithBody constructs an http.Request for the UpdateBillingPlan method, with any body, and a specified content type
+func NewUpdateBillingPlanRequestWithBody(server string, key string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "key", key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/plans/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewListBillingPurchasesRequest constructs an http.Request for the ListBillingPurchases method
+func NewListBillingPurchasesRequest(server string, params *ListBillingPurchasesParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/purchases")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Subject != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "subject", *params.Subject, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Plan != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "plan", *params.Plan, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Status != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "status", *params.Status, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Since != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "since", *params.Since, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "date-time"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewRefundBillingPurchaseRequest calls the generic RefundBillingPurchase builder with application/json body
+func NewRefundBillingPurchaseRequest(server string, id string, body RefundBillingPurchaseJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewRefundBillingPurchaseRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewRefundBillingPurchaseRequestWithBody constructs an http.Request for the RefundBillingPurchase method, with any body, and a specified content type
+func NewRefundBillingPurchaseRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/purchases/%s/refund", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetBillingSetupRequest constructs an http.Request for the GetBillingSetup method
+func NewGetBillingSetupRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/setup")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewRunBillingSetupActionRequest calls the generic RunBillingSetupAction builder with application/json body
+func NewRunBillingSetupActionRequest(server string, body RunBillingSetupActionJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewRunBillingSetupActionRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewRunBillingSetupActionRequestWithBody constructs an http.Request for the RunBillingSetupAction method, with any body, and a specified content type
+func NewRunBillingSetupActionRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/setup/actions")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewListBillingSubscriptionsRequest constructs an http.Request for the ListBillingSubscriptions method
+func NewListBillingSubscriptionsRequest(server string, params *ListBillingSubscriptionsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/subscriptions")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Subject != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "subject", *params.Subject, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Status != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "status", *params.Status, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Plan != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "plan", *params.Plan, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewActivateBillingSubscriptionRequest constructs an http.Request for the ActivateBillingSubscription method
+func NewActivateBillingSubscriptionRequest(server string, id string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/subscriptions/%s/activate", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCancelBillingSubscriptionRequest calls the generic CancelBillingSubscription builder with application/json body
+func NewCancelBillingSubscriptionRequest(server string, id string, body CancelBillingSubscriptionJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCancelBillingSubscriptionRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewCancelBillingSubscriptionRequestWithBody constructs an http.Request for the CancelBillingSubscription method, with any body, and a specified content type
+func NewCancelBillingSubscriptionRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/subscriptions/%s/cancel", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -2627,6 +5574,438 @@ func NewGetUserCounterHistoryRequest(server string, counterId string, userId str
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
 		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetEntitlementsRequest constructs an http.Request for the GetEntitlements method
+func NewGetEntitlementsRequest(server string, params *GetEntitlementsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/entitlements")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.UserId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "user_id", *params.UserId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.OrgId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "org_id", *params.OrgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewListFeatureFlagsRequest constructs an http.Request for the ListFeatureFlags method
+func NewListFeatureFlagsRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/feature-flags")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCreateFeatureFlagRequest calls the generic CreateFeatureFlag builder with application/json body
+func NewCreateFeatureFlagRequest(server string, body CreateFeatureFlagJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateFeatureFlagRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewCreateFeatureFlagRequestWithBody constructs an http.Request for the CreateFeatureFlag method, with any body, and a specified content type
+func NewCreateFeatureFlagRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/feature-flags")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewDeleteFeatureFlagRequest constructs an http.Request for the DeleteFeatureFlag method
+func NewDeleteFeatureFlagRequest(server string, key string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "key", key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/feature-flags/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetFeatureFlagRequest constructs an http.Request for the GetFeatureFlag method
+func NewGetFeatureFlagRequest(server string, key string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "key", key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/feature-flags/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdateFeatureFlagRequest calls the generic UpdateFeatureFlag builder with application/json body
+func NewUpdateFeatureFlagRequest(server string, key string, body UpdateFeatureFlagJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateFeatureFlagRequestWithBody(server, key, "application/json", bodyReader)
+}
+
+// NewUpdateFeatureFlagRequestWithBody constructs an http.Request for the UpdateFeatureFlag method, with any body, and a specified content type
+func NewUpdateFeatureFlagRequestWithBody(server string, key string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "key", key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/feature-flags/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetMyBillingRequest constructs an http.Request for the GetMyBilling method
+func NewGetMyBillingRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/me/billing")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetMyBillingCustomerRequest constructs an http.Request for the GetMyBillingCustomer method
+func NewGetMyBillingCustomerRequest(server string, params *GetMyBillingCustomerParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/me/billing/customer")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if queryFrag, err := runtime.StyleParamWithOptions("form", true, "subject", params.Subject, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+			return nil, err
+		} else {
+			for _, qp := range strings.Split(queryFrag, "&") {
+				rawQueryFragments = append(rawQueryFragments, qp)
+			}
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewSaveMyBillingCustomerRequest calls the generic SaveMyBillingCustomer builder with application/json body
+func NewSaveMyBillingCustomerRequest(server string, body SaveMyBillingCustomerJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSaveMyBillingCustomerRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSaveMyBillingCustomerRequestWithBody constructs an http.Request for the SaveMyBillingCustomer method, with any body, and a specified content type
+func NewSaveMyBillingCustomerRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/me/billing/customer")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewCreateMyBillingPortalRequest calls the generic CreateMyBillingPortal builder with application/json body
+func NewCreateMyBillingPortalRequest(server string, body CreateMyBillingPortalJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateMyBillingPortalRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewCreateMyBillingPortalRequestWithBody constructs an http.Request for the CreateMyBillingPortal method, with any body, and a specified content type
+func NewCreateMyBillingPortalRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/me/billing/portal")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewListMyOrganizationsRequest constructs an http.Request for the ListMyOrganizations method
+func NewListMyOrganizationsRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/me/organizations")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
 	}
 
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
@@ -3309,6 +6688,402 @@ func NewGetNotificationStatusRequest(server string, notificationId string) (*htt
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewListOrganizationsRequest constructs an http.Request for the ListOrganizations method
+func NewListOrganizationsRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewCreateOrganizationRequest calls the generic CreateOrganization builder with application/json body
+func NewCreateOrganizationRequest(server string, body CreateOrganizationJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateOrganizationRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewCreateOrganizationRequestWithBody constructs an http.Request for the CreateOrganization method, with any body, and a specified content type
+func NewCreateOrganizationRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewDeleteOrganizationRequest constructs an http.Request for the DeleteOrganization method
+func NewDeleteOrganizationRequest(server string, orgId string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetOrganizationRequest constructs an http.Request for the GetOrganization method
+func NewGetOrganizationRequest(server string, orgId string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewUpdateOrganizationRequest calls the generic UpdateOrganization builder with application/json body
+func NewUpdateOrganizationRequest(server string, orgId string, body UpdateOrganizationJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateOrganizationRequestWithBody(server, orgId, "application/json", bodyReader)
+}
+
+// NewUpdateOrganizationRequestWithBody constructs an http.Request for the UpdateOrganization method, with any body, and a specified content type
+func NewUpdateOrganizationRequestWithBody(server string, orgId string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewDeleteOrganizationLogoRequest constructs an http.Request for the DeleteOrganizationLogo method
+func NewDeleteOrganizationLogoRequest(server string, orgId string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s/logo", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetOrganizationLogoRequest constructs an http.Request for the GetOrganizationLogo method
+func NewGetOrganizationLogoRequest(server string, orgId string, params *GetOrganizationLogoParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s/logo", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		if params.IfNoneMatch != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "If-None-Match", *params.IfNoneMatch, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("If-None-Match", headerParam0)
+		}
+
+	}
+
+	return req, nil
+}
+
+// NewSetOrganizationLogoRequestWithBody constructs an http.Request for the SetOrganizationLogo method, with any body, and a specified content type
+func NewSetOrganizationLogoRequestWithBody(server string, orgId string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s/logo", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewRemoveOrganizationMemberRequest constructs an http.Request for the RemoveOrganizationMember method
+func NewRemoveOrganizationMemberRequest(server string, orgId string, userId string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "userId", userId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s/members/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewSetOrganizationMemberRequest calls the generic SetOrganizationMember builder with application/json body
+func NewSetOrganizationMemberRequest(server string, orgId string, userId string, body SetOrganizationMemberJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSetOrganizationMemberRequestWithBody(server, orgId, userId, "application/json", bodyReader)
+}
+
+// NewSetOrganizationMemberRequestWithBody constructs an http.Request for the SetOrganizationMember method, with any body, and a specified content type
+func NewSetOrganizationMemberRequestWithBody(server string, orgId string, userId string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "orgId", orgId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "userId", userId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/organizations/%s/members/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -4316,6 +8091,33 @@ func NewCreateTokenRequestWithBody(server string, userId string, contentType str
 	return req, nil
 }
 
+// NewGetFeatureFlagValuesRequest constructs an http.Request for the GetFeatureFlagValues method
+func NewGetFeatureFlagValuesRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/flags")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewHealthCheckRequest constructs an http.Request for the HealthCheck method
 func NewHealthCheckRequest(server string) (*http.Request, error) {
 	var err error
@@ -4526,6 +8328,167 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /api/admin/counters/{counterId} (the `GetAllUserCounters` operationId).
 	GetAllUserCountersWithResponse(ctx context.Context, counterId string, params *GetAllUserCountersParams, reqEditors ...RequestEditorFn) (*GetAllUserCountersResponse, error)
 
+	// ListBillingDocumentsWithResponse List invoices and credit notes with their Odoo state (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/documents (the `ListBillingDocuments` operationId).
+	ListBillingDocumentsWithResponse(ctx context.Context, params *ListBillingDocumentsParams, reqEditors ...RequestEditorFn) (*ListBillingDocumentsResponse, error)
+
+	// GetBillingDocumentPdfWithResponse The PDF Odoo issued (admin, the payer, owners of the organization)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/documents/{id}/pdf (the `GetBillingDocumentPdf` operationId).
+	GetBillingDocumentPdfWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetBillingDocumentPdfResponse, error)
+
+	// RetryBillingDocumentWithResponse Queue a failed document again (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/documents/{id}/retry (the `RetryBillingDocument` operationId).
+	RetryBillingDocumentWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*RetryBillingDocumentResponse, error)
+
+	// ListBillingGrantsWithResponse List grants (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/grants (the `ListBillingGrants` operationId).
+	ListBillingGrantsWithResponse(ctx context.Context, params *ListBillingGrantsParams, reqEditors ...RequestEditorFn) (*ListBillingGrantsResponse, error)
+
+	// CreateBillingGrantWithBodyWithResponse Give features to a subject until a date (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+	CreateBillingGrantWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateBillingGrantResponse, error)
+
+	// CreateBillingGrantWithResponse Give features to a subject until a date (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+	CreateBillingGrantWithResponse(ctx context.Context, body CreateBillingGrantJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateBillingGrantResponse, error)
+
+	// DeleteBillingGrantWithResponse Remove a grant (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/billing/grants/{id} (the `DeleteBillingGrant` operationId).
+	DeleteBillingGrantWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*DeleteBillingGrantResponse, error)
+
+	// ListBillingPlansWithResponse List plans (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/plans (the `ListBillingPlans` operationId).
+	ListBillingPlansWithResponse(ctx context.Context, params *ListBillingPlansParams, reqEditors ...RequestEditorFn) (*ListBillingPlansResponse, error)
+
+	// CreateBillingPlanWithBodyWithResponse Create a plan and its Stripe and Odoo products (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+	CreateBillingPlanWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateBillingPlanResponse, error)
+
+	// CreateBillingPlanWithResponse Create a plan and its Stripe and Odoo products (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+	CreateBillingPlanWithResponse(ctx context.Context, body CreateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateBillingPlanResponse, error)
+
+	// GetBillingPlanWithResponse Get a plan (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/plans/{key} (the `GetBillingPlan` operationId).
+	GetBillingPlanWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*GetBillingPlanResponse, error)
+
+	// UpdateBillingPlanWithBodyWithResponse Change or archive a plan (admin only); a new amount creates a new Stripe price
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+	UpdateBillingPlanWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateBillingPlanResponse, error)
+
+	// UpdateBillingPlanWithResponse Change or archive a plan (admin only); a new amount creates a new Stripe price
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+	UpdateBillingPlanWithResponse(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateBillingPlanResponse, error)
+
+	// ListBillingPurchasesWithResponse List paid checkouts with shipping addresses (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/purchases (the `ListBillingPurchases` operationId).
+	ListBillingPurchasesWithResponse(ctx context.Context, params *ListBillingPurchasesParams, reqEditors ...RequestEditorFn) (*ListBillingPurchasesResponse, error)
+
+	// RefundBillingPurchaseWithBodyWithResponse Refund a payment (admin only); the credit note follows
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+	RefundBillingPurchaseWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RefundBillingPurchaseResponse, error)
+
+	// RefundBillingPurchaseWithResponse Refund a payment (admin only); the credit note follows
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+	RefundBillingPurchaseWithResponse(ctx context.Context, id string, body RefundBillingPurchaseJSONRequestBody, reqEditors ...RequestEditorFn) (*RefundBillingPurchaseResponse, error)
+
+	// GetBillingSetupWithResponse Billing configuration checks (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/setup (the `GetBillingSetup` operationId).
+	GetBillingSetupWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetBillingSetupResponse, error)
+
+	// RunBillingSetupActionWithBodyWithResponse Apply a fix from the setup page (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+	RunBillingSetupActionWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RunBillingSetupActionResponse, error)
+
+	// RunBillingSetupActionWithResponse Apply a fix from the setup page (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+	RunBillingSetupActionWithResponse(ctx context.Context, body RunBillingSetupActionJSONRequestBody, reqEditors ...RequestEditorFn) (*RunBillingSetupActionResponse, error)
+
+	// ListBillingSubscriptionsWithResponse List subscriptions (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/billing/subscriptions (the `ListBillingSubscriptions` operationId).
+	ListBillingSubscriptionsWithResponse(ctx context.Context, params *ListBillingSubscriptionsParams, reqEditors ...RequestEditorFn) (*ListBillingSubscriptionsResponse, error)
+
+	// ActivateBillingSubscriptionWithResponse Start a subscription that waits for activation (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/subscriptions/{id}/activate (the `ActivateBillingSubscription` operationId).
+	ActivateBillingSubscriptionWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*ActivateBillingSubscriptionResponse, error)
+
+	// CancelBillingSubscriptionWithBodyWithResponse Cancel a subscription now or at period end (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+	CancelBillingSubscriptionWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CancelBillingSubscriptionResponse, error)
+
+	// CancelBillingSubscriptionWithResponse Cancel a subscription now or at period end (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+	CancelBillingSubscriptionWithResponse(ctx context.Context, id string, body CancelBillingSubscriptionJSONRequestBody, reqEditors ...RequestEditorFn) (*CancelBillingSubscriptionResponse, error)
+
 	// GetRateLimiterConfigWithResponse Get current rate limiter configuration
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -4560,6 +8523,119 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /api/counters/{counterId}/{userId}/history (the `GetUserCounterHistory` operationId).
 	GetUserCounterHistoryWithResponse(ctx context.Context, counterId string, userId string, params *GetUserCounterHistoryParams, reqEditors ...RequestEditorFn) (*GetUserCounterHistoryResponse, error)
+
+	// GetEntitlementsWithResponse A user's or an organization's active features
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/entitlements (the `GetEntitlements` operationId).
+	GetEntitlementsWithResponse(ctx context.Context, params *GetEntitlementsParams, reqEditors ...RequestEditorFn) (*GetEntitlementsResponse, error)
+
+	// ListFeatureFlagsWithResponse List feature flags (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/feature-flags (the `ListFeatureFlags` operationId).
+	ListFeatureFlagsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListFeatureFlagsResponse, error)
+
+	// CreateFeatureFlagWithBodyWithResponse Create a feature flag (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+	CreateFeatureFlagWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateFeatureFlagResponse, error)
+
+	// CreateFeatureFlagWithResponse Create a feature flag (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+	CreateFeatureFlagWithResponse(ctx context.Context, body CreateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateFeatureFlagResponse, error)
+
+	// DeleteFeatureFlagWithResponse Delete a feature flag (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/feature-flags/{key} (the `DeleteFeatureFlag` operationId).
+	DeleteFeatureFlagWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*DeleteFeatureFlagResponse, error)
+
+	// GetFeatureFlagWithResponse Get a feature flag (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/feature-flags/{key} (the `GetFeatureFlag` operationId).
+	GetFeatureFlagWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*GetFeatureFlagResponse, error)
+
+	// UpdateFeatureFlagWithBodyWithResponse Update a feature flag (admin only)
+	//
+	// Only the fields present in the body change.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+	UpdateFeatureFlagWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateFeatureFlagResponse, error)
+
+	// UpdateFeatureFlagWithResponse Update a feature flag (admin only)
+	//
+	// Only the fields present in the body change.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+	UpdateFeatureFlagWithResponse(ctx context.Context, key string, body UpdateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateFeatureFlagResponse, error)
+
+	// GetMyBillingWithResponse The current user's subscriptions and invoices, and those of organizations they own
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/me/billing (the `GetMyBilling` operationId).
+	GetMyBillingWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetMyBillingResponse, error)
+
+	// GetMyBillingCustomerWithResponse The invoice details saved for a subject the user pays or owns
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/me/billing/customer (the `GetMyBillingCustomer` operationId).
+	GetMyBillingCustomerWithResponse(ctx context.Context, params *GetMyBillingCustomerParams, reqEditors ...RequestEditorFn) (*GetMyBillingCustomerResponse, error)
+
+	// SaveMyBillingCustomerWithBodyWithResponse Save the invoice details of a subject before paying
+	//
+	// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+	SaveMyBillingCustomerWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SaveMyBillingCustomerResponse, error)
+
+	// SaveMyBillingCustomerWithResponse Save the invoice details of a subject before paying
+	//
+	// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+	SaveMyBillingCustomerWithResponse(ctx context.Context, body SaveMyBillingCustomerJSONRequestBody, reqEditors ...RequestEditorFn) (*SaveMyBillingCustomerResponse, error)
+
+	// CreateMyBillingPortalWithBodyWithResponse A Stripe Customer Portal URL for a subject the user pays or owns
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+	CreateMyBillingPortalWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateMyBillingPortalResponse, error)
+
+	// CreateMyBillingPortalWithResponse A Stripe Customer Portal URL for a subject the user pays or owns
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+	CreateMyBillingPortalWithResponse(ctx context.Context, body CreateMyBillingPortalJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateMyBillingPortalResponse, error)
+
+	// ListMyOrganizationsWithResponse The current user's organizations
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/me/organizations (the `ListMyOrganizations` operationId).
+	ListMyOrganizationsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListMyOrganizationsResponse, error)
 
 	// GetMiddlewareStatusWithResponse Get status (and health, where available) of every global middleware
 	//
@@ -4737,6 +8813,97 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /api/notifications/{notificationId}/status (the `GetNotificationStatus` operationId).
 	GetNotificationStatusWithResponse(ctx context.Context, notificationId string, reqEditors ...RequestEditorFn) (*GetNotificationStatusResponse, error)
 
+	// ListOrganizationsWithResponse List organizations (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/organizations (the `ListOrganizations` operationId).
+	ListOrganizationsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListOrganizationsResponse, error)
+
+	// CreateOrganizationWithBodyWithResponse Create an organization (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+	CreateOrganizationWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateOrganizationResponse, error)
+
+	// CreateOrganizationWithResponse Create an organization (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+	CreateOrganizationWithResponse(ctx context.Context, body CreateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateOrganizationResponse, error)
+
+	// DeleteOrganizationWithResponse Delete an organization and its memberships (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/organizations/{orgId} (the `DeleteOrganization` operationId).
+	DeleteOrganizationWithResponse(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*DeleteOrganizationResponse, error)
+
+	// GetOrganizationWithResponse Get an organization with its members (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/organizations/{orgId} (the `GetOrganization` operationId).
+	GetOrganizationWithResponse(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*GetOrganizationResponse, error)
+
+	// UpdateOrganizationWithBodyWithResponse Rename an organization (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+	UpdateOrganizationWithBodyWithResponse(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateOrganizationResponse, error)
+
+	// UpdateOrganizationWithResponse Rename an organization (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+	UpdateOrganizationWithResponse(ctx context.Context, orgId string, body UpdateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateOrganizationResponse, error)
+
+	// DeleteOrganizationLogoWithResponse Remove the organization's logo (admin, or an owner)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/organizations/{orgId}/logo (the `DeleteOrganizationLogo` operationId).
+	DeleteOrganizationLogoWithResponse(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*DeleteOrganizationLogoResponse, error)
+
+	// GetOrganizationLogoWithResponse The organization's logo image (admin, or a member)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/organizations/{orgId}/logo (the `GetOrganizationLogo` operationId).
+	GetOrganizationLogoWithResponse(ctx context.Context, orgId string, params *GetOrganizationLogoParams, reqEditors ...RequestEditorFn) (*GetOrganizationLogoResponse, error)
+
+	// SetOrganizationLogoWithBodyWithResponse Set the organization's logo (admin, or an owner; PNG, JPEG or WebP up to 512 KiB)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PUT /api/organizations/{orgId}/logo (the `SetOrganizationLogo` operationId).
+	SetOrganizationLogoWithBodyWithResponse(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetOrganizationLogoResponse, error)
+
+	// RemoveOrganizationMemberWithResponse Remove a user from an organization (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/organizations/{orgId}/members/{userId} (the `RemoveOrganizationMember` operationId).
+	RemoveOrganizationMemberWithResponse(ctx context.Context, orgId string, userId string, reqEditors ...RequestEditorFn) (*RemoveOrganizationMemberResponse, error)
+
+	// SetOrganizationMemberWithBodyWithResponse Add a user to an organization or change their role (admin only)
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+	SetOrganizationMemberWithBodyWithResponse(ctx context.Context, orgId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetOrganizationMemberResponse, error)
+
+	// SetOrganizationMemberWithResponse Add a user to an organization or change their role (admin only)
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+	SetOrganizationMemberWithResponse(ctx context.Context, orgId string, userId string, body SetOrganizationMemberJSONRequestBody, reqEditors ...RequestEditorFn) (*SetOrganizationMemberResponse, error)
+
 	// GetBlockedClientsWithResponse Get the history of rate-limiter block events — a persistent registry that survives past the in-memory rate limiter's own cleanup, which discards an IP's live state (including its block) once the block expires and the IP goes quiet again.
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -4861,6 +9028,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with POST /api/users/{userId}/tokens (the `CreateToken` operationId).
 	CreateTokenWithResponse(ctx context.Context, userId string, body CreateTokenJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateTokenResponse, error)
+
+	// GetFeatureFlagValuesWithResponse Current feature flag values
+	//
+	// Public map of every feature flag key to its value, for frontends to decide what to show. No session is required, so do not put secrets in flag keys. Backends behind proxy routes get the enabled keys in the X-Feature-Flags request header instead.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /flags (the `GetFeatureFlagValues` operationId).
+	GetFeatureFlagValuesWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetFeatureFlagValuesResponse, error)
 
 	// HealthCheckWithResponse Health check
 	//
@@ -5016,6 +9192,1228 @@ func (r GetAllUserCountersResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetAllUserCountersResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListBillingDocumentsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]BillingDocument
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListBillingDocumentsResponse) GetJSON200() *[]BillingDocument {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListBillingDocumentsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListBillingDocumentsResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListBillingDocumentsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListBillingDocumentsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBillingDocumentsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBillingDocumentsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListBillingDocumentsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetBillingDocumentPdfResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetBillingDocumentPdfResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetBillingDocumentPdfResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r GetBillingDocumentPdfResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetBillingDocumentPdfResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r GetBillingDocumentPdfResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r GetBillingDocumentPdfResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetBillingDocumentPdfResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetBillingDocumentPdfResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetBillingDocumentPdfResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type RetryBillingDocumentResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingDocument
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r RetryBillingDocumentResponse) GetJSON200() *BillingDocument {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r RetryBillingDocumentResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r RetryBillingDocumentResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r RetryBillingDocumentResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r RetryBillingDocumentResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r RetryBillingDocumentResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r RetryBillingDocumentResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r RetryBillingDocumentResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r RetryBillingDocumentResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListBillingGrantsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]BillingGrant
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListBillingGrantsResponse) GetJSON200() *[]BillingGrant {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListBillingGrantsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListBillingGrantsResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListBillingGrantsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListBillingGrantsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBillingGrantsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBillingGrantsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListBillingGrantsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type CreateBillingGrantResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON201 the response for an HTTP 201 `application/json` response
+	JSON201 *[]BillingGrant
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON201 returns the response for an HTTP 201 `application/json` response
+func (r CreateBillingGrantResponse) GetJSON201() *[]BillingGrant {
+	return r.JSON201
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r CreateBillingGrantResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r CreateBillingGrantResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r CreateBillingGrantResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CreateBillingGrantResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r CreateBillingGrantResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateBillingGrantResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateBillingGrantResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CreateBillingGrantResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type DeleteBillingGrantResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r DeleteBillingGrantResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r DeleteBillingGrantResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r DeleteBillingGrantResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r DeleteBillingGrantResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r DeleteBillingGrantResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteBillingGrantResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteBillingGrantResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteBillingGrantResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListBillingPlansResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]BillingPlan
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListBillingPlansResponse) GetJSON200() *[]BillingPlan {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListBillingPlansResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListBillingPlansResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListBillingPlansResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListBillingPlansResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBillingPlansResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBillingPlansResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListBillingPlansResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type CreateBillingPlanResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON201 the response for an HTTP 201 `application/json` response
+	JSON201 *BillingPlan
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON201 returns the response for an HTTP 201 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON201() *BillingPlan {
+	return r.JSON201
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r CreateBillingPlanResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r CreateBillingPlanResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateBillingPlanResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateBillingPlanResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CreateBillingPlanResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetBillingPlanResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingPlan
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetBillingPlanResponse) GetJSON200() *BillingPlan {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetBillingPlanResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetBillingPlanResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r GetBillingPlanResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetBillingPlanResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetBillingPlanResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetBillingPlanResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetBillingPlanResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetBillingPlanResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type UpdateBillingPlanResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingPlan
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON200() *BillingPlan {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r UpdateBillingPlanResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r UpdateBillingPlanResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdateBillingPlanResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateBillingPlanResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r UpdateBillingPlanResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListBillingPurchasesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]BillingPurchase
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListBillingPurchasesResponse) GetJSON200() *[]BillingPurchase {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r ListBillingPurchasesResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListBillingPurchasesResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListBillingPurchasesResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListBillingPurchasesResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListBillingPurchasesResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBillingPurchasesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBillingPurchasesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListBillingPurchasesResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type RefundBillingPurchaseResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingPurchase
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON200() *BillingPurchase {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r RefundBillingPurchaseResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r RefundBillingPurchaseResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r RefundBillingPurchaseResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r RefundBillingPurchaseResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r RefundBillingPurchaseResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetBillingSetupResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingSetup
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetBillingSetupResponse) GetJSON200() *BillingSetup {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetBillingSetupResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetBillingSetupResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetBillingSetupResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetBillingSetupResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetBillingSetupResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetBillingSetupResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetBillingSetupResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type RunBillingSetupActionResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingSetup
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r RunBillingSetupActionResponse) GetJSON200() *BillingSetup {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r RunBillingSetupActionResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r RunBillingSetupActionResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r RunBillingSetupActionResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r RunBillingSetupActionResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r RunBillingSetupActionResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r RunBillingSetupActionResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r RunBillingSetupActionResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r RunBillingSetupActionResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r RunBillingSetupActionResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListBillingSubscriptionsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]BillingSubscription
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListBillingSubscriptionsResponse) GetJSON200() *[]BillingSubscription {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r ListBillingSubscriptionsResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListBillingSubscriptionsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListBillingSubscriptionsResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListBillingSubscriptionsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListBillingSubscriptionsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListBillingSubscriptionsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListBillingSubscriptionsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListBillingSubscriptionsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ActivateBillingSubscriptionResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingSubscription
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON200() *BillingSubscription {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r ActivateBillingSubscriptionResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r ActivateBillingSubscriptionResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ActivateBillingSubscriptionResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ActivateBillingSubscriptionResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ActivateBillingSubscriptionResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type CancelBillingSubscriptionResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingSubscription
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON200() *BillingSubscription {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r CancelBillingSubscriptionResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r CancelBillingSubscriptionResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CancelBillingSubscriptionResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CancelBillingSubscriptionResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CancelBillingSubscriptionResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -5285,6 +10683,765 @@ func (r GetUserCounterHistoryResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetUserCounterHistoryResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetEntitlementsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *EntitlementSet
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetEntitlementsResponse) GetJSON200() *EntitlementSet {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r GetEntitlementsResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetEntitlementsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetEntitlementsResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetEntitlementsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetEntitlementsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetEntitlementsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetEntitlementsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetEntitlementsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListFeatureFlagsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]FeatureFlag
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListFeatureFlagsResponse) GetJSON200() *[]FeatureFlag {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListFeatureFlagsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListFeatureFlagsResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListFeatureFlagsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListFeatureFlagsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListFeatureFlagsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListFeatureFlagsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListFeatureFlagsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type CreateFeatureFlagResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON201 the response for an HTTP 201 `application/json` response
+	JSON201 *FeatureFlag
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON201 returns the response for an HTTP 201 `application/json` response
+func (r CreateFeatureFlagResponse) GetJSON201() *FeatureFlag {
+	return r.JSON201
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r CreateFeatureFlagResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r CreateFeatureFlagResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r CreateFeatureFlagResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r CreateFeatureFlagResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CreateFeatureFlagResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r CreateFeatureFlagResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateFeatureFlagResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateFeatureFlagResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CreateFeatureFlagResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type DeleteFeatureFlagResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r DeleteFeatureFlagResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r DeleteFeatureFlagResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r DeleteFeatureFlagResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r DeleteFeatureFlagResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r DeleteFeatureFlagResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteFeatureFlagResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteFeatureFlagResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteFeatureFlagResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetFeatureFlagResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *FeatureFlag
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetFeatureFlagResponse) GetJSON200() *FeatureFlag {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetFeatureFlagResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetFeatureFlagResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r GetFeatureFlagResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetFeatureFlagResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetFeatureFlagResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetFeatureFlagResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetFeatureFlagResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetFeatureFlagResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type UpdateFeatureFlagResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *FeatureFlag
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r UpdateFeatureFlagResponse) GetJSON200() *FeatureFlag {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r UpdateFeatureFlagResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r UpdateFeatureFlagResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r UpdateFeatureFlagResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r UpdateFeatureFlagResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r UpdateFeatureFlagResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdateFeatureFlagResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateFeatureFlagResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r UpdateFeatureFlagResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetMyBillingResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *MyBilling
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyBillingResponse) GetJSON200() *MyBilling {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetMyBillingResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetMyBillingResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyBillingResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyBillingResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyBillingResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyBillingResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetMyBillingCustomerResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingCustomerDetails
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetMyBillingCustomerResponse) GetJSON200() *BillingCustomerDetails {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r GetMyBillingCustomerResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetMyBillingCustomerResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetMyBillingCustomerResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetMyBillingCustomerResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r GetMyBillingCustomerResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r GetMyBillingCustomerResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetMyBillingCustomerResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetMyBillingCustomerResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetMyBillingCustomerResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type SaveMyBillingCustomerResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingCustomerDetails
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON200() *BillingCustomerDetails {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r SaveMyBillingCustomerResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r SaveMyBillingCustomerResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SaveMyBillingCustomerResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SaveMyBillingCustomerResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SaveMyBillingCustomerResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type CreateMyBillingPortalResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingPortalResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON200() *BillingPortalResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r CreateMyBillingPortalResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r CreateMyBillingPortalResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateMyBillingPortalResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateMyBillingPortalResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CreateMyBillingPortalResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ListMyOrganizationsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]MyOrganization
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListMyOrganizationsResponse) GetJSON200() *[]MyOrganization {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListMyOrganizationsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListMyOrganizationsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListMyOrganizationsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListMyOrganizationsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListMyOrganizationsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListMyOrganizationsResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -6291,6 +12448,704 @@ func (r GetNotificationStatusResponse) ContentType() string {
 	return ""
 }
 
+type ListOrganizationsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]Organization
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ListOrganizationsResponse) GetJSON200() *[]Organization {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ListOrganizationsResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ListOrganizationsResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ListOrganizationsResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r ListOrganizationsResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ListOrganizationsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ListOrganizationsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ListOrganizationsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type CreateOrganizationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON201 the response for an HTTP 201 `application/json` response
+	JSON201 *OrganizationDetail
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON201 returns the response for an HTTP 201 `application/json` response
+func (r CreateOrganizationResponse) GetJSON201() *OrganizationDetail {
+	return r.JSON201
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r CreateOrganizationResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r CreateOrganizationResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r CreateOrganizationResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CreateOrganizationResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r CreateOrganizationResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateOrganizationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateOrganizationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CreateOrganizationResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type DeleteOrganizationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r DeleteOrganizationResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r DeleteOrganizationResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r DeleteOrganizationResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r DeleteOrganizationResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r DeleteOrganizationResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r DeleteOrganizationResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteOrganizationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteOrganizationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteOrganizationResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetOrganizationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *OrganizationDetail
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetOrganizationResponse) GetJSON200() *OrganizationDetail {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetOrganizationResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetOrganizationResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r GetOrganizationResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetOrganizationResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetOrganizationResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetOrganizationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetOrganizationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetOrganizationResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type UpdateOrganizationResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *OrganizationDetail
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r UpdateOrganizationResponse) GetJSON200() *OrganizationDetail {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r UpdateOrganizationResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r UpdateOrganizationResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r UpdateOrganizationResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r UpdateOrganizationResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r UpdateOrganizationResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r UpdateOrganizationResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdateOrganizationResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateOrganizationResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r UpdateOrganizationResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type DeleteOrganizationLogoResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r DeleteOrganizationLogoResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r DeleteOrganizationLogoResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r DeleteOrganizationLogoResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r DeleteOrganizationLogoResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r DeleteOrganizationLogoResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteOrganizationLogoResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteOrganizationLogoResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteOrganizationLogoResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// GetOrganizationLogoResponse200Headers the declared response headers of an HTTP 200 response for GetOrganizationLogo
+type GetOrganizationLogoResponse200Headers struct {
+	CacheControl *string
+	ETag         *string
+}
+
+type GetOrganizationLogoResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *GetOrganizationLogoResponse200Headers
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetOrganizationLogoResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetOrganizationLogoResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r GetOrganizationLogoResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetOrganizationLogoResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetOrganizationLogoResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetOrganizationLogoResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetOrganizationLogoResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetOrganizationLogoResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type SetOrganizationLogoResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *OrganizationDetail
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON413 the response for an HTTP 413 `application/json` response
+	JSON413 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON200() *OrganizationDetail {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON413 returns the response for an HTTP 413 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON413() *Error {
+	return r.JSON413
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r SetOrganizationLogoResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r SetOrganizationLogoResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SetOrganizationLogoResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SetOrganizationLogoResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SetOrganizationLogoResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type RemoveOrganizationMemberResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r RemoveOrganizationMemberResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r RemoveOrganizationMemberResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r RemoveOrganizationMemberResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r RemoveOrganizationMemberResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r RemoveOrganizationMemberResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r RemoveOrganizationMemberResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r RemoveOrganizationMemberResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r RemoveOrganizationMemberResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type SetOrganizationMemberResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *OrganizationMember
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SetOrganizationMemberResponse) GetJSON200() *OrganizationMember {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SetOrganizationMemberResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SetOrganizationMemberResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SetOrganizationMemberResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r SetOrganizationMemberResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r SetOrganizationMemberResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r SetOrganizationMemberResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SetOrganizationMemberResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SetOrganizationMemberResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SetOrganizationMemberResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetBlockedClientsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -7207,6 +14062,54 @@ func (r CreateTokenResponse) ContentType() string {
 	return ""
 }
 
+type GetFeatureFlagValuesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *FeatureFlagValues
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetFeatureFlagValuesResponse) GetJSON200() *FeatureFlagValues {
+	return r.JSON200
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r GetFeatureFlagValuesResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r GetFeatureFlagValuesResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetFeatureFlagValuesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetFeatureFlagValuesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetFeatureFlagValuesResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type HealthCheckResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -7302,6 +14205,9 @@ type GetCurrentUserResponse struct {
 		// Email Example: user@example.com
 		Email *openapi_types.Email `json:"email,omitempty"`
 
+		// Entitlements Active features as in the X-Entitlements header (until, or null for no expiry)
+		Entitlements *EntitlementHeader `json:"entitlements,omitempty"`
+
 		// FamilyName Example: User
 		FamilyName *string `json:"familyName,omitempty"`
 
@@ -7312,7 +14218,8 @@ type GetCurrentUserResponse struct {
 		IsAdmin *bool `json:"isAdmin,omitempty"`
 
 		// Name Example: Test User
-		Name *string `json:"name,omitempty"`
+		Name          *string           `json:"name,omitempty"`
+		Organizations *[]MyOrganization `json:"organizations,omitempty"`
 
 		// Picture Example: https://example.com/picture.jpg
 		Picture *string `json:"picture,omitempty"`
@@ -7338,6 +14245,9 @@ func (r GetCurrentUserResponse) GetJSON200() *struct {
 	// Email Example: user@example.com
 	Email *openapi_types.Email `json:"email,omitempty"`
 
+	// Entitlements Active features as in the X-Entitlements header (until, or null for no expiry)
+	Entitlements *EntitlementHeader `json:"entitlements,omitempty"`
+
 	// FamilyName Example: User
 	FamilyName *string `json:"familyName,omitempty"`
 
@@ -7348,7 +14258,8 @@ func (r GetCurrentUserResponse) GetJSON200() *struct {
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 
 	// Name Example: Test User
-	Name *string `json:"name,omitempty"`
+	Name          *string           `json:"name,omitempty"`
+	Organizations *[]MyOrganization `json:"organizations,omitempty"`
 
 	// Picture Example: https://example.com/picture.jpg
 	Picture *string `json:"picture,omitempty"`
@@ -7466,6 +14377,305 @@ func (c *ClientWithResponses) GetAllUserCountersWithResponse(ctx context.Context
 	return ParseGetAllUserCountersResponse(rsp)
 }
 
+// ListBillingDocumentsWithResponse List invoices and credit notes with their Odoo state (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/documents (the `ListBillingDocuments` operationId).
+func (c *ClientWithResponses) ListBillingDocumentsWithResponse(ctx context.Context, params *ListBillingDocumentsParams, reqEditors ...RequestEditorFn) (*ListBillingDocumentsResponse, error) {
+	rsp, err := c.ListBillingDocuments(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBillingDocumentsResponse(rsp)
+}
+
+// GetBillingDocumentPdfWithResponse The PDF Odoo issued (admin, the payer, owners of the organization)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/documents/{id}/pdf (the `GetBillingDocumentPdf` operationId).
+func (c *ClientWithResponses) GetBillingDocumentPdfWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetBillingDocumentPdfResponse, error) {
+	rsp, err := c.GetBillingDocumentPdf(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetBillingDocumentPdfResponse(rsp)
+}
+
+// RetryBillingDocumentWithResponse Queue a failed document again (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/documents/{id}/retry (the `RetryBillingDocument` operationId).
+func (c *ClientWithResponses) RetryBillingDocumentWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*RetryBillingDocumentResponse, error) {
+	rsp, err := c.RetryBillingDocument(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRetryBillingDocumentResponse(rsp)
+}
+
+// ListBillingGrantsWithResponse List grants (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/grants (the `ListBillingGrants` operationId).
+func (c *ClientWithResponses) ListBillingGrantsWithResponse(ctx context.Context, params *ListBillingGrantsParams, reqEditors ...RequestEditorFn) (*ListBillingGrantsResponse, error) {
+	rsp, err := c.ListBillingGrants(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBillingGrantsResponse(rsp)
+}
+
+// CreateBillingGrantWithBodyWithResponse Give features to a subject until a date (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+func (c *ClientWithResponses) CreateBillingGrantWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateBillingGrantResponse, error) {
+	rsp, err := c.CreateBillingGrantWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateBillingGrantResponse(rsp)
+}
+
+// CreateBillingGrantWithResponse Give features to a subject until a date (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/grants (the `CreateBillingGrant` operationId).
+func (c *ClientWithResponses) CreateBillingGrantWithResponse(ctx context.Context, body CreateBillingGrantJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateBillingGrantResponse, error) {
+	rsp, err := c.CreateBillingGrant(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateBillingGrantResponse(rsp)
+}
+
+// DeleteBillingGrantWithResponse Remove a grant (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/billing/grants/{id} (the `DeleteBillingGrant` operationId).
+func (c *ClientWithResponses) DeleteBillingGrantWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*DeleteBillingGrantResponse, error) {
+	rsp, err := c.DeleteBillingGrant(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteBillingGrantResponse(rsp)
+}
+
+// ListBillingPlansWithResponse List plans (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/plans (the `ListBillingPlans` operationId).
+func (c *ClientWithResponses) ListBillingPlansWithResponse(ctx context.Context, params *ListBillingPlansParams, reqEditors ...RequestEditorFn) (*ListBillingPlansResponse, error) {
+	rsp, err := c.ListBillingPlans(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBillingPlansResponse(rsp)
+}
+
+// CreateBillingPlanWithBodyWithResponse Create a plan and its Stripe and Odoo products (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+func (c *ClientWithResponses) CreateBillingPlanWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateBillingPlanResponse, error) {
+	rsp, err := c.CreateBillingPlanWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateBillingPlanResponse(rsp)
+}
+
+// CreateBillingPlanWithResponse Create a plan and its Stripe and Odoo products (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/plans (the `CreateBillingPlan` operationId).
+func (c *ClientWithResponses) CreateBillingPlanWithResponse(ctx context.Context, body CreateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateBillingPlanResponse, error) {
+	rsp, err := c.CreateBillingPlan(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateBillingPlanResponse(rsp)
+}
+
+// GetBillingPlanWithResponse Get a plan (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/plans/{key} (the `GetBillingPlan` operationId).
+func (c *ClientWithResponses) GetBillingPlanWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*GetBillingPlanResponse, error) {
+	rsp, err := c.GetBillingPlan(ctx, key, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetBillingPlanResponse(rsp)
+}
+
+// UpdateBillingPlanWithBodyWithResponse Change or archive a plan (admin only); a new amount creates a new Stripe price
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+func (c *ClientWithResponses) UpdateBillingPlanWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateBillingPlanResponse, error) {
+	rsp, err := c.UpdateBillingPlanWithBody(ctx, key, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateBillingPlanResponse(rsp)
+}
+
+// UpdateBillingPlanWithResponse Change or archive a plan (admin only); a new amount creates a new Stripe price
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
+func (c *ClientWithResponses) UpdateBillingPlanWithResponse(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateBillingPlanResponse, error) {
+	rsp, err := c.UpdateBillingPlan(ctx, key, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateBillingPlanResponse(rsp)
+}
+
+// ListBillingPurchasesWithResponse List paid checkouts with shipping addresses (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/purchases (the `ListBillingPurchases` operationId).
+func (c *ClientWithResponses) ListBillingPurchasesWithResponse(ctx context.Context, params *ListBillingPurchasesParams, reqEditors ...RequestEditorFn) (*ListBillingPurchasesResponse, error) {
+	rsp, err := c.ListBillingPurchases(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBillingPurchasesResponse(rsp)
+}
+
+// RefundBillingPurchaseWithBodyWithResponse Refund a payment (admin only); the credit note follows
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+func (c *ClientWithResponses) RefundBillingPurchaseWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RefundBillingPurchaseResponse, error) {
+	rsp, err := c.RefundBillingPurchaseWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRefundBillingPurchaseResponse(rsp)
+}
+
+// RefundBillingPurchaseWithResponse Refund a payment (admin only); the credit note follows
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/purchases/{id}/refund (the `RefundBillingPurchase` operationId).
+func (c *ClientWithResponses) RefundBillingPurchaseWithResponse(ctx context.Context, id string, body RefundBillingPurchaseJSONRequestBody, reqEditors ...RequestEditorFn) (*RefundBillingPurchaseResponse, error) {
+	rsp, err := c.RefundBillingPurchase(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRefundBillingPurchaseResponse(rsp)
+}
+
+// GetBillingSetupWithResponse Billing configuration checks (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/setup (the `GetBillingSetup` operationId).
+func (c *ClientWithResponses) GetBillingSetupWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetBillingSetupResponse, error) {
+	rsp, err := c.GetBillingSetup(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetBillingSetupResponse(rsp)
+}
+
+// RunBillingSetupActionWithBodyWithResponse Apply a fix from the setup page (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+func (c *ClientWithResponses) RunBillingSetupActionWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RunBillingSetupActionResponse, error) {
+	rsp, err := c.RunBillingSetupActionWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRunBillingSetupActionResponse(rsp)
+}
+
+// RunBillingSetupActionWithResponse Apply a fix from the setup page (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/setup/actions (the `RunBillingSetupAction` operationId).
+func (c *ClientWithResponses) RunBillingSetupActionWithResponse(ctx context.Context, body RunBillingSetupActionJSONRequestBody, reqEditors ...RequestEditorFn) (*RunBillingSetupActionResponse, error) {
+	rsp, err := c.RunBillingSetupAction(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRunBillingSetupActionResponse(rsp)
+}
+
+// ListBillingSubscriptionsWithResponse List subscriptions (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/billing/subscriptions (the `ListBillingSubscriptions` operationId).
+func (c *ClientWithResponses) ListBillingSubscriptionsWithResponse(ctx context.Context, params *ListBillingSubscriptionsParams, reqEditors ...RequestEditorFn) (*ListBillingSubscriptionsResponse, error) {
+	rsp, err := c.ListBillingSubscriptions(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListBillingSubscriptionsResponse(rsp)
+}
+
+// ActivateBillingSubscriptionWithResponse Start a subscription that waits for activation (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/subscriptions/{id}/activate (the `ActivateBillingSubscription` operationId).
+func (c *ClientWithResponses) ActivateBillingSubscriptionWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*ActivateBillingSubscriptionResponse, error) {
+	rsp, err := c.ActivateBillingSubscription(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseActivateBillingSubscriptionResponse(rsp)
+}
+
+// CancelBillingSubscriptionWithBodyWithResponse Cancel a subscription now or at period end (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+func (c *ClientWithResponses) CancelBillingSubscriptionWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CancelBillingSubscriptionResponse, error) {
+	rsp, err := c.CancelBillingSubscriptionWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCancelBillingSubscriptionResponse(rsp)
+}
+
+// CancelBillingSubscriptionWithResponse Cancel a subscription now or at period end (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/subscriptions/{id}/cancel (the `CancelBillingSubscription` operationId).
+func (c *ClientWithResponses) CancelBillingSubscriptionWithResponse(ctx context.Context, id string, body CancelBillingSubscriptionJSONRequestBody, reqEditors ...RequestEditorFn) (*CancelBillingSubscriptionResponse, error) {
+	rsp, err := c.CancelBillingSubscription(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCancelBillingSubscriptionResponse(rsp)
+}
+
 // GetRateLimiterConfigWithResponse Get current rate limiter configuration
 //
 // Returns a wrapper object for the known response body format(s).
@@ -7529,6 +14739,209 @@ func (c *ClientWithResponses) GetUserCounterHistoryWithResponse(ctx context.Cont
 		return nil, err
 	}
 	return ParseGetUserCounterHistoryResponse(rsp)
+}
+
+// GetEntitlementsWithResponse A user's or an organization's active features
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/entitlements (the `GetEntitlements` operationId).
+func (c *ClientWithResponses) GetEntitlementsWithResponse(ctx context.Context, params *GetEntitlementsParams, reqEditors ...RequestEditorFn) (*GetEntitlementsResponse, error) {
+	rsp, err := c.GetEntitlements(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetEntitlementsResponse(rsp)
+}
+
+// ListFeatureFlagsWithResponse List feature flags (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/feature-flags (the `ListFeatureFlags` operationId).
+func (c *ClientWithResponses) ListFeatureFlagsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListFeatureFlagsResponse, error) {
+	rsp, err := c.ListFeatureFlags(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListFeatureFlagsResponse(rsp)
+}
+
+// CreateFeatureFlagWithBodyWithResponse Create a feature flag (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+func (c *ClientWithResponses) CreateFeatureFlagWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateFeatureFlagResponse, error) {
+	rsp, err := c.CreateFeatureFlagWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateFeatureFlagResponse(rsp)
+}
+
+// CreateFeatureFlagWithResponse Create a feature flag (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/feature-flags (the `CreateFeatureFlag` operationId).
+func (c *ClientWithResponses) CreateFeatureFlagWithResponse(ctx context.Context, body CreateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateFeatureFlagResponse, error) {
+	rsp, err := c.CreateFeatureFlag(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateFeatureFlagResponse(rsp)
+}
+
+// DeleteFeatureFlagWithResponse Delete a feature flag (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/feature-flags/{key} (the `DeleteFeatureFlag` operationId).
+func (c *ClientWithResponses) DeleteFeatureFlagWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*DeleteFeatureFlagResponse, error) {
+	rsp, err := c.DeleteFeatureFlag(ctx, key, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteFeatureFlagResponse(rsp)
+}
+
+// GetFeatureFlagWithResponse Get a feature flag (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/feature-flags/{key} (the `GetFeatureFlag` operationId).
+func (c *ClientWithResponses) GetFeatureFlagWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*GetFeatureFlagResponse, error) {
+	rsp, err := c.GetFeatureFlag(ctx, key, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetFeatureFlagResponse(rsp)
+}
+
+// UpdateFeatureFlagWithBodyWithResponse Update a feature flag (admin only)
+//
+// Only the fields present in the body change.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+func (c *ClientWithResponses) UpdateFeatureFlagWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateFeatureFlagResponse, error) {
+	rsp, err := c.UpdateFeatureFlagWithBody(ctx, key, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateFeatureFlagResponse(rsp)
+}
+
+// UpdateFeatureFlagWithResponse Update a feature flag (admin only)
+//
+// Only the fields present in the body change.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/feature-flags/{key} (the `UpdateFeatureFlag` operationId).
+func (c *ClientWithResponses) UpdateFeatureFlagWithResponse(ctx context.Context, key string, body UpdateFeatureFlagJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateFeatureFlagResponse, error) {
+	rsp, err := c.UpdateFeatureFlag(ctx, key, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateFeatureFlagResponse(rsp)
+}
+
+// GetMyBillingWithResponse The current user's subscriptions and invoices, and those of organizations they own
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/me/billing (the `GetMyBilling` operationId).
+func (c *ClientWithResponses) GetMyBillingWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetMyBillingResponse, error) {
+	rsp, err := c.GetMyBilling(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyBillingResponse(rsp)
+}
+
+// GetMyBillingCustomerWithResponse The invoice details saved for a subject the user pays or owns
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/me/billing/customer (the `GetMyBillingCustomer` operationId).
+func (c *ClientWithResponses) GetMyBillingCustomerWithResponse(ctx context.Context, params *GetMyBillingCustomerParams, reqEditors ...RequestEditorFn) (*GetMyBillingCustomerResponse, error) {
+	rsp, err := c.GetMyBillingCustomer(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetMyBillingCustomerResponse(rsp)
+}
+
+// SaveMyBillingCustomerWithBodyWithResponse Save the invoice details of a subject before paying
+//
+// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+func (c *ClientWithResponses) SaveMyBillingCustomerWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SaveMyBillingCustomerResponse, error) {
+	rsp, err := c.SaveMyBillingCustomerWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSaveMyBillingCustomerResponse(rsp)
+}
+
+// SaveMyBillingCustomerWithResponse Save the invoice details of a subject before paying
+//
+// Validates them (NIF, NIE or CIF for Spanish ids), saves them and sends them to the Stripe customer and the Odoo partner, so Checkout shows them filled in. A saved taxId cannot change.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/me/billing/customer (the `SaveMyBillingCustomer` operationId).
+func (c *ClientWithResponses) SaveMyBillingCustomerWithResponse(ctx context.Context, body SaveMyBillingCustomerJSONRequestBody, reqEditors ...RequestEditorFn) (*SaveMyBillingCustomerResponse, error) {
+	rsp, err := c.SaveMyBillingCustomer(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSaveMyBillingCustomerResponse(rsp)
+}
+
+// CreateMyBillingPortalWithBodyWithResponse A Stripe Customer Portal URL for a subject the user pays or owns
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+func (c *ClientWithResponses) CreateMyBillingPortalWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateMyBillingPortalResponse, error) {
+	rsp, err := c.CreateMyBillingPortalWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateMyBillingPortalResponse(rsp)
+}
+
+// CreateMyBillingPortalWithResponse A Stripe Customer Portal URL for a subject the user pays or owns
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/me/billing/portal (the `CreateMyBillingPortal` operationId).
+func (c *ClientWithResponses) CreateMyBillingPortalWithResponse(ctx context.Context, body CreateMyBillingPortalJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateMyBillingPortalResponse, error) {
+	rsp, err := c.CreateMyBillingPortal(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateMyBillingPortalResponse(rsp)
+}
+
+// ListMyOrganizationsWithResponse The current user's organizations
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/me/organizations (the `ListMyOrganizations` operationId).
+func (c *ClientWithResponses) ListMyOrganizationsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListMyOrganizationsResponse, error) {
+	rsp, err := c.ListMyOrganizations(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListMyOrganizationsResponse(rsp)
 }
 
 // GetMiddlewareStatusWithResponse Get status (and health, where available) of every global middleware
@@ -7839,6 +15252,175 @@ func (c *ClientWithResponses) GetNotificationStatusWithResponse(ctx context.Cont
 	return ParseGetNotificationStatusResponse(rsp)
 }
 
+// ListOrganizationsWithResponse List organizations (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/organizations (the `ListOrganizations` operationId).
+func (c *ClientWithResponses) ListOrganizationsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ListOrganizationsResponse, error) {
+	rsp, err := c.ListOrganizations(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseListOrganizationsResponse(rsp)
+}
+
+// CreateOrganizationWithBodyWithResponse Create an organization (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+func (c *ClientWithResponses) CreateOrganizationWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateOrganizationResponse, error) {
+	rsp, err := c.CreateOrganizationWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateOrganizationResponse(rsp)
+}
+
+// CreateOrganizationWithResponse Create an organization (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/organizations (the `CreateOrganization` operationId).
+func (c *ClientWithResponses) CreateOrganizationWithResponse(ctx context.Context, body CreateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateOrganizationResponse, error) {
+	rsp, err := c.CreateOrganization(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateOrganizationResponse(rsp)
+}
+
+// DeleteOrganizationWithResponse Delete an organization and its memberships (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/organizations/{orgId} (the `DeleteOrganization` operationId).
+func (c *ClientWithResponses) DeleteOrganizationWithResponse(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*DeleteOrganizationResponse, error) {
+	rsp, err := c.DeleteOrganization(ctx, orgId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteOrganizationResponse(rsp)
+}
+
+// GetOrganizationWithResponse Get an organization with its members (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/organizations/{orgId} (the `GetOrganization` operationId).
+func (c *ClientWithResponses) GetOrganizationWithResponse(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*GetOrganizationResponse, error) {
+	rsp, err := c.GetOrganization(ctx, orgId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetOrganizationResponse(rsp)
+}
+
+// UpdateOrganizationWithBodyWithResponse Rename an organization (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+func (c *ClientWithResponses) UpdateOrganizationWithBodyWithResponse(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateOrganizationResponse, error) {
+	rsp, err := c.UpdateOrganizationWithBody(ctx, orgId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateOrganizationResponse(rsp)
+}
+
+// UpdateOrganizationWithResponse Rename an organization (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/organizations/{orgId} (the `UpdateOrganization` operationId).
+func (c *ClientWithResponses) UpdateOrganizationWithResponse(ctx context.Context, orgId string, body UpdateOrganizationJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateOrganizationResponse, error) {
+	rsp, err := c.UpdateOrganization(ctx, orgId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateOrganizationResponse(rsp)
+}
+
+// DeleteOrganizationLogoWithResponse Remove the organization's logo (admin, or an owner)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/organizations/{orgId}/logo (the `DeleteOrganizationLogo` operationId).
+func (c *ClientWithResponses) DeleteOrganizationLogoWithResponse(ctx context.Context, orgId string, reqEditors ...RequestEditorFn) (*DeleteOrganizationLogoResponse, error) {
+	rsp, err := c.DeleteOrganizationLogo(ctx, orgId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteOrganizationLogoResponse(rsp)
+}
+
+// GetOrganizationLogoWithResponse The organization's logo image (admin, or a member)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/organizations/{orgId}/logo (the `GetOrganizationLogo` operationId).
+func (c *ClientWithResponses) GetOrganizationLogoWithResponse(ctx context.Context, orgId string, params *GetOrganizationLogoParams, reqEditors ...RequestEditorFn) (*GetOrganizationLogoResponse, error) {
+	rsp, err := c.GetOrganizationLogo(ctx, orgId, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetOrganizationLogoResponse(rsp)
+}
+
+// SetOrganizationLogoWithBodyWithResponse Set the organization's logo (admin, or an owner; PNG, JPEG or WebP up to 512 KiB)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PUT /api/organizations/{orgId}/logo (the `SetOrganizationLogo` operationId).
+func (c *ClientWithResponses) SetOrganizationLogoWithBodyWithResponse(ctx context.Context, orgId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetOrganizationLogoResponse, error) {
+	rsp, err := c.SetOrganizationLogoWithBody(ctx, orgId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetOrganizationLogoResponse(rsp)
+}
+
+// RemoveOrganizationMemberWithResponse Remove a user from an organization (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/organizations/{orgId}/members/{userId} (the `RemoveOrganizationMember` operationId).
+func (c *ClientWithResponses) RemoveOrganizationMemberWithResponse(ctx context.Context, orgId string, userId string, reqEditors ...RequestEditorFn) (*RemoveOrganizationMemberResponse, error) {
+	rsp, err := c.RemoveOrganizationMember(ctx, orgId, userId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseRemoveOrganizationMemberResponse(rsp)
+}
+
+// SetOrganizationMemberWithBodyWithResponse Add a user to an organization or change their role (admin only)
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+func (c *ClientWithResponses) SetOrganizationMemberWithBodyWithResponse(ctx context.Context, orgId string, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetOrganizationMemberResponse, error) {
+	rsp, err := c.SetOrganizationMemberWithBody(ctx, orgId, userId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetOrganizationMemberResponse(rsp)
+}
+
+// SetOrganizationMemberWithResponse Add a user to an organization or change their role (admin only)
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PUT /api/organizations/{orgId}/members/{userId} (the `SetOrganizationMember` operationId).
+func (c *ClientWithResponses) SetOrganizationMemberWithResponse(ctx context.Context, orgId string, userId string, body SetOrganizationMemberJSONRequestBody, reqEditors ...RequestEditorFn) (*SetOrganizationMemberResponse, error) {
+	rsp, err := c.SetOrganizationMember(ctx, orgId, userId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetOrganizationMemberResponse(rsp)
+}
+
 // GetBlockedClientsWithResponse Get the history of rate-limiter block events — a persistent registry that survives past the in-memory rate limiter's own cleanup, which discards an IP's live state (including its block) once the block expires and the IP goes quiet again.
 //
 // Returns a wrapper object for the known response body format(s).
@@ -8066,6 +15648,21 @@ func (c *ClientWithResponses) CreateTokenWithResponse(ctx context.Context, userI
 	return ParseCreateTokenResponse(rsp)
 }
 
+// GetFeatureFlagValuesWithResponse Current feature flag values
+//
+// Public map of every feature flag key to its value, for frontends to decide what to show. No session is required, so do not put secrets in flag keys. Backends behind proxy routes get the enabled keys in the X-Feature-Flags request header instead.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /flags (the `GetFeatureFlagValues` operationId).
+func (c *ClientWithResponses) GetFeatureFlagValuesWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetFeatureFlagValuesResponse, error) {
+	rsp, err := c.GetFeatureFlagValues(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetFeatureFlagValuesResponse(rsp)
+}
+
 // HealthCheckWithResponse Health check
 //
 // Returns a wrapper object for the known response body format(s).
@@ -8213,6 +15810,976 @@ func ParseGetAllUserCountersResponse(rsp *http.Response) (*GetAllUserCountersRes
 			return nil, err
 		}
 		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBillingDocumentsResponse parses an HTTP response from a ListBillingDocumentsWithResponse call
+func ParseListBillingDocumentsResponse(rsp *http.Response) (*ListBillingDocumentsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBillingDocumentsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []BillingDocument
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetBillingDocumentPdfResponse parses an HTTP response from a GetBillingDocumentPdfWithResponse call
+func ParseGetBillingDocumentPdfResponse(rsp *http.Response) (*GetBillingDocumentPdfResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetBillingDocumentPdfResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseRetryBillingDocumentResponse parses an HTTP response from a RetryBillingDocumentWithResponse call
+func ParseRetryBillingDocumentResponse(rsp *http.Response) (*RetryBillingDocumentResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &RetryBillingDocumentResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingDocument
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBillingGrantsResponse parses an HTTP response from a ListBillingGrantsWithResponse call
+func ParseListBillingGrantsResponse(rsp *http.Response) (*ListBillingGrantsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBillingGrantsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []BillingGrant
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateBillingGrantResponse parses an HTTP response from a CreateBillingGrantWithResponse call
+func ParseCreateBillingGrantResponse(rsp *http.Response) (*CreateBillingGrantResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateBillingGrantResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest []BillingGrant
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteBillingGrantResponse parses an HTTP response from a DeleteBillingGrantWithResponse call
+func ParseDeleteBillingGrantResponse(rsp *http.Response) (*DeleteBillingGrantResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteBillingGrantResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBillingPlansResponse parses an HTTP response from a ListBillingPlansWithResponse call
+func ParseListBillingPlansResponse(rsp *http.Response) (*ListBillingPlansResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBillingPlansResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []BillingPlan
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateBillingPlanResponse parses an HTTP response from a CreateBillingPlanWithResponse call
+func ParseCreateBillingPlanResponse(rsp *http.Response) (*CreateBillingPlanResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateBillingPlanResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest BillingPlan
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetBillingPlanResponse parses an HTTP response from a GetBillingPlanWithResponse call
+func ParseGetBillingPlanResponse(rsp *http.Response) (*GetBillingPlanResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetBillingPlanResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingPlan
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateBillingPlanResponse parses an HTTP response from a UpdateBillingPlanWithResponse call
+func ParseUpdateBillingPlanResponse(rsp *http.Response) (*UpdateBillingPlanResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateBillingPlanResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingPlan
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBillingPurchasesResponse parses an HTTP response from a ListBillingPurchasesWithResponse call
+func ParseListBillingPurchasesResponse(rsp *http.Response) (*ListBillingPurchasesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBillingPurchasesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []BillingPurchase
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseRefundBillingPurchaseResponse parses an HTTP response from a RefundBillingPurchaseWithResponse call
+func ParseRefundBillingPurchaseResponse(rsp *http.Response) (*RefundBillingPurchaseResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &RefundBillingPurchaseResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingPurchase
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetBillingSetupResponse parses an HTTP response from a GetBillingSetupWithResponse call
+func ParseGetBillingSetupResponse(rsp *http.Response) (*GetBillingSetupResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetBillingSetupResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingSetup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseRunBillingSetupActionResponse parses an HTTP response from a RunBillingSetupActionWithResponse call
+func ParseRunBillingSetupActionResponse(rsp *http.Response) (*RunBillingSetupActionResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &RunBillingSetupActionResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingSetup
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListBillingSubscriptionsResponse parses an HTTP response from a ListBillingSubscriptionsWithResponse call
+func ParseListBillingSubscriptionsResponse(rsp *http.Response) (*ListBillingSubscriptionsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListBillingSubscriptionsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []BillingSubscription
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseActivateBillingSubscriptionResponse parses an HTTP response from a ActivateBillingSubscriptionWithResponse call
+func ParseActivateBillingSubscriptionResponse(rsp *http.Response) (*ActivateBillingSubscriptionResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ActivateBillingSubscriptionResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingSubscription
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCancelBillingSubscriptionResponse parses an HTTP response from a CancelBillingSubscriptionWithResponse call
+func ParseCancelBillingSubscriptionResponse(rsp *http.Response) (*CancelBillingSubscriptionResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CancelBillingSubscriptionResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingSubscription
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
 
 	}
 
@@ -8415,6 +16982,603 @@ func ParseGetUserCounterHistoryResponse(rsp *http.Response) (*GetUserCounterHist
 			return nil, err
 		}
 		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetEntitlementsResponse parses an HTTP response from a GetEntitlementsWithResponse call
+func ParseGetEntitlementsResponse(rsp *http.Response) (*GetEntitlementsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetEntitlementsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest EntitlementSet
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListFeatureFlagsResponse parses an HTTP response from a ListFeatureFlagsWithResponse call
+func ParseListFeatureFlagsResponse(rsp *http.Response) (*ListFeatureFlagsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListFeatureFlagsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []FeatureFlag
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateFeatureFlagResponse parses an HTTP response from a CreateFeatureFlagWithResponse call
+func ParseCreateFeatureFlagResponse(rsp *http.Response) (*CreateFeatureFlagResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateFeatureFlagResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest FeatureFlag
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteFeatureFlagResponse parses an HTTP response from a DeleteFeatureFlagWithResponse call
+func ParseDeleteFeatureFlagResponse(rsp *http.Response) (*DeleteFeatureFlagResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteFeatureFlagResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetFeatureFlagResponse parses an HTTP response from a GetFeatureFlagWithResponse call
+func ParseGetFeatureFlagResponse(rsp *http.Response) (*GetFeatureFlagResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetFeatureFlagResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest FeatureFlag
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateFeatureFlagResponse parses an HTTP response from a UpdateFeatureFlagWithResponse call
+func ParseUpdateFeatureFlagResponse(rsp *http.Response) (*UpdateFeatureFlagResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateFeatureFlagResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest FeatureFlag
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetMyBillingResponse parses an HTTP response from a GetMyBillingWithResponse call
+func ParseGetMyBillingResponse(rsp *http.Response) (*GetMyBillingResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyBillingResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest MyBilling
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetMyBillingCustomerResponse parses an HTTP response from a GetMyBillingCustomerWithResponse call
+func ParseGetMyBillingCustomerResponse(rsp *http.Response) (*GetMyBillingCustomerResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetMyBillingCustomerResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingCustomerDetails
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseSaveMyBillingCustomerResponse parses an HTTP response from a SaveMyBillingCustomerWithResponse call
+func ParseSaveMyBillingCustomerResponse(rsp *http.Response) (*SaveMyBillingCustomerResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SaveMyBillingCustomerResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingCustomerDetails
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateMyBillingPortalResponse parses an HTTP response from a CreateMyBillingPortalWithResponse call
+func ParseCreateMyBillingPortalResponse(rsp *http.Response) (*CreateMyBillingPortalResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateMyBillingPortalResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingPortalResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseListMyOrganizationsResponse parses an HTTP response from a ListMyOrganizationsWithResponse call
+func ParseListMyOrganizationsResponse(rsp *http.Response) (*ListMyOrganizationsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListMyOrganizationsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []MyOrganization
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
@@ -9140,6 +18304,578 @@ func ParseGetNotificationStatusResponse(rsp *http.Response) (*GetNotificationSta
 	return response, nil
 }
 
+// ParseListOrganizationsResponse parses an HTTP response from a ListOrganizationsWithResponse call
+func ParseListOrganizationsResponse(rsp *http.Response) (*ListOrganizationsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ListOrganizationsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []Organization
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateOrganizationResponse parses an HTTP response from a CreateOrganizationWithResponse call
+func ParseCreateOrganizationResponse(rsp *http.Response) (*CreateOrganizationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateOrganizationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest OrganizationDetail
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteOrganizationResponse parses an HTTP response from a DeleteOrganizationWithResponse call
+func ParseDeleteOrganizationResponse(rsp *http.Response) (*DeleteOrganizationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteOrganizationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetOrganizationResponse parses an HTTP response from a GetOrganizationWithResponse call
+func ParseGetOrganizationResponse(rsp *http.Response) (*GetOrganizationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetOrganizationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest OrganizationDetail
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseUpdateOrganizationResponse parses an HTTP response from a UpdateOrganizationWithResponse call
+func ParseUpdateOrganizationResponse(rsp *http.Response) (*UpdateOrganizationResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateOrganizationResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest OrganizationDetail
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteOrganizationLogoResponse parses an HTTP response from a DeleteOrganizationLogoWithResponse call
+func ParseDeleteOrganizationLogoResponse(rsp *http.Response) (*DeleteOrganizationLogoResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteOrganizationLogoResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetOrganizationLogoResponse parses an HTTP response from a GetOrganizationLogoWithResponse call
+func ParseGetOrganizationLogoResponse(rsp *http.Response) (*GetOrganizationLogoResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetOrganizationLogoResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 304:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers GetOrganizationLogoResponse200Headers
+		if values := rsp.Header.Values("Cache-Control"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Cache-Control", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.CacheControl = &value
+		}
+		if values := rsp.Header.Values("ETag"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "ETag", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.ETag = &value
+		}
+		response.Headers200 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSetOrganizationLogoResponse parses an HTTP response from a SetOrganizationLogoWithResponse call
+func ParseSetOrganizationLogoResponse(rsp *http.Response) (*SetOrganizationLogoResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SetOrganizationLogoResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest OrganizationDetail
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 413:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON413 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseRemoveOrganizationMemberResponse parses an HTTP response from a RemoveOrganizationMemberWithResponse call
+func ParseRemoveOrganizationMemberResponse(rsp *http.Response) (*RemoveOrganizationMemberResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &RemoveOrganizationMemberResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseSetOrganizationMemberResponse parses an HTTP response from a SetOrganizationMemberWithResponse call
+func ParseSetOrganizationMemberResponse(rsp *http.Response) (*SetOrganizationMemberResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SetOrganizationMemberResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest OrganizationMember
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetBlockedClientsResponse parses an HTTP response from a GetBlockedClientsWithResponse call
 func ParseGetBlockedClientsResponse(rsp *http.Response) (*GetBlockedClientsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -9834,6 +19570,39 @@ func ParseCreateTokenResponse(rsp *http.Response) (*CreateTokenResponse, error) 
 	return response, nil
 }
 
+// ParseGetFeatureFlagValuesResponse parses an HTTP response from a GetFeatureFlagValuesWithResponse call
+func ParseGetFeatureFlagValuesResponse(rsp *http.Response) (*GetFeatureFlagValuesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetFeatureFlagValuesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest FeatureFlagValues
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseHealthCheckResponse parses an HTTP response from a HealthCheckWithResponse call
 func ParseHealthCheckResponse(rsp *http.Response) (*HealthCheckResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -9925,6 +19694,9 @@ func ParseGetCurrentUserResponse(rsp *http.Response) (*GetCurrentUserResponse, e
 			// Email Example: user@example.com
 			Email *openapi_types.Email `json:"email,omitempty"`
 
+			// Entitlements Active features as in the X-Entitlements header (until, or null for no expiry)
+			Entitlements *EntitlementHeader `json:"entitlements,omitempty"`
+
 			// FamilyName Example: User
 			FamilyName *string `json:"familyName,omitempty"`
 
@@ -9935,7 +19707,8 @@ func ParseGetCurrentUserResponse(rsp *http.Response) (*GetCurrentUserResponse, e
 			IsAdmin *bool `json:"isAdmin,omitempty"`
 
 			// Name Example: Test User
-			Name *string `json:"name,omitempty"`
+			Name          *string           `json:"name,omitempty"`
+			Organizations *[]MyOrganization `json:"organizations,omitempty"`
 
 			// Picture Example: https://example.com/picture.jpg
 			Picture *string `json:"picture,omitempty"`
