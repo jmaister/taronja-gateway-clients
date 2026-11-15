@@ -130,54 +130,6 @@ export interface TokenCreateResponse {
     token_info: TokenResponse;
 }
 
-export interface UserCountersResponse {
-    user_id: string;
-    username?: string;
-    email?: string;
-    counter_id: string;
-    balance: number;
-    last_updated: string;
-    has_history: boolean;
-}
-
-export interface CounterAdjustmentRequest {
-    amount: number;
-    description: string;
-}
-
-export interface CounterTransactionResponse {
-    id: string;
-    user_id: string;
-    counter_id: string;
-    amount: number;
-    balance_after: number;
-    description: string;
-    created_at: string;
-}
-
-export interface CounterHistoryResponse {
-    user_id: string;
-    counter_id: string;
-    current_balance: number;
-    has_history: boolean;
-    transactions: CounterTransactionResponse[];
-    total_count: number;
-    limit: number;
-    offset: number;
-}
-
-export interface AllUserCountersResponse {
-    counter_id: string;
-    users: UserCountersResponse[];
-    total_count: number;
-    limit: number;
-    offset: number;
-}
-
-export interface AvailableCountersResponse {
-    counters: string[];
-}
-
 export interface DateRangeQuery {
     startDate?: string;
     endDate?: string;

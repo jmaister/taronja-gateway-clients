@@ -1,17 +1,11 @@
 import { TaronjaGatewayError } from './errors';
 import type {
-    AllUserCountersResponse,
-    AvailableCountersResponse,
-    CounterAdjustmentRequest,
-    CounterHistoryResponse,
-    CounterTransactionResponse,
     CurrentUser,
     DateRangeQuery,
     ErrorResponse,
     FeatureFlagValues,
     HealthResponse,
     LogoutResult,
-    PaginationQuery,
     RateLimiterConfigResponse,
     RateLimiterStats,
     RequestDetailsResponse,
@@ -19,7 +13,6 @@ import type {
     TokenCreateRequest,
     TokenCreateResponse,
     TokenResponse,
-    UserCountersResponse,
     UserCreateRequest,
     UserResponse,
 } from './types';
@@ -47,9 +40,6 @@ export interface LogoutOptions extends RequestOptions {
     redirectTo?: string;
 }
 
-export interface CounterLookupOptions extends RequestOptions, PaginationQuery {
-}
-
 export interface TaronjaClient {
     getLoginUrl(options?: { redirectTo?: string }): string;
     getHealth(options?: RequestOptions): Promise<HealthResponse>;
@@ -69,11 +59,6 @@ export interface TaronjaClient {
     getRequestDetails(query?: DateRangeQuery & RequestOptions): Promise<RequestDetailsResponse>;
     getRateLimiterStats(options?: RequestOptions): Promise<RateLimiterStats>;
     getRateLimiterConfig(options?: RequestOptions): Promise<RateLimiterConfigResponse>;
-    getAvailableCounters(options?: RequestOptions): Promise<AvailableCountersResponse>;
-    getAllUserCounters(counterId: string, options?: CounterLookupOptions): Promise<AllUserCountersResponse>;
-    getUserCounters(counterId: string, userId: string, options?: RequestOptions): Promise<UserCountersResponse>;
-    getUserCounterHistory(counterId: string, userId: string, options?: CounterLookupOptions): Promise<CounterHistoryResponse>;
-    adjustUserCounters(counterId: string, userId: string, payload: CounterAdjustmentRequest, options?: RequestOptions): Promise<CounterTransactionResponse>;
 }
 
 const DEFAULT_BASE_URL = '/_';
@@ -353,49 +338,5 @@ export function createTaronjaClient(options: TaronjaClientOptions = {}): Taronja
             });
         },
 
-        getAvailableCounters(options) {
-            return request<AvailableCountersResponse>('/api/admin/counters', {
-                method: 'GET',
-                signal: options?.signal,
-            });
-        },
-
-        getAllUserCounters(counterId, options) {
-            return request<AllUserCountersResponse>(`/api/admin/counters/${encodeURIComponent(counterId)}`, {
-                method: 'GET',
-                signal: options?.signal,
-            }, {
-                limit: options?.limit,
-                offset: options?.offset,
-            });
-        },
-
-        getUserCounters(counterId, userId, options) {
-            return request<UserCountersResponse>(`/api/counters/${encodeURIComponent(counterId)}/${encodeURIComponent(userId)}`, {
-                method: 'GET',
-                signal: options?.signal,
-            });
-        },
-
-        getUserCounterHistory(counterId, userId, options) {
-            return request<CounterHistoryResponse>(`/api/counters/${encodeURIComponent(counterId)}/${encodeURIComponent(userId)}/history`, {
-                method: 'GET',
-                signal: options?.signal,
-            }, {
-                limit: options?.limit,
-                offset: options?.offset,
-            });
-        },
-
-        adjustUserCounters(counterId, userId, payload, options) {
-            return request<CounterTransactionResponse>(`/api/counters/${encodeURIComponent(counterId)}/${encodeURIComponent(userId)}`, {
-                method: 'POST',
-                signal: options?.signal,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
-            });
-        },
     };
 }

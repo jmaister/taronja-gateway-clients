@@ -13,7 +13,6 @@ export {
 export {
     createTaronjaClient,
     isAuthenticatedUser,
-    type CounterLookupOptions,
     type LogoutOptions,
     type RequestOptions,
     type TaronjaClient,
@@ -31,11 +30,6 @@ export {
 } from './guards';
 export { getUserAvatar, getUserDisplayName, getUserInitials } from './utils';
 export type {
-    AllUserCountersResponse,
-    AvailableCountersResponse,
-    CounterAdjustmentRequest,
-    CounterHistoryResponse,
-    CounterTransactionResponse,
     CurrentUser,
     DateRangeQuery,
     ErrorResponse,
@@ -52,7 +46,6 @@ export type {
     TokenCreateRequest,
     TokenCreateResponse,
     TokenResponse,
-    UserCountersResponse,
     UserCreateRequest,
     UserResponse,
 } from './types';

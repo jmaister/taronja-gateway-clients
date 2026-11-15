@@ -19,7 +19,6 @@ This package is intended to move into the external clients repository later, but
 - Token management: `listTokens`, `getToken`, `createToken`, `deleteToken`
 - Request analytics: `getRequestStatistics`, `getRequestDetails`
 - Rate limiting: `getRateLimiterStats`, `getRateLimiterConfig`
-- Counters: `getAvailableCounters`, `getAllUserCounters`, `getUserCounters`, `getUserCounterHistory`, `adjustUserCounters`
 
 ## Worth including next
 
@@ -43,7 +42,7 @@ npm run typecheck
 npm run build
 ```
 
-Published releases are automated from the main repository release tag. The release workflow publishes this package to npm and mirrors the source package into `jmaister/taronja-gateway-clients`.
+Published releases are automated from the main repository release tag. The release workflow builds this package and attaches it to the GitHub release (a maintainer publishes it to npm from their machine) and mirrors the source package into `jmaister/taronja-gateway-clients`.
 
 ## Quick start
 
