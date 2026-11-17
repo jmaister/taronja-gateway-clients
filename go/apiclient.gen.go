@@ -596,6 +596,22 @@ func (e ListAdminNotificationsParamsStatus) Valid() bool {
 	}
 }
 
+// About Build information of the running gateway binary.
+type About struct {
+	// BuildDate Build timestamp (RFC 3339).
+	//
+	// Example: 2026-11-16T10:00:00Z
+	BuildDate string `json:"buildDate"`
+
+	// Commit Example: d356990
+	Commit string `json:"commit"`
+
+	// Version Release version, or "Dev" for a local build.
+	//
+	// Example: 1.2.1
+	Version string `json:"version"`
+}
+
 // AdminNotification defines model for AdminNotification.
 type AdminNotification struct {
 	// Channels Each channel attempted, mapped to its latest status (sent, pending, failed or skipped).
@@ -746,15 +762,18 @@ type BillingPlan struct {
 	Name            string          `json:"name"`
 
 	// PayLink <server.url>/_/pay/<key>
-	PayLink         string             `json:"payLink"`
-	SetupFeeCents   int64              `json:"setupFeeCents"`
-	SetupFeeName    *string            `json:"setupFeeName,omitempty"`
-	Starts          BillingPlanStarts  `json:"starts"`
-	StripePriceId   *string            `json:"stripePriceId,omitempty"`
-	StripeProductId *string            `json:"stripeProductId,omitempty"`
-	Subject         BillingPlanSubject `json:"subject"`
-	TrialDays       int                `json:"trialDays"`
-	UpdatedAt       time.Time          `json:"updatedAt"`
+	PayLink         string            `json:"payLink"`
+	SetupFeeCents   int64             `json:"setupFeeCents"`
+	SetupFeeName    *string           `json:"setupFeeName,omitempty"`
+	Starts          BillingPlanStarts `json:"starts"`
+	StripePriceId   *string           `json:"stripePriceId,omitempty"`
+	StripeProductId *string           `json:"stripeProductId,omitempty"`
+
+	// StripeProductUrl Stripe dashboard page of the product, test or live as the secret key; empty without a Stripe product
+	StripeProductUrl *string            `json:"stripeProductUrl,omitempty"`
+	Subject          BillingPlanSubject `json:"subject"`
+	TrialDays        int                `json:"trialDays"`
+	UpdatedAt        time.Time          `json:"updatedAt"`
 }
 
 // BillingPlanKind defines model for BillingPlan.Kind.
@@ -803,6 +822,14 @@ type BillingPlanInputStarts string
 
 // BillingPlanInputSubject defines model for BillingPlanInput.Subject.
 type BillingPlanInputSubject string
+
+// BillingPlanPriceChange defines model for BillingPlanPriceChange.
+type BillingPlanPriceChange struct {
+	AmountCents int64 `json:"amountCents"`
+
+	// NewKey Key of the copy; default: the old key with its number raised (-2, -3, ...)
+	NewKey *string `json:"newKey,omitempty"`
+}
 
 // BillingPlanUpdate defines model for BillingPlanUpdate.
 type BillingPlanUpdate struct {
@@ -870,6 +897,9 @@ type BillingSetup struct {
 	Checks         []SetupCheck    `json:"checks"`
 	Message        *string         `json:"message,omitempty"`
 	PaymentMethods *PaymentMethods `json:"paymentMethods,omitempty"`
+
+	// WebhookSecret Signing secret (whsec_...) of the webhook endpoint the webhook-create action just made. Only in that action's answer, never stored by the gateway; Stripe shows it only once.
+	WebhookSecret *string `json:"webhookSecret,omitempty"`
 }
 
 // BillingSetupActionRequest defines model for BillingSetupActionRequest.
@@ -2035,6 +2065,9 @@ type CreateBillingPlanJSONRequestBody = BillingPlanInput
 // UpdateBillingPlanJSONRequestBody defines body for UpdateBillingPlan for application/json ContentType.
 type UpdateBillingPlanJSONRequestBody = BillingPlanUpdate
 
+// ChangeBillingPlanPriceJSONRequestBody defines body for ChangeBillingPlanPrice for application/json ContentType.
+type ChangeBillingPlanPriceJSONRequestBody = BillingPlanPriceChange
+
 // RefundBillingPurchaseJSONRequestBody defines body for RefundBillingPurchase for application/json ContentType.
 type RefundBillingPurchaseJSONRequestBody = BillingRefundRequest
 
@@ -2154,6 +2187,11 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 // The interface specification for the client above.
 type ClientInterface interface {
 
+	// GetAbout Gateway build information (admin only)
+	//
+	// Corresponds with GET /api/about (the `GetAbout` operationId).
+	GetAbout(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ListAdminNotifications List every user's notifications with their delivery status (admin only)
 	//
 	// Newest first, filtered and paginated. Each item carries the recipient and the latest status per channel; GET /api/notifications/{id}/deliveries has the full attempt history with errors.
@@ -2242,6 +2280,20 @@ type ClientInterface interface {
 	//
 	// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
 	UpdateBillingPlan(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ChangeBillingPlanPriceWithBody Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+	ChangeBillingPlanPriceWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ChangeBillingPlanPrice Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+	ChangeBillingPlanPrice(ctx context.Context, key string, body ChangeBillingPlanPriceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListBillingPurchases List paid checkouts with shipping addresses (admin only)
 	//
@@ -2759,6 +2811,21 @@ type ClientInterface interface {
 	GetOpenApiYaml(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
+// GetAbout Gateway build information (admin only)
+//
+// Corresponds with GET /api/about (the `GetAbout` operationId).
+func (c *Client) GetAbout(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetAboutRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ListAdminNotifications List every user's notifications with their delivery status (admin only)
 //
 // Newest first, filtered and paginated. Each item carries the recipient and the latest status per channel; GET /api/notifications/{id}/deliveries has the full attempt history with errors.
@@ -2988,6 +3055,40 @@ func (c *Client) UpdateBillingPlanWithBody(ctx context.Context, key string, cont
 // Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
 func (c *Client) UpdateBillingPlan(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUpdateBillingPlanRequest(c.Server, key, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ChangeBillingPlanPriceWithBody Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+func (c *Client) ChangeBillingPlanPriceWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewChangeBillingPlanPriceRequestWithBody(c.Server, key, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ChangeBillingPlanPrice Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+func (c *Client) ChangeBillingPlanPrice(ctx context.Context, key string, body ChangeBillingPlanPriceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewChangeBillingPlanPriceRequest(c.Server, key, body)
 	if err != nil {
 		return nil, err
 	}
@@ -4343,6 +4444,33 @@ func (c *Client) GetOpenApiYaml(ctx context.Context, reqEditors ...RequestEditor
 	return c.Client.Do(req)
 }
 
+// NewGetAboutRequest constructs an http.Request for the GetAbout method
+func NewGetAboutRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/about")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewListAdminNotificationsRequest constructs an http.Request for the ListAdminNotifications method
 func NewListAdminNotificationsRequest(server string, params *ListAdminNotificationsParams) (*http.Request, error) {
 	var err error
@@ -5008,6 +5136,53 @@ func NewUpdateBillingPlanRequestWithBody(server string, key string, contentType 
 	}
 
 	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewChangeBillingPlanPriceRequest calls the generic ChangeBillingPlanPrice builder with application/json body
+func NewChangeBillingPlanPriceRequest(server string, key string, body ChangeBillingPlanPriceJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewChangeBillingPlanPriceRequestWithBody(server, key, "application/json", bodyReader)
+}
+
+// NewChangeBillingPlanPriceRequestWithBody constructs an http.Request for the ChangeBillingPlanPrice method, with any body, and a specified content type
+func NewChangeBillingPlanPriceRequestWithBody(server string, key string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "key", key, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/billing/plans/%s/change-price", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -8137,6 +8312,13 @@ func WithBaseURL(baseURL string) ClientOption {
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
 
+	// GetAboutWithResponse Gateway build information (admin only)
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/about (the `GetAbout` operationId).
+	GetAboutWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAboutResponse, error)
+
 	// ListAdminNotificationsWithResponse List every user's notifications with their delivery status (admin only)
 	//
 	// Newest first, filtered and paginated. Each item carries the recipient and the latest status per channel; GET /api/notifications/{id}/deliveries has the full attempt history with errors.
@@ -8243,6 +8425,20 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with PATCH /api/billing/plans/{key} (the `UpdateBillingPlan` operationId).
 	UpdateBillingPlanWithResponse(ctx context.Context, key string, body UpdateBillingPlanJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateBillingPlanResponse, error)
+
+	// ChangeBillingPlanPriceWithBodyWithResponse Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+	ChangeBillingPlanPriceWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ChangeBillingPlanPriceResponse, error)
+
+	// ChangeBillingPlanPriceWithResponse Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+	ChangeBillingPlanPriceWithResponse(ctx context.Context, key string, body ChangeBillingPlanPriceJSONRequestBody, reqEditors ...RequestEditorFn) (*ChangeBillingPlanPriceResponse, error)
 
 	// ListBillingPurchasesWithResponse List paid checkouts with shipping addresses (admin only)
 	//
@@ -8862,6 +9058,61 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /openapi.yaml (the `GetOpenApiYaml` operationId).
 	GetOpenApiYamlWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetOpenApiYamlResponse, error)
+}
+
+type GetAboutResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *About
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r GetAboutResponse) GetJSON200() *About {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r GetAboutResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r GetAboutResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetBody returns the raw response body bytes
+func (r GetAboutResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r GetAboutResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetAboutResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetAboutResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
 }
 
 type ListAdminNotificationsResponse struct {
@@ -9669,6 +9920,89 @@ func (r UpdateBillingPlanResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r UpdateBillingPlanResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ChangeBillingPlanPriceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *BillingPlan
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+	// JSON503 the response for an HTTP 503 `application/json` response
+	JSON503 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON200() *BillingPlan {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON403() *Error {
+	return r.JSON403
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetJSON503 returns the response for an HTTP 503 `application/json` response
+func (r ChangeBillingPlanPriceResponse) GetJSON503() *Error {
+	return r.JSON503
+}
+
+// GetBody returns the raw response body bytes
+func (r ChangeBillingPlanPriceResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ChangeBillingPlanPriceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ChangeBillingPlanPriceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ChangeBillingPlanPriceResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -13924,6 +14258,19 @@ func (r GetOpenApiYamlResponse) ContentType() string {
 	return ""
 }
 
+// GetAboutWithResponse Gateway build information (admin only)
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/about (the `GetAbout` operationId).
+func (c *ClientWithResponses) GetAboutWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetAboutResponse, error) {
+	rsp, err := c.GetAbout(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetAboutResponse(rsp)
+}
+
 // ListAdminNotificationsWithResponse List every user's notifications with their delivery status (admin only)
 //
 // Newest first, filtered and paginated. Each item carries the recipient and the latest status per channel; GET /api/notifications/{id}/deliveries has the full attempt history with errors.
@@ -14119,6 +14466,32 @@ func (c *ClientWithResponses) UpdateBillingPlanWithResponse(ctx context.Context,
 		return nil, err
 	}
 	return ParseUpdateBillingPlanResponse(rsp)
+}
+
+// ChangeBillingPlanPriceWithBodyWithResponse Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+func (c *ClientWithResponses) ChangeBillingPlanPriceWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ChangeBillingPlanPriceResponse, error) {
+	rsp, err := c.ChangeBillingPlanPriceWithBody(ctx, key, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseChangeBillingPlanPriceResponse(rsp)
+}
+
+// ChangeBillingPlanPriceWithResponse Copy a plan with a new amount and archive the old one (admin only); the copy has its own key, Stripe product and prices, so its pay link changes
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/billing/plans/{key}/change-price (the `ChangeBillingPlanPrice` operationId).
+func (c *ClientWithResponses) ChangeBillingPlanPriceWithResponse(ctx context.Context, key string, body ChangeBillingPlanPriceJSONRequestBody, reqEditors ...RequestEditorFn) (*ChangeBillingPlanPriceResponse, error) {
+	rsp, err := c.ChangeBillingPlanPrice(ctx, key, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseChangeBillingPlanPriceResponse(rsp)
 }
 
 // ListBillingPurchasesWithResponse List paid checkouts with shipping addresses (admin only)
@@ -15238,6 +15611,46 @@ func (c *ClientWithResponses) GetOpenApiYamlWithResponse(ctx context.Context, re
 	return ParseGetOpenApiYamlResponse(rsp)
 }
 
+// ParseGetAboutResponse parses an HTTP response from a GetAboutWithResponse call
+func ParseGetAboutResponse(rsp *http.Response) (*GetAboutResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetAboutResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest About
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseListAdminNotificationsResponse parses an HTTP response from a ListAdminNotificationsWithResponse call
 func ParseListAdminNotificationsResponse(rsp *http.Response) (*ListAdminNotificationsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -15811,6 +16224,74 @@ func ParseUpdateBillingPlanResponse(rsp *http.Response) (*UpdateBillingPlanRespo
 	}
 
 	response := &UpdateBillingPlanResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest BillingPlan
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseChangeBillingPlanPriceResponse parses an HTTP response from a ChangeBillingPlanPriceWithResponse call
+func ParseChangeBillingPlanPriceResponse(rsp *http.Response) (*ChangeBillingPlanPriceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ChangeBillingPlanPriceResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
