@@ -569,6 +569,24 @@ func (e TimeSeriesGranularity) Valid() bool {
 	}
 }
 
+// Defines values for UserCreateRequestOrganizationRole.
+const (
+	UserCreateRequestOrganizationRoleMember UserCreateRequestOrganizationRole = "member"
+	UserCreateRequestOrganizationRoleOwner  UserCreateRequestOrganizationRole = "owner"
+)
+
+// Valid indicates whether the value is a known member of the UserCreateRequestOrganizationRole enum.
+func (e UserCreateRequestOrganizationRole) Valid() bool {
+	switch e {
+	case UserCreateRequestOrganizationRoleMember:
+		return true
+	case UserCreateRequestOrganizationRoleOwner:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for ListAdminNotificationsParamsStatus.
 const (
 	ListAdminNotificationsParamsStatusFailed  ListAdminNotificationsParamsStatus = "failed"
@@ -1717,12 +1735,21 @@ type UserCreateRequest struct {
 	// Email Example: newuser@example.com
 	Email openapi_types.Email `json:"email"`
 
+	// OrganizationId Organization to put the new user in. It must exist; without it the user has none.
+	OrganizationId *string `json:"organizationId,omitempty"`
+
+	// OrganizationRole Role in organizationId (member when omitted). Ignored without organizationId.
+	OrganizationRole *UserCreateRequestOrganizationRole `json:"organizationRole,omitempty"`
+
 	// Password Example: securepassword123
 	Password string `json:"password"`
 
 	// Username Example: newuser
 	Username string `json:"username"`
 }
+
+// UserCreateRequestOrganizationRole Role in organizationId (member when omitted). Ignored without organizationId.
+type UserCreateRequestOrganizationRole string
 
 // UserResponse defines model for UserResponse.
 type UserResponse struct {
@@ -1738,6 +1765,9 @@ type UserResponse struct {
 	// Name Example: Test User
 	Name *string `json:"name,omitempty"`
 
+	// Phone E.164 phone number; empty when none is set.
+	Phone *string `json:"phone,omitempty"`
+
 	// Picture Example: https://example.com/picture.jpg
 	Picture  *string `json:"picture,omitempty"`
 	Provider *string `json:"provider,omitempty"`
@@ -1747,6 +1777,14 @@ type UserResponse struct {
 
 	// Username Example: testuser
 	Username string `json:"username"`
+}
+
+// UserUpdateRequest defines model for UserUpdateRequest.
+type UserUpdateRequest struct {
+	// Phone E.164 phone number ("+34600111222"), or empty to clear it. Omit to leave it unchanged.
+	//
+	// Example: +34600111222
+	Phone *string `json:"phone,omitempty"`
 }
 
 // TrafficBrowser defines model for TrafficBrowser.
@@ -2109,6 +2147,12 @@ type SetOrganizationMemberJSONRequestBody = OrganizationMemberRequest
 
 // CreateUserJSONRequestBody defines body for CreateUser for application/json ContentType.
 type CreateUserJSONRequestBody = UserCreateRequest
+
+// UpdateUserJSONRequestBody defines body for UpdateUser for application/json ContentType.
+type UpdateUserJSONRequestBody = UserUpdateRequest
+
+// SetUserNotificationPreferenceJSONRequestBody defines body for SetUserNotificationPreference for application/json ContentType.
+type SetUserNotificationPreferenceJSONRequestBody = NotificationPreference
 
 // CreateTokenJSONRequestBody defines body for CreateToken for application/json ContentType.
 type CreateTokenJSONRequestBody = TokenCreateRequest
@@ -2743,6 +2787,24 @@ type ClientInterface interface {
 	// Corresponds with GET /api/users/{userId} (the `GetUserById` operationId).
 	GetUserById(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// UpdateUserWithBody Update a user's phone number (admin only)
+	//
+	// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+	UpdateUserWithBody(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// UpdateUser Update a user's phone number (admin only)
+	//
+	// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+	UpdateUser(ctx context.Context, userId string, body UpdateUserJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetUserChannelStatuses Get a user's status on every configured notification channel (admin only)
 	//
 	// The admin-facing counterpart to getChannelStatuses — same shape, but for a user given by ID rather than the caller's own session, for a user detail page to show alongside their notification preference.
@@ -2756,6 +2818,24 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /api/users/{userId}/notifications/preferences (the `GetUserNotificationPreference` operationId).
 	GetUserNotificationPreference(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SetUserNotificationPreferenceWithBody Set (or clear) a user's preferred notification channel (admin only)
+	//
+	// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+	SetUserNotificationPreferenceWithBody(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SetUserNotificationPreference Set (or clear) a user's preferred notification channel (admin only)
+	//
+	// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+	SetUserNotificationPreference(ctx context.Context, userId string, body SetUserNotificationPreferenceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetUserTelegramLinkCode Get a Telegram deep link to connect a user's account (admin only)
 	//
@@ -4267,6 +4347,44 @@ func (c *Client) GetUserById(ctx context.Context, userId string, reqEditors ...R
 	return c.Client.Do(req)
 }
 
+// UpdateUserWithBody Update a user's phone number (admin only)
+//
+// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+func (c *Client) UpdateUserWithBody(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateUserRequestWithBody(c.Server, userId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// UpdateUser Update a user's phone number (admin only)
+//
+// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+func (c *Client) UpdateUser(ctx context.Context, userId string, body UpdateUserJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateUserRequest(c.Server, userId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // GetUserChannelStatuses Get a user's status on every configured notification channel (admin only)
 //
 // The admin-facing counterpart to getChannelStatuses — same shape, but for a user given by ID rather than the caller's own session, for a user detail page to show alongside their notification preference.
@@ -4291,6 +4409,44 @@ func (c *Client) GetUserChannelStatuses(ctx context.Context, userId string, reqE
 // Corresponds with GET /api/users/{userId}/notifications/preferences (the `GetUserNotificationPreference` operationId).
 func (c *Client) GetUserNotificationPreference(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUserNotificationPreferenceRequest(c.Server, userId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SetUserNotificationPreferenceWithBody Set (or clear) a user's preferred notification channel (admin only)
+//
+// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+func (c *Client) SetUserNotificationPreferenceWithBody(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetUserNotificationPreferenceRequestWithBody(c.Server, userId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SetUserNotificationPreference Set (or clear) a user's preferred notification channel (admin only)
+//
+// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+func (c *Client) SetUserNotificationPreference(ctx context.Context, userId string, body SetUserNotificationPreferenceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSetUserNotificationPreferenceRequest(c.Server, userId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7906,6 +8062,53 @@ func NewGetUserByIdRequest(server string, userId string) (*http.Request, error) 
 	return req, nil
 }
 
+// NewUpdateUserRequest calls the generic UpdateUser builder with application/json body
+func NewUpdateUserRequest(server string, userId string, body UpdateUserJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewUpdateUserRequestWithBody(server, userId, "application/json", bodyReader)
+}
+
+// NewUpdateUserRequestWithBody constructs an http.Request for the UpdateUser method, with any body, and a specified content type
+func NewUpdateUserRequestWithBody(server string, userId string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "userId", userId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/users/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewGetUserChannelStatusesRequest constructs an http.Request for the GetUserChannelStatuses method
 func NewGetUserChannelStatusesRequest(server string, userId string) (*http.Request, error) {
 	var err error
@@ -7970,6 +8173,53 @@ func NewGetUserNotificationPreferenceRequest(server string, userId string) (*htt
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewSetUserNotificationPreferenceRequest calls the generic SetUserNotificationPreference builder with application/json body
+func NewSetUserNotificationPreferenceRequest(server string, userId string, body SetUserNotificationPreferenceJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSetUserNotificationPreferenceRequestWithBody(server, userId, "application/json", bodyReader)
+}
+
+// NewSetUserNotificationPreferenceRequestWithBody constructs an http.Request for the SetUserNotificationPreference method, with any body, and a specified content type
+func NewSetUserNotificationPreferenceRequestWithBody(server string, userId string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "userId", userId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/users/%s/notifications/preferences", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -8974,6 +9224,24 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /api/users/{userId} (the `GetUserById` operationId).
 	GetUserByIdWithResponse(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*GetUserByIdResponse, error)
 
+	// UpdateUserWithBodyWithResponse Update a user's phone number (admin only)
+	//
+	// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+	UpdateUserWithBodyWithResponse(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateUserResponse, error)
+
+	// UpdateUserWithResponse Update a user's phone number (admin only)
+	//
+	// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+	UpdateUserWithResponse(ctx context.Context, userId string, body UpdateUserJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateUserResponse, error)
+
 	// GetUserChannelStatusesWithResponse Get a user's status on every configured notification channel (admin only)
 	//
 	// The admin-facing counterpart to getChannelStatuses — same shape, but for a user given by ID rather than the caller's own session, for a user detail page to show alongside their notification preference.
@@ -8991,6 +9259,24 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /api/users/{userId}/notifications/preferences (the `GetUserNotificationPreference` operationId).
 	GetUserNotificationPreferenceWithResponse(ctx context.Context, userId string, reqEditors ...RequestEditorFn) (*GetUserNotificationPreferenceResponse, error)
+
+	// SetUserNotificationPreferenceWithBodyWithResponse Set (or clear) a user's preferred notification channel (admin only)
+	//
+	// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+	SetUserNotificationPreferenceWithBodyWithResponse(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetUserNotificationPreferenceResponse, error)
+
+	// SetUserNotificationPreferenceWithResponse Set (or clear) a user's preferred notification channel (admin only)
+	//
+	// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+	SetUserNotificationPreferenceWithResponse(ctx context.Context, userId string, body SetUserNotificationPreferenceJSONRequestBody, reqEditors ...RequestEditorFn) (*SetUserNotificationPreferenceResponse, error)
 
 	// GetUserTelegramLinkCodeWithResponse Get a Telegram deep link to connect a user's account (admin only)
 	//
@@ -13652,6 +13938,75 @@ func (r GetUserByIdResponse) ContentType() string {
 	return ""
 }
 
+type UpdateUserResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *UserResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *Error
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r UpdateUserResponse) GetJSON200() *UserResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r UpdateUserResponse) GetJSON400() *Error {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r UpdateUserResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r UpdateUserResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r UpdateUserResponse) GetJSON500() *Error {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r UpdateUserResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r UpdateUserResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r UpdateUserResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r UpdateUserResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetUserChannelStatusesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -13756,6 +14111,68 @@ func (r GetUserNotificationPreferenceResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetUserNotificationPreferenceResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type SetUserNotificationPreferenceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *NotificationPreference
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Error
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *Error
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *Error
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SetUserNotificationPreferenceResponse) GetJSON200() *NotificationPreference {
+	return r.JSON200
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SetUserNotificationPreferenceResponse) GetJSON401() *Error {
+	return r.JSON401
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r SetUserNotificationPreferenceResponse) GetJSON404() *Error {
+	return r.JSON404
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r SetUserNotificationPreferenceResponse) GetJSON409() *Error {
+	return r.JSON409
+}
+
+// GetBody returns the raw response body bytes
+func (r SetUserNotificationPreferenceResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SetUserNotificationPreferenceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SetUserNotificationPreferenceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SetUserNotificationPreferenceResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -15460,6 +15877,36 @@ func (c *ClientWithResponses) GetUserByIdWithResponse(ctx context.Context, userI
 	return ParseGetUserByIdResponse(rsp)
 }
 
+// UpdateUserWithBodyWithResponse Update a user's phone number (admin only)
+//
+// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+func (c *ClientWithResponses) UpdateUserWithBodyWithResponse(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateUserResponse, error) {
+	rsp, err := c.UpdateUserWithBody(ctx, userId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateUserResponse(rsp)
+}
+
+// UpdateUserWithResponse Update a user's phone number (admin only)
+//
+// Sets the user's phone number, in E.164 form ("+34600111222"), or clears it with an empty string. Omitting phone leaves it as is.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/users/{userId} (the `UpdateUser` operationId).
+func (c *ClientWithResponses) UpdateUserWithResponse(ctx context.Context, userId string, body UpdateUserJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateUserResponse, error) {
+	rsp, err := c.UpdateUser(ctx, userId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseUpdateUserResponse(rsp)
+}
+
 // GetUserChannelStatusesWithResponse Get a user's status on every configured notification channel (admin only)
 //
 // The admin-facing counterpart to getChannelStatuses — same shape, but for a user given by ID rather than the caller's own session, for a user detail page to show alongside their notification preference.
@@ -15488,6 +15935,36 @@ func (c *ClientWithResponses) GetUserNotificationPreferenceWithResponse(ctx cont
 		return nil, err
 	}
 	return ParseGetUserNotificationPreferenceResponse(rsp)
+}
+
+// SetUserNotificationPreferenceWithBodyWithResponse Set (or clear) a user's preferred notification channel (admin only)
+//
+// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+func (c *ClientWithResponses) SetUserNotificationPreferenceWithBodyWithResponse(ctx context.Context, userId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SetUserNotificationPreferenceResponse, error) {
+	rsp, err := c.SetUserNotificationPreferenceWithBody(ctx, userId, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetUserNotificationPreferenceResponse(rsp)
+}
+
+// SetUserNotificationPreferenceWithResponse Set (or clear) a user's preferred notification channel (admin only)
+//
+// The admin-facing counterpart to setNotificationPreference. An empty or omitted preferredChannel clears the preference. A channel can only be set when this user can receive on it: the channel must be configured and, if it needs a connection (Telegram), the user must have linked it — otherwise 409.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PUT /api/users/{userId}/notifications/preferences (the `SetUserNotificationPreference` operationId).
+func (c *ClientWithResponses) SetUserNotificationPreferenceWithResponse(ctx context.Context, userId string, body SetUserNotificationPreferenceJSONRequestBody, reqEditors ...RequestEditorFn) (*SetUserNotificationPreferenceResponse, error) {
+	rsp, err := c.SetUserNotificationPreference(ctx, userId, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSetUserNotificationPreferenceResponse(rsp)
 }
 
 // GetUserTelegramLinkCodeWithResponse Get a Telegram deep link to connect a user's account (admin only)
@@ -19151,6 +19628,60 @@ func ParseGetUserByIdResponse(rsp *http.Response) (*GetUserByIdResponse, error) 
 	return response, nil
 }
 
+// ParseUpdateUserResponse parses an HTTP response from a UpdateUserWithResponse call
+func ParseUpdateUserResponse(rsp *http.Response) (*UpdateUserResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &UpdateUserResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest UserResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetUserChannelStatusesResponse parses an HTTP response from a GetUserChannelStatusesWithResponse call
 func ParseGetUserChannelStatusesResponse(rsp *http.Response) (*GetUserChannelStatusesResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -19225,6 +19756,53 @@ func ParseGetUserNotificationPreferenceResponse(rsp *http.Response) (*GetUserNot
 			return nil, err
 		}
 		response.JSON404 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseSetUserNotificationPreferenceResponse parses an HTTP response from a SetUserNotificationPreferenceWithResponse call
+func ParseSetUserNotificationPreferenceResponse(rsp *http.Response) (*SetUserNotificationPreferenceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SetUserNotificationPreferenceResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest NotificationPreference
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
 
 	}
 
