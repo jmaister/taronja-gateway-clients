@@ -587,6 +587,24 @@ func (e UserCreateRequestOrganizationRole) Valid() bool {
 	}
 }
 
+// Defines values for UserOrganizationRole.
+const (
+	UserOrganizationRoleMember UserOrganizationRole = "member"
+	UserOrganizationRoleOwner  UserOrganizationRole = "owner"
+)
+
+// Valid indicates whether the value is a known member of the UserOrganizationRole enum.
+func (e UserOrganizationRole) Valid() bool {
+	switch e {
+	case UserOrganizationRoleMember:
+		return true
+	case UserOrganizationRoleOwner:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for ListAdminNotificationsParamsStatus.
 const (
 	ListAdminNotificationsParamsStatusFailed  ListAdminNotificationsParamsStatus = "failed"
@@ -1751,6 +1769,16 @@ type UserCreateRequest struct {
 // UserCreateRequestOrganizationRole Role in organizationId (member when omitted). Ignored without organizationId.
 type UserCreateRequestOrganizationRole string
 
+// UserOrganization defines model for UserOrganization.
+type UserOrganization struct {
+	Id   string               `json:"id"`
+	Name string               `json:"name"`
+	Role UserOrganizationRole `json:"role"`
+}
+
+// UserOrganizationRole defines model for UserOrganization.Role.
+type UserOrganizationRole string
+
 // UserResponse defines model for UserResponse.
 type UserResponse struct {
 	// CreatedAt When the user account was created.
@@ -1764,6 +1792,9 @@ type UserResponse struct {
 
 	// Name Example: Test User
 	Name *string `json:"name,omitempty"`
+
+	// Organizations The organizations the user belongs to, by name. Only in the admin's user list and user detail.
+	Organizations *[]UserOrganization `json:"organizations,omitempty"`
 
 	// Phone E.164 phone number; empty when none is set.
 	Phone *string `json:"phone,omitempty"`
